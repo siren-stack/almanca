@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dativ & Akkusativ Übungen – A1</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --acc: #FF6B6B;
+    --dat: #4ECDC4;
+    --gold: #FFE66D;
+    --dark: #2C2C54;
+    --light: #F7F9FC;
+    --card: #ffffff;
+    --shadow: 0 8px 32px rgba(44,44,84,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    color: var(--dark);
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+
+  header h1 span.acc { color: var(--acc); }
+  header h1 span.dat { color: var(--dat); }
+
+  header p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 8px 18px;
+    border-radius: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot.acc { background: var(--acc); }
+  .dot.dat { background: var(--dat); }
+
+  .section {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 28px 28px 22px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.35rem;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .badge {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge.acc { background: #FFE0E0; color: var(--acc); }
+  .badge.dat { background: #DDFAF7; color: #2a9d8f; }
+  .badge.mixed { background: #FFF4CC; color: #c8891a; }
+
+  .section-sub {
+    font-size: 0.88rem;
+    color: #888;
+    margin-bottom: 18px;
+  }
+
+  /* TABLE */
+  .grammar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+    margin-bottom: 6px;
+  }
+
+  .grammar-table th {
+    background: var(--dark);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .grammar-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .grammar-table tr:nth-child(even) td { background: #fafafa; }
+
+  .grammar-table .acc-cell { color: var(--acc); font-weight: 700; }
+  .grammar-table .dat-cell { color: #2a9d8f; font-weight: 700; }
+
+  /* EXERCISES */
+  .exercise-item {
+    margin-bottom: 18px;
+    padding: 16px 18px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border-left: 4px solid #ddd;
+    transition: border-color 0.3s;
+  }
+
+  .exercise-item.correct { border-left-color: #4CAF50; background: #f0fff4; }
+  .exercise-item.wrong   { border-left-color: var(--acc); background: #fff5f5; }
+
+  .exercise-item .sentence {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .opt-btn {
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--dark);
+  }
+
+  .opt-btn:hover:not(:disabled) {
+    border-color: var(--dark);
+    background: #f0f0ff;
+    transform: translateY(-1px);
+  }
+
+  .opt-btn.selected-correct {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+  }
+
+  .opt-btn.selected-wrong {
+    background: var(--acc);
+    border-color: var(--acc);
+    color: white;
+  }
+
+  .opt-btn.show-answer {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+    opacity: 0.7;
+  }
+
+  .opt-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+  .feedback {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    min-height: 18px;
+  }
+
+  .feedback.ok { color: #4CAF50; }
+  .feedback.err { color: var(--acc); }
+
+  /* FILL IN */
+  .fill-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .fill-input {
+    border: none;
+    border-bottom: 2.5px solid #bbb;
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    width: 90px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+    padding: 2px 4px;
+  }
+
+  .fill-input:focus { border-color: var(--dat); }
+  .fill-input.correct { border-color: #4CAF50; color: #4CAF50; }
+  .fill-input.wrong   { border-color: var(--acc); color: var(--acc); }
+
+  .check-btn {
+    display: inline-block;
+    padding: 9px 28px;
+    background: var(--dark);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .check-btn:hover { background: #3d3d75; transform: translateY(-2px); }
+
+  /* SCORE */
+  .score-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--dark);
+    color: white;
+    border-radius: 16px;
+    padding: 14px 24px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-weight: 700;
+  }
+
+  .score-bar .score-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+  }
+
+  .score-bar .score-label { font-size: 0.9rem; opacity: 0.8; }
+
+  .reset-btn {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .reset-btn:hover { opacity: 0.85; }
+
+  /* SORT */
+  .sort-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .word-chip {
+    background: var(--dark);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.2s;
+    user-select: none;
+  }
+
+  .word-chip:hover { transform: scale(1.07); }
+  .word-chip.used { opacity: 0.3; pointer-events: none; }
+
+  .sort-answer-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 40px;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .sort-placed {
+    background: var(--dat);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .sort-placed:hover { opacity: 0.8; }
+
+  footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 540px) {
+    header h1 { font-size: 2rem; }
+    .section { padding: 20px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌟 <span class="acc">Akkusativ</span> & <span class="dat">Dativ</span> Übungen</h1>
+  <p>Deutsch A1 – İnteraktif Alıştırmalar</p>
+</header>
+
+<div class="score-bar">
+  <div>
+    <div class="score-label">Toplam Puan</div>
+    <div class="score-num" id="total-score">0 / 0</div>
+  </div>
+  <div>
+    <button class="reset-btn" onclick="resetAll()">🔄 Sıfırla</button>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><span class="dot acc"></span> Akkusativ – wen? / was?</div>
+  <div class="legend-item"><span class="dot dat"></span> Dativ – wem?</div>
+</div>
+
+<!-- BÖLÜM 1: Kurallar -->
+<div class="section">
+  <div class="section-title">📘 Temel Kural <span class="badge mixed">REFERANS</span></div>
+  <div class="section-sub">Erkek (maskulin) isimler değişir – diğerleri aynı kalır!</div>
+  <table class="grammar-table">
+    <tr>
+      <th>Fall</th>
+      <th>Frage</th>
+      <th>maskulin (r)</th>
+      <th>feminin (e)</th>
+      <th>neutrum (s)</th>
+      <th>Plural (e)</th>
+    </tr>
+    <tr>
+      <td><strong>Nominativ</strong></td>
+      <td>Wer/Was?</td>
+      <td>der Mann</td><td>die Frau</td><td>das Kind</td><td>die Kinder</td>
+    </tr>
+    <tr>
+      <td><strong class="acc-cell">Akkusativ</strong></td>
+      <td class="acc-cell">Wen/Was?</td>
+      <td class="acc-cell">den Mann</td><td>die Frau</td><td>das Kind</td><td>die Kinder</td>
+    </tr>
+    <tr>
+      <td><strong class="dat-cell">Dativ</strong></td>
+      <td class="dat-cell">Wem?</td>
+      <td class="dat-cell">dem Mann</td><td class="dat-cell">der Frau</td><td class="dat-cell">dem Kind</td><td class="dat-cell">den Kindern</td>
+    </tr>
+  </table>
+</div>
+
+<!-- BÖLÜM 2: Çoktan Seçmeli -->
+<div class="section">
+  <div class="section-title">✏️ Bölüm 1: Doğru Artikeli Seç <span class="badge acc">AKKUSATİV</span></div>
+  <div class="section-sub">Cümledeki boşluğa hangi artikel gelir? Tıkla!</div>
+
+  <div id="mc-container"></div>
+</div>
+
+<!-- BÖLÜM 3: Doldur -->
+<div class="section">
+  <div class="section-title">✏️ Bölüm 2: Doğru Formu Yaz <span class="badge dat">DATİV</span></div>
+  <div class="section-sub">Boşluğa doğru kelimeyi yaz (küçük harf olabilir)</div>
+  <div id="fill-container"></div>
+  <button class="check-btn" onclick="checkFill()">✔ Kontrol Et</button>
+</div>
+
+<!-- BÖLÜM 4: Karışık -->
+<div class="section">
+  <div class="section-title">🎯 Bölüm 3: Dativ mi Akkusativ mi? <span class="badge mixed">KARMA</span></div>
+  <div class="section-sub">Cümleyi oku ve hangi hal olduğunu seç!</div>
+  <div id="mixed-container"></div>
+</div>
+
+<!-- BÖLÜM 5: Cümle kur -->
+<div class="section">
+  <div class="section-title">🔤 Bölüm 4: Cümle Kur <span class="badge mixed">KARMA</span></div>
+  <div class="section-sub">Kelimelere tıklayarak doğru sıraya diz!</div>
+  <div id="sort-container"></div>
+</div>
+
+<footer>Viel Spaß beim Lernen! 🎉 &nbsp;|&nbsp; A1 Deutsch</footer>
+
+<script>
+let totalCorrect = 0;
+let totalAttempts = 0;
+
+function updateScore(correct) {
+  totalAttempts++;
+  if (correct) totalCorrect++;
+  document.getElementById('total-score').textContent = `${totalCorrect} / ${totalAttempts}`;
+}
+
+function resetAll() {
+  totalCorrect = 0; totalAttempts = 0;
+  document.getElementById('total-score').textContent = '0 / 0';
+  buildMC(); buildFill(); buildMixed(); buildSort();
+}
+
+// ── BÖLÜM 1: Çoktan Seçmeli Akkusativ ──────────────────────────────
+const mcQuestions = [
+  { sentence: "Ich sehe ___ Mann.", answer: "den", options: ["der", "den", "dem"], hint: "sehen → Akkusativ, maskulin → den" },
+  { sentence: "Er kauft ___ Buch.", answer: "das", options: ["das", "dem", "den"], hint: "kaufen → Akkusativ, neutrum → das (değişmez!)" },
+  { sentence: "Sie liebt ___ Hund.", answer: "den", options: ["dem", "die", "den"], hint: "lieben → Akkusativ, maskulin → den" },
+  { sentence: "Wir brauchen ___ Stift.", answer: "einen", options: ["ein", "einen", "einem"], hint: "brauchen → Akkusativ, maskulin → einen" },
+  { sentence: "Ich habe ___ Schwester.", answer: "eine", options: ["eine", "einer", "ein"], hint: "haben → Akkusativ, feminin → eine (değişmez!)" },
+  { sentence: "Er trinkt ___ Tee.", answer: "den", options: ["der", "den", "dem"], hint: "trinken → Akkusativ, maskulin → den" },
+];
+
+function buildMC() {
+  const container = document.getElementById('mc-container');
+  container.innerHTML = '';
+  mcQuestions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.id = `mc-${i}`;
+    div.innerHTML = `
+      <div class="sentence">${i+1}. ${q.sentence}</div>
+      <div class="options" id="mc-opts-${i}">
+        ${q.options.map(o => `<button class="opt-btn" onclick="answerMC(${i}, '${o}')">${o}</button>`).join('')}
+      </div>
+      <div class="feedback" id="mc-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answerMC(i, chosen) {
+  const q = mcQuestions[i];
+  const item = document.getElementById(`mc-${i}`);
+  const fb = document.getElementById(`mc-fb-${i}`);
+  const btns = document.querySelectorAll(`#mc-opts-${i} .opt-btn`);
+  const correct = chosen === q.answer;
+  btns.forEach(b => {
+    b.disabled = true;
+    if (b.textContent === q.answer) b.classList.add('show-answer');
+    if (b.textContent === chosen) b.classList.add(correct ? 'selected-correct' : 'selected-wrong');
+  });
+  item.classList.add(correct ? 'correct' : 'wrong');
+  fb.className = 'feedback ' + (correct ? 'ok' : 'err');
+  fb.textContent = correct ? '✅ Doğru!' : `❌ Yanlış. Doğrusu: ${q.answer} — ${q.hint}`;
+  updateScore(correct);
+}
+
+// ── BÖLÜM 2: Doldurma Dativ ──────────────────────────────────────────
+const fillQuestions = [
+  { parts: ["Ich gebe ", " Frau eine Blume.", "der"], answers: ["der"], hint: "geben → Dativ, feminin → der" },
+  { parts: ["Er hilft ", " Kind.", "dem"], answers: ["dem"], hint: "helfen → Dativ, neutrum → dem" },
+  { parts: ["Sie dankt ", " Mann.", "dem"], answers: ["dem"], hint: "danken → Dativ, maskulin → dem" },
+  { parts: ["Wir helfen ", " Lehrerin.", "der"], answers: ["der"], hint: "helfen → Dativ, feminin → der" },
+  { parts: ["Das Buch gehört ", " Studentin.", "der"], answers: ["der"], hint: "gehören → Dativ, feminin → der" },
+];
+
+function buildFill() {
+  const container = document.getElementById('fill-container');
+  container.innerHTML = '';
+  fillQuestions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.id = `fill-${i}`;
+    div.innerHTML = `
+      <div class="fill-group">
+        <span>${i+1}. ${q.parts[0]}</span>
+        <input class="fill-input" id="fill-inp-${i}" placeholder="___" autocomplete="off" />
+        <span>${q.parts[1]}</span>
+      </div>
+      <div class="feedback" id="fill-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function checkFill() {
+  fillQuestions.forEach((q, i) => {
+    const inp = document.getElementById(`fill-inp-${i}`);
+    const fb = document.getElementById(`fill-fb-${i}`);
+    const item = document.getElementById(`fill-${i}`);
+    const val = inp.value.trim().toLowerCase();
+    const correct = val === q.answers[0].toLowerCase();
+    inp.className = 'fill-input ' + (correct ? 'correct' : 'wrong');
+    item.className = 'exercise-item ' + (correct ? 'correct' : 'wrong');
+    fb.className = 'feedback ' + (correct ? 'ok' : 'err');
+    fb.textContent = correct ? '✅ Doğru!' : `❌ Doğrusu: ${q.answers[0]} — ${q.hint}`;
+    if (!inp.dataset.scored) { updateScore(correct); inp.dataset.scored = '1'; }
+  });
+}
+
+// ── BÖLÜM 3: Karma Seçme ─────────────────────────────────────────────
+const mixedQuestions = [
+  { sentence: "Ich schenke dem Vater ein Buch.", underline: "dem Vater", answer: "Dativ", hint: "schenken → wem? → dem Vater" },
+  { sentence: "Wir kaufen den Computer.", underline: "den Computer", answer: "Akkusativ", hint: "kaufen → was? → den Computer" },
+  { sentence: "Sie hilft der Mutter.", underline: "der Mutter", answer: "Dativ", hint: "helfen → wem? → der Mutter" },
+  { sentence: "Er besucht einen Freund.", underline: "einen Freund", answer: "Akkusativ", hint: "besuchen → wen? → einen Freund" },
+  { sentence: "Das Kind gibt dem Hund Essen.", underline: "dem Hund", answer: "Dativ", hint: "geben → wem? → dem Hund" },
+  { sentence: "Ich lese ein Buch.", underline: "ein Buch", answer: "Akkusativ", hint: "lesen → was? → ein Buch" },
+];
+
+function buildMixed() {
+  const container = document.getElementById('mixed-container');
+  container.innerHTML = '';
+  mixedQuestions.forEach((q, i) => {
+    const highlighted = q.sentence.replace(q.underline, `<strong style="color:var(--dark);text-decoration:underline">${q.underline}</strong>`);
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.id = `mix-${i}`;
+    div.innerHTML = `
+      <div class="sentence">${i+1}. ${highlighted}</div>
+      <div class="options">
+        <button class="opt-btn" onclick="answerMixed(${i},'Akkusativ')" style="border-color:var(--acc);color:var(--acc)">🔴 Akkusativ</button>
+        <button class="opt-btn" onclick="answerMixed(${i},'Dativ')" style="border-color:var(--dat);color:#2a9d8f">🟢 Dativ</button>
+      </div>
+      <div class="feedback" id="mix-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function answerMixed(i, chosen) {
+  const q = mixedQuestions[i];
+  const item = document.getElementById(`mix-${i}`);
+  const fb = document.getElementById(`mix-fb-${i}`);
+  const btns = item.querySelectorAll('.opt-btn');
+  const correct = chosen === q.answer;
+  btns.forEach(b => {
+    b.disabled = true;
+    if (b.textContent.includes(q.answer)) b.classList.add('show-answer');
+    if (b.textContent.includes(chosen)) b.classList.add(correct ? 'selected-correct' : 'selected-wrong');
+  });
+  item.classList.add(correct ? 'correct' : 'wrong');
+  fb.className = 'feedback ' + (correct ? 'ok' : 'err');
+  fb.textContent = correct ? '✅ Doğru!' : `❌ Doğrusu: ${q.answer} — ${q.hint}`;
+  updateScore(correct);
+}
+
+// ── BÖLÜM 4: Cümle Kur ───────────────────────────────────────────────
+const sortQuestions = [
+  { words: ["Ich", "gebe", "dem", "Kind", "ein", "Spielzeug", "."], hint: "Tam cümle sırası" },
+  { words: ["Er", "kauft", "den", "Stift", "für", "die", "Schule", "."], hint: "" },
+  { words: ["Sie", "hilft", "der", "alten", "Frau", "."], hint: "" },
+];
+
+let sortState = [];
+
+function buildSort() {
+  const container = document.getElementById('sort-container');
+  container.innerHTML = '';
+  sortState = sortQuestions.map(q => ({ placed: [], remaining: [...q.words] }));
+  sortQuestions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.id = `sort-${i}`;
+    div.innerHTML = `
+      <div class="sentence">${i+1}. Kelimeleri sıraya diz:</div>
+      <div class="sort-words" id="sort-chips-${i}">
+        ${q.words.map((w, j) => `<span class="word-chip" id="chip-${i}-${j}" onclick="placeWord(${i},${j},'${w}')">${w}</span>`).join('')}
+      </div>
+      <div class="sort-answer-row" id="sort-ans-${i}"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="check-btn" style="margin-top:0;padding:7px 20px;font-size:0.88rem" onclick="checkSort(${i})">✔ Kontrol</button>
+        <button class="check-btn" style="margin-top:0;padding:7px 20px;font-size:0.88rem;background:#888" onclick="resetSort(${i})">↩ Sıfırla</button>
+      </div>
+      <div class="feedback" id="sort-fb-${i}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function placeWord(qi, wi, word) {
+  const chip = document.getElementById(`chip-${qi}-${wi}`);
+  if (chip.classList.contains('used')) return;
+  chip.classList.add('used');
+  sortState[qi].placed.push({ wi, word });
+  const ansRow = document.getElementById(`sort-ans-${qi}`);
+  const span = document.createElement('span');
+  span.className = 'sort-placed';
+  span.textContent = word;
+  span.dataset.wi = wi;
+  span.onclick = () => removeWord(qi, wi, span);
+  ansRow.appendChild(span);
+}
+
+function removeWord(qi, wi, span) {
+  span.remove();
+  sortState[qi].placed = sortState[qi].placed.filter(p => p.wi !== wi);
+  document.getElementById(`chip-${qi}-${wi}`).classList.remove('used');
+}
+
+function checkSort(qi) {
+  const q = sortQuestions[qi];
+  const placed = sortState[qi].placed.map(p => p.word);
+  const correct = JSON.stringify(placed) === JSON.stringify(q.words);
+  const fb = document.getElementById(`sort-fb-${qi}`);
+  fb.className = 'feedback ' + (correct ? 'ok' : 'err');
+  fb.textContent = correct ? '✅ Mükemmel!' : `❌ Doğru sıra: ${q.words.join(' ')}`;
+  if (!document.getElementById(`sort-${qi}`).dataset.scored) {
+    updateScore(correct);
+    document.getElementById(`sort-${qi}`).dataset.scored = '1';
+  }
+}
+
+function resetSort(qi) {
+  sortState[qi].placed = [];
+  const ansRow = document.getElementById(`sort-ans-${qi}`);
+  ansRow.innerHTML = '';
+  const chips = document.querySelectorAll(`[id^="chip-${qi}-"]`);
+  chips.forEach(c => c.classList.remove('used'));
+  document.getElementById(`sort-fb-${qi}`).textContent = '';
+}
+
+// Init
+buildMC(); buildFill(); buildMixed(); buildSort();
+</script>
+</body>
+</html>
