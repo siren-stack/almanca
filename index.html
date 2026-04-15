@@ -1,3 +1,1681 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Almanca A1 – Tüm Dersler</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F3EE;--surface:#fff;--text:#2C2C3A;--muted:#7A7A8C;--border:#E0DCD5;
+  --shadow:0 4px 20px rgba(44,44,58,.08);--green:#2E9E5A;--red:#D32F2F;--gold:#D4A017;
+  --tab-bg:#2C2C3A;--tab-text:rgba(255,255,255,.6);--tab-active:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:16px;padding-top:0;padding-bottom:40px}
+
+/* SIDEBAR */
+.sidebar-toggle{position:fixed;top:12px;left:12px;z-index:1100;background:var(--tab-bg);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;color:#fff;font-size:1.4rem;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:left .3s}
+.sidebar-toggle.open{left:232px}
+.sidebar{position:fixed;top:0;left:-220px;width:220px;height:100vh;background:var(--tab-bg);z-index:1050;overflow-y:auto;transition:left .3s;box-shadow:2px 0 16px rgba(0,0,0,.2);padding-top:56px}
+.sidebar.open{left:0}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1040}
+.sidebar-overlay.open{display:block}
+.sidebar-title{color:var(--gold);font-family:'DM Serif Display',serif;font-size:.82rem;padding:10px 20px 6px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:4px}
+.tab-btn{display:block;width:100%;border:none;background:none;color:var(--tab-text);font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;padding:12px 20px;cursor:pointer;transition:all .2s;border-left:4px solid transparent;text-align:left;white-space:normal;line-height:1.4}
+.tab-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.tab-btn.active{color:var(--tab-active);border-left-color:var(--gold);background:rgba(255,255,255,.06)}
+.iframe-panel{display:none;width:100%;height:100vh;border:none;margin:0;padding:0}
+.iframe-panel.active{display:block}
+
+/* LESSON PANELS */
+.lesson-panel{display:none}
+.lesson-panel.active{display:block}
+
+/* SHARED HERO */
+.lesson-hero{background:var(--tab-bg);color:#F4EFE6;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.lesson-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 38px,rgba(255,255,255,.015) 38px,rgba(255,255,255,.015) 39px)}
+.lesson-hero .hero-icon{font-size:2.8rem;display:block;margin-bottom:12px}
+.lesson-hero h1{font-family:'DM Serif Display',serif;font-size:2.6rem;font-weight:400;letter-spacing:-.5px;line-height:1.15}
+.lesson-hero p{color:rgba(244,239,230,.5);margin-top:10px;font-size:.95rem}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.htag{border:1.5px solid rgba(244,239,230,.25);color:rgba(244,239,230,.65);font-size:.7rem;font-weight:700;letter-spacing:1.5px;padding:4px 12px;border-radius:20px;text-transform:uppercase}
+
+/* WRAPPER */
+.w{max-width:860px;margin:0 auto;padding:0 16px}
+
+/* CARD */
+.card{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);padding:24px 26px;margin-bottom:20px;border:1px solid var(--border)}
+
+/* SECTION TITLE */
+.stitle{display:flex;align-items:center;gap:12px;margin:38px 0 14px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.snum{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;color:var(--border);line-height:1;min-width:36px}
+.stitle h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--text)}
+.stitle h3 span{font-family:'Nunito',sans-serif;font-size:.8rem;color:var(--muted);font-weight:400;display:block;margin-top:2px}
+.pill{margin-left:auto;font-size:.66rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:4px 10px;border-radius:20px;flex-shrink:0}
+
+/* INFO */
+.info{font-size:.82rem;color:var(--muted);margin-bottom:16px;background:rgba(0,0,0,.03);padding:8px 12px;border-radius:8px;border-left:3px solid var(--gold);line-height:1.6}
+.info b{color:var(--text)}
+
+/* BUTTONS */
+.btn{display:inline-block;margin-top:16px;border:none;border-radius:10px;padding:10px 24px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s;text-transform:uppercase;letter-spacing:.3px}
+.btn:hover{opacity:.85;transform:translateY(-1px)}
+
+/* TABLE WRAPPER for mobile scroll */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:6px}
+
+/* ═══════════════════════════════════════ */
+/* LESSON 1: Präteritum & Perfekt         */
+/* ═══════════════════════════════════════ */
+#lesson-1{--pret:#B03A2E;--perf:#1A5276;--l-gold:#9A7D0A}
+#lesson-1 .lesson-hero h1 .pr{color:#E74C3C}
+#lesson-1 .lesson-hero h1 .pe{color:#5DADE2}
+#lesson-1 .lesson-hero h1 .am{color:#E6C84A}
+#lesson-1 .htag.r{border-color:#E74C3C;color:#E74C3C}
+#lesson-1 .htag.b{border-color:#5DADE2;color:#5DADE2}
+#lesson-1 .pr-pill{background:rgba(176,58,46,.1);color:var(--pret);border:1px solid rgba(176,58,46,.3)}
+#lesson-1 .pe-pill{background:rgba(26,82,118,.1);color:var(--perf);border:1px solid rgba(26,82,118,.3)}
+#lesson-1 .bo-pill{background:rgba(154,125,10,.1);color:var(--l-gold);border:1px solid rgba(154,125,10,.3)}
+#lesson-1 .btn-pr{background:var(--pret);color:#fff}
+#lesson-1 .btn-pe{background:var(--perf);color:#fff}
+#lesson-1 .btn-go{background:var(--l-gold);color:#fff}
+#lesson-1 .btn-dk{background:var(--tab-bg);color:#F4EFE6}
+
+/* Grammar grid */
+.gram-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:36px auto;padding:0 16px}
+@media(max-width:640px){.gram-row{grid-template-columns:1fr}}
+.gp{background:var(--surface);border-radius:14px;border-top:5px solid var(--pret);box-shadow:var(--shadow);padding:22px 20px}
+.gp.bl{border-top-color:var(--perf)}
+.gp h2{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:4px}
+.gp h2.r{color:var(--pret)}.gp h2.b{color:var(--perf)}
+.gsub{font-size:.73rem;color:var(--muted);margin-bottom:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+.gt{width:100%;border-collapse:collapse;font-size:.86rem}
+.gt th{background:rgba(0,0,0,.04);padding:7px 10px;text-align:left;font-weight:700;color:var(--muted);border-bottom:1px solid var(--border);font-size:.73rem;text-transform:uppercase;letter-spacing:.5px}
+.gt td{padding:7px 10px;border-bottom:1px solid rgba(0,0,0,.04)}
+.gt tr:last-child td{border-bottom:none}
+.hl{font-weight:700}.pr-hl{color:var(--pret);font-weight:700}.pe-hl{color:var(--perf);font-weight:700}
+.rule{margin-top:12px;background:rgba(0,0,0,.03);border-left:3px solid var(--l-gold);padding:10px 14px;font-size:.82rem;color:var(--muted);line-height:1.8;border-radius:0 8px 8px 0}
+.rule b{color:var(--text)}.rule .ex{color:var(--l-gold);font-weight:700}
+
+/* Partizip II table */
+.part-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.part-table th{background:rgba(26,82,118,.07);padding:8px 10px;text-align:left;font-weight:700;color:var(--perf);border-bottom:2px solid var(--border);font-size:.73rem;text-transform:uppercase;letter-spacing:.5px}
+.part-table td{padding:7px 10px;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:middle}
+.part-table tr:last-child td{border-bottom:none}
+.haben-tag{display:inline-block;background:rgba(176,58,46,.1);color:var(--pret);font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:10px}
+.sein-tag{display:inline-block;background:rgba(26,82,118,.1);color:var(--perf);font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:10px}
+
+/* Fill inputs L1 */
+#lesson-1 .frow{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 8px;margin-bottom:14px;font-size:.96rem;line-height:1.9}
+#lesson-1 .frow:last-of-type{margin-bottom:0}
+#lesson-1 .fnum{font-weight:700;color:var(--muted);min-width:22px;font-size:.82rem}
+#lesson-1 .fi{background:var(--bg);border:none;border-bottom:2px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.94rem;font-weight:600;padding:3px 8px;width:130px;outline:none;transition:border-color .2s;text-align:center;border-radius:0}
+#lesson-1 .fi:focus{border-bottom-color:var(--gold)}
+#lesson-1 .fi.ok{border-bottom-color:var(--green);color:var(--green)}
+#lesson-1 .fi.no{border-bottom-color:var(--red);color:var(--red)}
+.fhint{color:var(--muted);font-size:.76rem;font-style:italic}
+.ficon{font-size:.9rem}
+.fshow{font-size:.74rem;color:var(--green);font-weight:700;display:none}
+.fshow.on{display:inline}
+
+/* Conjugation table */
+.ctable{width:100%;border-collapse:collapse;font-size:.86rem;margin-bottom:16px}
+.ctable th{background:rgba(0,0,0,.04);padding:7px 10px;text-align:left;font-weight:700;font-size:.73rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);border-bottom:2px solid var(--border)}
+.ctable td{padding:7px 10px;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:middle}
+.ctable tr:last-child td{border-bottom:none}
+.pro{font-weight:700;color:var(--muted)}
+.ci{background:var(--bg);border:none;border-bottom:2px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:600;padding:3px 8px;width:110px;outline:none;text-align:center;transition:border-color .2s;border-radius:0}
+.ci:focus{border-bottom-color:var(--gold)}
+.ci.ok{border-bottom-color:var(--green);color:var(--green)}
+.ci.no{border-bottom-color:var(--red);color:var(--red)}
+.given-r{font-weight:700;color:var(--pret)}
+.given-b{font-weight:700;color:var(--perf)}
+
+/* MC L1 */
+#lesson-1 .mc-block{margin-bottom:20px;border-bottom:1px solid rgba(0,0,0,.06);padding-bottom:18px}
+#lesson-1 .mc-block:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0}
+#lesson-1 .mc-q{font-weight:600;font-size:.95rem;margin-bottom:10px;line-height:1.6}
+#lesson-1 .mc-q .h{color:var(--muted);font-size:.8rem;font-weight:400;font-style:italic}
+#lesson-1 .opts{display:flex;flex-wrap:wrap;gap:8px}
+#lesson-1 .opt{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:7px 16px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s}
+#lesson-1 .opt:hover{border-color:var(--gold);color:var(--gold)}
+#lesson-1 .opt.right{border-color:var(--green);background:rgba(46,158,90,.08);color:var(--green)}
+#lesson-1 .opt.wrong{border-color:var(--red);background:rgba(211,47,47,.08);color:var(--red)}
+#lesson-1 .opt.show-r{border-color:var(--green);opacity:.5;color:var(--green)}
+
+/* Matching L1 */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.mgrid{grid-template-columns:1fr}}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.clabel{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:700;padding-bottom:6px;border-bottom:1px solid var(--border)}
+#lesson-1 .mitem{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-weight:600;font-size:.86rem;cursor:pointer;transition:all .15s;text-align:center;user-select:none;line-height:1.4}
+#lesson-1 .mitem:hover{border-color:var(--gold)}
+#lesson-1 .mitem.sel{border-color:var(--perf);background:rgba(26,82,118,.08);color:var(--perf)}
+#lesson-1 .mitem.dok{border-color:var(--green);background:rgba(46,158,90,.08);color:var(--green);pointer-events:none}
+#lesson-1 .mitem.dno{border-color:var(--red);background:rgba(211,47,47,.08)}
+.mscore{margin-top:14px;font-weight:700;font-size:.86rem;color:var(--green)}
+
+/* Transform L1 */
+.trans-block{margin-bottom:18px;border-bottom:1px dashed var(--border);padding-bottom:16px}
+.trans-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.trans-label{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.trans-from{font-size:.96rem;font-weight:600;margin-bottom:10px;background:rgba(0,0,0,.03);padding:8px 12px;border-radius:8px;border-left:3px solid var(--gold)}
+.trans-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:500;padding:9px 14px;outline:none;transition:border-color .2s}
+.trans-input:focus{border-color:var(--gold)}
+.trans-input.ok{border-color:var(--green);background:rgba(46,158,90,.03)}
+.trans-input.no{border-color:var(--red);background:rgba(211,47,47,.03)}
+.trans-ans{font-size:.78rem;color:var(--green);margin-top:5px;font-weight:700;display:none}
+.trans-ans.on{display:block}
+
+/* Error L1 */
+.err-block{margin-bottom:16px;border-bottom:1px dashed var(--border);padding-bottom:14px}
+.err-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.err-sent{font-size:.95rem;padding:9px 12px;background:rgba(211,47,47,.05);border-left:3px solid var(--red);border-radius:0 8px 8px 0;margin-bottom:8px;font-weight:500}
+.err-sent .ww{color:var(--red);text-decoration:underline wavy var(--red)}
+.err-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:500;padding:9px 14px;outline:none;transition:border-color .2s}
+.err-input:focus{border-color:var(--gold)}
+.err-ans{font-size:.78rem;color:var(--green);font-weight:700;margin-top:5px;display:none}
+.err-ans.on{display:block}
+
+/* Story L1 */
+.story{font-size:1rem;line-height:2.4;color:var(--text)}
+.si{display:inline-block;background:transparent;border:none;border-bottom:2px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.96rem;font-weight:600;padding:2px 6px;outline:none;width:115px;text-align:center;transition:border-color .2s}
+.si:focus{border-bottom-color:var(--gold)}
+.si.ok{border-bottom-color:var(--green);color:var(--green)}
+.si.no{border-bottom-color:var(--red);color:var(--red)}
+.shint{font-size:.74rem;color:var(--muted);font-style:italic;vertical-align:middle}
+
+/* Word box L1 */
+.wbox{display:flex;flex-wrap:wrap;gap:8px;background:rgba(0,0,0,.03);border-radius:10px;padding:12px 14px;margin-bottom:16px;border:1px dashed var(--border)}
+.wtag{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px 12px;font-size:.84rem;font-weight:700;color:var(--text)}
+
+/* Dialogue L1 */
+.dial{display:flex;flex-direction:column;gap:14px}
+.dline{display:flex;align-items:flex-start;gap:12px}
+.dicon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.dname{font-weight:700;font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.dtext{font-size:.95rem;line-height:1.9}
+
+/* Score L1 */
+#lesson-1 .score-wrap{max-width:860px;margin:48px auto 0;padding:0 16px}
+#lesson-1 .score-inner{background:var(--tab-bg);border-radius:14px;padding:36px;text-align:center;color:#F4EFE6;box-shadow:var(--shadow)}
+#lesson-1 .score-inner h3{font-family:'DM Serif Display',serif;font-size:1.6rem;margin-bottom:18px;color:#E6C84A}
+.score-big{font-family:'DM Serif Display',serif;font-size:4.5rem;font-weight:400;line-height:1;color:#5DADE2}
+.score-of{font-size:1rem;color:rgba(244,239,230,.35)}
+.score-msg{color:rgba(244,239,230,.6);font-size:.93rem;margin-top:12px}
+.score-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.si2 .val{font-family:'DM Serif Display',serif;font-size:1.8rem;font-weight:400}
+.si2 .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(244,239,230,.4)}
+.rc{color:#E74C3C}.bc{color:#5DADE2}.gc{color:#2ECC71}
+
+/* ═══════════════════════════════════════ */
+/* LESSON 2: Possessivpronomen            */
+/* ═══════════════════════════════════════ */
+#lesson-2{--l2-gold:#D4A017;--l2-gold2:#E6C84A;--l2-blue:#4A90D9;--l2-red:#D32F2F}
+#lesson-2 .lesson-hero h1{color:#E6C84A}
+
+/* Grammar table L2 */
+#lesson-2 .grammar{max-width:720px;margin:0 auto 36px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;box-shadow:var(--shadow)}
+#lesson-2 .grammar h2{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--l2-gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.gtable{width:100%;border-collapse:collapse;font-size:.9rem}
+.gtable th{background:rgba(212,160,23,.08);color:var(--l2-gold);padding:9px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border)}
+.gtable td{padding:9px 14px;border-bottom:1px solid rgba(0,0,0,.04);color:var(--text)}
+.gtable tr:last-child td{border-bottom:none}
+.gtable .hl{color:var(--l2-gold);font-weight:700}
+.gtable .dim{color:var(--muted);font-style:italic}
+#lesson-2 .note{margin-top:14px;font-size:.84rem;color:var(--muted);line-height:1.8;border-left:3px solid var(--l2-gold);padding-left:14px}
+#lesson-2 .note b{color:var(--l2-gold)}
+
+/* Section headers L2 */
+#lesson-2 .sec-head{max-width:720px;margin:32px auto 12px;display:flex;align-items:center;gap:12px}
+#lesson-2 .sec-num{width:36px;height:36px;border:2px solid var(--l2-gold);border-radius:50%;display:grid;place-items:center;font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--l2-gold);flex-shrink:0}
+#lesson-2 .sec-head h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--text)}
+#lesson-2 .sec-head span{color:var(--muted);font-size:.84rem;font-weight:400}
+
+/* Card L2 */
+#lesson-2 .card{max-width:720px;margin:0 auto 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+#lesson-2 .card.gold-accent{border-top:3px solid var(--l2-gold)}
+#lesson-2 .card.red-accent{border-top:3px solid var(--l2-red)}
+#lesson-2 .card.blue-accent{border-top:3px solid var(--l2-blue)}
+#lesson-2 .card.green-accent{border-top:3px solid var(--green)}
+
+/* Fill L2 */
+#lesson-2 .frow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:14px;font-size:.96rem;font-weight:500}
+#lesson-2 .frow:last-of-type{margin-bottom:0}
+#lesson-2 .fnum{color:var(--l2-gold);font-weight:700;min-width:22px}
+.finput{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.93rem;font-weight:600;padding:5px 10px;width:110px;outline:none;transition:border-color .2s;text-align:center}
+.finput:focus{border-color:var(--gold)}
+.finput.ok{border-color:var(--green);background:rgba(46,158,90,.06);color:var(--green)}
+.finput.no{border-color:var(--red);background:rgba(211,47,47,.06);color:var(--red)}
+
+/* MC L2 */
+#lesson-2 .mc-block{margin-bottom:18px}
+#lesson-2 .mc-block:last-child{margin-bottom:0}
+#lesson-2 .mc-q{font-weight:600;font-size:.95rem;margin-bottom:10px}
+#lesson-2 .mc-q .hint{color:var(--muted);font-size:.82rem;font-weight:400;font-style:italic;margin-left:6px}
+#lesson-2 .opts{display:flex;flex-wrap:wrap;gap:8px}
+#lesson-2 .opt{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:7px 18px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s}
+#lesson-2 .opt:hover{border-color:var(--l2-blue);color:var(--l2-blue)}
+#lesson-2 .opt.right{border-color:var(--green);background:rgba(46,158,90,.08);color:var(--green)}
+#lesson-2 .opt.wrong{border-color:var(--red);background:rgba(211,47,47,.08);color:var(--red)}
+#lesson-2 .opt.show-right{border-color:var(--green);background:rgba(46,158,90,.04);color:var(--green);opacity:.6}
+
+/* Matching L2 */
+#lesson-2 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#lesson-2 .match-col{display:flex;flex-direction:column;gap:8px}
+#lesson-2 .col-label{font-size:.73rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:2px}
+#lesson-2 .mitem{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .15s;text-align:center;user-select:none}
+#lesson-2 .mitem:hover{border-color:var(--l2-blue)}
+#lesson-2 .mitem.sel{border-color:var(--l2-blue);background:rgba(74,144,217,.08);color:var(--l2-blue)}
+#lesson-2 .mitem.done-ok{border-color:var(--green);background:rgba(46,158,90,.08);color:var(--green);pointer-events:none}
+#lesson-2 .mitem.done-no{border-color:var(--red);background:rgba(211,47,47,.08);color:var(--red)}
+#lesson-2 .match-msg{margin-top:14px;font-weight:700;font-size:.88rem;color:var(--green)}
+
+/* Translate L2 */
+.tr-block{margin-bottom:14px}
+.tr-block:last-child{margin-bottom:0}
+.tr-en{color:var(--muted);font-style:italic;font-size:.9rem;margin-bottom:6px}
+.tr-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.93rem;font-weight:500;padding:9px 14px;outline:none;transition:border-color .2s}
+.tr-input:focus{border-color:var(--gold)}
+.tr-ans{font-size:.82rem;color:var(--green);margin-top:5px;font-weight:700;display:none}
+.tr-ans.show{display:block}
+
+/* Sentence order L2 */
+#lesson-2 .words-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:42px;padding:8px;border:1.5px dashed var(--border);border-radius:10px}
+#lesson-2 .word-chip{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:5px 13px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .15s;user-select:none}
+#lesson-2 .word-chip:hover{border-color:var(--gold);color:var(--l2-gold)}
+#lesson-2 .word-chip.placed{opacity:.35;pointer-events:none}
+#lesson-2 .sentence-build{min-height:42px;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;background:rgba(0,0,0,.02);cursor:pointer}
+#lesson-2 .sentence-build .word-chip{background:rgba(212,160,23,.1);border-color:var(--l2-gold);color:var(--l2-gold)}
+.build-label{font-size:.76rem;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.ord-block{margin-bottom:20px}
+.ord-block:last-child{margin-bottom:0}
+.ord-q{font-weight:600;margin-bottom:8px;font-size:.93rem}
+.ord-q .hint{color:var(--muted);font-size:.82rem;font-style:italic}
+.ord-feedback{font-size:.84rem;font-weight:700;margin-top:6px;display:none}
+
+/* Score L2 */
+#lesson-2 .score-section{max-width:720px;margin:40px auto 0;background:var(--surface);border:2px solid var(--l2-gold);border-radius:14px;padding:30px;text-align:center;box-shadow:var(--shadow)}
+#lesson-2 .score-section h3{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--l2-gold);margin-bottom:14px}
+#lesson-2 .big-score{font-size:3.2rem;font-weight:700;color:var(--green);line-height:1}
+#lesson-2 .score-sub{color:var(--muted);font-size:.93rem;margin-top:10px}
+#lesson-2 .btn-gold{background:var(--l2-gold);color:#fff}
+#lesson-2 .btn-blue{background:var(--l2-blue);color:#fff}
+#lesson-2 .btn-green{background:var(--green);color:#fff}
+#lesson-2 .btn-red{background:var(--red);color:#fff}
+
+/* ═══════════════════════════════════════ */
+/* LESSON 3: Dativ & Akkusativ            */
+/* ═══════════════════════════════════════ */
+#lesson-3{--acc:#E85D5D;--dat:#3DBCB0;--l3-gold:#E6C84A;--l3-dark:#2C2C54}
+
+/* L3 header */
+#lesson-3 .l3-header{text-align:center;padding:36px 20px 10px}
+#lesson-3 .l3-header h1{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--l3-dark);letter-spacing:.5px;line-height:1.1}
+#lesson-3 .l3-header h1 .acc{color:var(--acc)}
+#lesson-3 .l3-header h1 .dat{color:var(--dat)}
+#lesson-3 .l3-header p{font-size:.95rem;color:var(--muted);margin-top:6px}
+
+/* Legend L3 */
+#lesson-3 .legend{display:flex;justify-content:center;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+#lesson-3 .legend-item{display:flex;align-items:center;gap:8px;background:var(--surface);padding:8px 18px;border-radius:30px;box-shadow:0 3px 12px rgba(0,0,0,.06);font-weight:700;font-size:.88rem}
+#lesson-3 .dot{width:14px;height:14px;border-radius:50%;display:inline-block}
+#lesson-3 .dot.acc{background:var(--acc)}
+#lesson-3 .dot.dat{background:var(--dat)}
+
+/* Section L3 */
+#lesson-3 .section{background:var(--surface);border-radius:14px;padding:24px 24px 20px;margin-bottom:24px;box-shadow:var(--shadow);max-width:800px;margin-left:auto;margin-right:auto}
+#lesson-3 .section-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--l3-dark);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+#lesson-3 .section-title .badge{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+#lesson-3 .badge.acc{background:#FFE0E0;color:var(--acc)}
+#lesson-3 .badge.dat{background:#DDFAF7;color:#2a9d8f}
+#lesson-3 .badge.mixed{background:#FFF4CC;color:#c8891a}
+#lesson-3 .section-sub{font-size:.86rem;color:var(--muted);margin-bottom:16px}
+
+/* Grammar table L3 */
+#lesson-3 .grammar-table{width:100%;border-collapse:collapse;font-size:.91rem;margin-bottom:6px}
+#lesson-3 .grammar-table th{background:var(--l3-dark);color:white;padding:10px 14px;text-align:left;font-weight:700}
+#lesson-3 .grammar-table td{padding:9px 14px;border-bottom:1px solid #f0f0f0}
+#lesson-3 .grammar-table tr:nth-child(even) td{background:#fafafa}
+#lesson-3 .grammar-table .acc-cell{color:var(--acc);font-weight:700}
+#lesson-3 .grammar-table .dat-cell{color:var(--dat);font-weight:700}
+
+/* Exercise items L3 */
+#lesson-3 .exercise-item{margin-bottom:16px;padding:14px 16px;background:#f9f9f9;border-radius:12px;border-left:4px solid #ddd;transition:border-color .3s}
+#lesson-3 .exercise-item.correct{border-left-color:#4CAF50;background:#f0fff4}
+#lesson-3 .exercise-item.wrong{border-left-color:var(--acc);background:#fff5f5}
+#lesson-3 .exercise-item .sentence{font-size:1.02rem;font-weight:600;color:var(--l3-dark);margin-bottom:10px}
+#lesson-3 .options{display:flex;flex-wrap:wrap;gap:8px}
+#lesson-3 .opt-btn{padding:7px 18px;border-radius:20px;border:2px solid #ddd;background:white;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;color:var(--l3-dark)}
+#lesson-3 .opt-btn:hover:not(:disabled){border-color:var(--l3-dark);background:#f0f0ff;transform:translateY(-1px)}
+#lesson-3 .opt-btn.selected-correct{background:#4CAF50;border-color:#4CAF50;color:white}
+#lesson-3 .opt-btn.selected-wrong{background:var(--acc);border-color:var(--acc);color:white}
+#lesson-3 .opt-btn.show-answer{background:#4CAF50;border-color:#4CAF50;color:white;opacity:.7}
+#lesson-3 .opt-btn:disabled{cursor:not-allowed;opacity:.7}
+#lesson-3 .feedback{margin-top:8px;font-size:.84rem;font-weight:700;min-height:18px}
+#lesson-3 .feedback.ok{color:#4CAF50}
+#lesson-3 .feedback.err{color:var(--acc)}
+
+/* Fill L3 */
+#lesson-3 .fill-group{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:1.02rem;font-weight:600;color:var(--l3-dark);margin-bottom:12px}
+#lesson-3 .fill-input{border:none;border-bottom:2.5px solid #bbb;background:transparent;font-family:'Nunito',sans-serif;font-size:.96rem;font-weight:700;color:var(--l3-dark);width:90px;text-align:center;outline:none;transition:border-color .2s;padding:2px 4px}
+#lesson-3 .fill-input:focus{border-color:var(--dat)}
+#lesson-3 .fill-input.correct{border-color:#4CAF50;color:#4CAF50}
+#lesson-3 .fill-input.wrong{border-color:var(--acc);color:var(--acc)}
+#lesson-3 .check-btn{display:inline-block;padding:9px 28px;background:var(--l3-dark);color:white;border:none;border-radius:30px;font-family:'Nunito',sans-serif;font-size:.93rem;font-weight:800;cursor:pointer;margin-top:14px;transition:background .2s,transform .15s}
+#lesson-3 .check-btn:hover{background:#3d3d75;transform:translateY(-2px)}
+
+/* Score bar L3 */
+#lesson-3 .score-bar{display:flex;align-items:center;justify-content:space-between;background:var(--l3-dark);color:white;border-radius:14px;padding:14px 24px;max-width:800px;margin:0 auto 28px;font-weight:700}
+#lesson-3 .score-bar .score-num{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--l3-gold)}
+#lesson-3 .score-bar .score-label{font-size:.88rem;opacity:.8}
+#lesson-3 .reset-btn{background:var(--l3-gold);color:var(--l3-dark);border:none;padding:8px 20px;border-radius:20px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.86rem;cursor:pointer;transition:opacity .2s}
+#lesson-3 .reset-btn:hover{opacity:.85}
+
+/* Sort L3 */
+#lesson-3 .sort-words{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+#lesson-3 .word-chip{background:var(--l3-dark);color:white;padding:6px 14px;border-radius:20px;font-weight:700;font-size:.88rem;cursor:pointer;transition:transform .15s,opacity .2s;user-select:none}
+#lesson-3 .word-chip:hover{transform:scale(1.07)}
+#lesson-3 .word-chip.used{opacity:.3;pointer-events:none}
+#lesson-3 .sort-answer-row{display:flex;flex-wrap:wrap;gap:8px;min-height:40px;border:2px dashed #ccc;border-radius:12px;padding:8px 12px;margin-bottom:10px;align-items:center}
+.sort-placed{background:var(--dat);color:white;padding:5px 12px;border-radius:16px;font-weight:700;font-size:.88rem;cursor:pointer}
+.sort-placed:hover{opacity:.8}
+
+/* ═══════════════════════════════════════ */
+/* RESPONSIVE                             */
+/* ═══════════════════════════════════════ */
+@media(max-width:540px){
+  .tab-btn{font-size:.74rem;padding:12px 4px 10px}
+  .lesson-hero h1{font-size:1.9rem}
+  .lesson-hero{padding:36px 16px 30px}
+  .gram-row{gap:14px;padding:0 10px;margin:24px auto}
+  .gp{padding:18px 14px}
+  .card{padding:18px 14px}
+  #lesson-2 .card{padding:18px 14px}
+  #lesson-3 .section{padding:18px 14px}
+  .stitle{margin:28px 0 10px}
+  .snum{font-size:1.6rem}
+  .stitle h3{font-size:1.05rem}
+  #lesson-1 .fi,#lesson-1 .ci,.si{width:min(130px,35vw)}
+  #lesson-2 .match-grid{grid-template-columns:1fr}
+  #lesson-2 .match-col{flex-direction:row;flex-wrap:wrap}
+  #lesson-2 .mitem{flex:1 1 40%}
+  #lesson-3 .l3-header h1{font-size:1.9rem}
+  #lesson-3 .section{padding:18px 12px}
+}
+/* iOS touch fix - make all interactive elements tappable */
+button,.opt,.opt-btn,.mitem,.word-chip,.tab-btn,.btn,.sort-placed,.check-btn{
+  cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0.1);touch-action:manipulation;
+}
+[onclick]{cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0.1);touch-action:manipulation;}
+</style>
+</head>
+<body>
+<noscript><div style="background:#D32F2F;color:white;padding:16px;text-align:center;font-family:sans-serif;font-size:14px;position:fixed;top:0;left:0;right:0;z-index:9999">⚠️ Bu sayfayı açmak için Safari veya Chrome tarayıcıda açın. WhatsApp içi önizleme JavaScript desteklemiyor.<br><b>Dosyayı indirin → Safari'de açın</b></div></noscript>
+<div id="js-check" style="background:#D32F2F;color:white;padding:16px;text-align:center;font-family:sans-serif;font-size:14px;position:fixed;top:0;left:0;right:0;z-index:9999;display:block">⚠️ Sayfa yükleniyor... Bu mesaj kaybolmazsa, dosyayı Safari veya Chrome'da açın.</div>
+<script>document.getElementById('js-check').style.display='none';</script>
+
+<!-- ═══ TAB BAR ═══ -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">&#9776;</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-title">Dersler</div>
+  <button class="tab-btn active" data-tab="1" onclick="switchTab(1)">Ge&#231;mi&#351; Zaman</button>
+  <button class="tab-btn" data-tab="2" onclick="switchTab(2)">&#304;yelik Zamirleri</button>
+  <button class="tab-btn" data-tab="3" onclick="switchTab(3)">Dativ &amp; Akkusativ</button>
+  <div id="extra-tabs-container"></div>
+</nav>
+
+<!-- ╔═══════════════════════════════════════════════════════╗ -->
+<!-- ║  LESSON 1: Präteritum & Perfekt                       ║ -->
+<!-- ╚═══════════════════════════════════════════════════════╝ -->
+<div class="lesson-panel active" id="lesson-1" data-lesson="1">
+
+<div class="lesson-hero">
+  <span class="hero-icon">🇩🇪</span>
+  <h1><span class="pr">Prateritum</span> <span class="am">&</span> <span class="pe">Perfekt</span></h1>
+  <p>Vergangenheitsformen auf Deutsch · A1 Seviyesi · 10 Kapsamli Ubung</p>
+  <div class="hero-tags">
+    <span class="htag">A1 Niveau</span>
+    <span class="htag r">Präteritum</span>
+    <span class="htag b">Perfekt</span>
+    <span class="htag">10 Alıştırma</span>
+    <span class="htag">Türkçe İpuçları</span>
+  </div>
+</div>
+
+<!-- Grammar Panels -->
+<div class="gram-row">
+  <div class="gp">
+    <h2 class="r">Präteritum</h2>
+    <div class="gsub">Einfache Vergangenheit · Geçmiş Zaman (yazı dili)</div>
+    <table class="gt">
+      <tr><th>Pronomen</th><th>sein (olmak)</th><th>haben (sahip olmak)</th></tr>
+      <tr><td>ich</td><td class="pr-hl">war</td><td class="pr-hl">hatte</td></tr>
+      <tr><td>du</td><td class="pr-hl">warst</td><td class="pr-hl">hattest</td></tr>
+      <tr><td>er/sie/es</td><td class="pr-hl">war</td><td class="pr-hl">hatte</td></tr>
+      <tr><td>wir</td><td class="pr-hl">waren</td><td class="pr-hl">hatten</td></tr>
+      <tr><td>ihr</td><td class="pr-hl">wart</td><td class="pr-hl">hattet</td></tr>
+      <tr><td>sie/Sie</td><td class="pr-hl">waren</td><td class="pr-hl">hatten</td></tr>
+    </table>
+    <div class="rule">
+      <b>Ne zaman?</b> Yazı dilinde, hikayelerde, haberlerde.<br>
+      <span class="ex">Ich war müde.</span> → Yorgundum.<br>
+      <span class="ex">Sie hatte Hunger.</span> → Acıkmıştı.
+    </div>
+  </div>
+  <div class="gp bl">
+    <h2 class="b">Perfekt</h2>
+    <div class="gsub">Vollendete Gegenwart · Geçmiş Zaman (konuşma dili)</div>
+    <table class="gt">
+      <tr><th>Yardımcı fiil</th><th>Partizip II</th><th>Örnek</th></tr>
+      <tr><td class="hl">haben +</td><td class="pe-hl">ge___t</td><td>gemacht, gekauft</td></tr>
+      <tr><td class="hl">haben +</td><td class="pe-hl">ge___en</td><td>gegessen, getrunken</td></tr>
+      <tr><td class="hl">sein +</td><td class="pe-hl">ge___en</td><td>gegangen, gekommen</td></tr>
+    </table>
+    <div class="rule">
+      <b>Kural:</b> haben/sein + Partizip II (sona gider!)<br>
+      <b>Ne zaman?</b> Günlük konuşmada.<br>
+      <span class="ex">Ich habe gegessen.</span> → Yedim.<br>
+      <span class="ex">Er ist gegangen.</span> → Gitti.
+    </div>
+  </div>
+</div>
+
+<!-- Partizip II Tablosu -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">◉</div>
+    <h3>Partizip II – Başvuru Tablosu <span>Sık kullanılan fiiller · Başvuru tablosu</span></h3>
+    <span class="pill pe-pill">Perfekt</span>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+    <table class="part-table">
+      <tr><th>Infinitiv</th><th>Partizip II</th><th>Yardımcı</th><th>Türkçe</th><th>Infinitiv</th><th>Partizip II</th><th>Yardımcı</th><th>Türkçe</th></tr>
+      <tr><td>machen</td><td class="pe-hl">gemacht</td><td><span class="haben-tag">haben</span></td><td>yapmak</td><td>gehen</td><td class="pe-hl">gegangen</td><td><span class="sein-tag">sein</span></td><td>gitmek</td></tr>
+      <tr><td>kaufen</td><td class="pe-hl">gekauft</td><td><span class="haben-tag">haben</span></td><td>satın almak</td><td>kommen</td><td class="pe-hl">gekommen</td><td><span class="sein-tag">sein</span></td><td>gelmek</td></tr>
+      <tr><td>essen</td><td class="pe-hl">gegessen</td><td><span class="haben-tag">haben</span></td><td>yemek</td><td>fahren</td><td class="pe-hl">gefahren</td><td><span class="sein-tag">sein</span></td><td>gitmek/sürmek</td></tr>
+      <tr><td>trinken</td><td class="pe-hl">getrunken</td><td><span class="haben-tag">haben</span></td><td>içmek</td><td>fliegen</td><td class="pe-hl">geflogen</td><td><span class="sein-tag">sein</span></td><td>uçmak</td></tr>
+      <tr><td>schreiben</td><td class="pe-hl">geschrieben</td><td><span class="haben-tag">haben</span></td><td>yazmak</td><td>laufen</td><td class="pe-hl">gelaufen</td><td><span class="sein-tag">sein</span></td><td>koşmak</td></tr>
+      <tr><td>lesen</td><td class="pe-hl">gelesen</td><td><span class="haben-tag">haben</span></td><td>okumak</td><td>bleiben</td><td class="pe-hl">geblieben</td><td><span class="sein-tag">sein</span></td><td>kalmak</td></tr>
+      <tr><td>sehen</td><td class="pe-hl">gesehen</td><td><span class="haben-tag">haben</span></td><td>görmek</td><td>reisen</td><td class="pe-hl">gereist</td><td><span class="sein-tag">sein</span></td><td>seyahat etmek</td></tr>
+      <tr><td>spielen</td><td class="pe-hl">gespielt</td><td><span class="haben-tag">haben</span></td><td>oynamak</td><td>werden</td><td class="pe-hl">geworden</td><td><span class="sein-tag">sein</span></td><td>olmak</td></tr>
+      <tr><td>hören</td><td class="pe-hl">gehört</td><td><span class="haben-tag">haben</span></td><td>duymak</td><td>aufstehen</td><td class="pe-hl">aufgestanden</td><td><span class="sein-tag">sein</span></td><td>kalkmak</td></tr>
+      <tr><td>arbeiten</td><td class="pe-hl">gearbeitet</td><td><span class="haben-tag">haben</span></td><td>çalışmak</td><td>einschlafen</td><td class="pe-hl">eingeschlafen</td><td><span class="sein-tag">sein</span></td><td>uykuya dalmak</td></tr>
+      <tr><td>kochen</td><td class="pe-hl">gekocht</td><td><span class="haben-tag">haben</span></td><td>pişirmek</td><td>ankommen</td><td class="pe-hl">angekommen</td><td><span class="sein-tag">sein</span></td><td>varmak</td></tr>
+      <tr><td>lernen</td><td class="pe-hl">gelernt</td><td><span class="haben-tag">haben</span></td><td>öğrenmek</td><td>abfahren</td><td class="pe-hl">abgefahren</td><td><span class="sein-tag">sein</span></td><td>ayrılmak/kalkmak</td></tr>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- Übung 1: Konjugation -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">1</div>
+    <h3>Konjugationstabelle <span>sein ve haben fiillerini Präteritum'da çekin</span></h3>
+    <span class="pill pr-pill">Präteritum</span>
+  </div>
+  <div class="card">
+    <p class="info">Boşlukları doğru Präteritum formuyla doldurun. Verilen formlar örnek gösteriyor.</p>
+    <p style="font-weight:700;margin-bottom:12px;color:var(--pret);">A) sein – olmak</p>
+    <table class="ctable">
+      <tr><th>Pronomen</th><th>Präteritum</th><th>Örnek cümle</th></tr>
+      <tr><td class="pro">ich</td><td><input class="ci" data-a="war" id="k1" placeholder="..."></td><td>Ich ___ sehr müde. <span style="color:var(--muted);font-size:0.8rem">(çok yorgundum)</span></td></tr>
+      <tr><td class="pro">du</td><td><input class="ci" data-a="warst" id="k2" placeholder="..."></td><td>Du ___ krank. <span style="color:var(--muted);font-size:0.8rem">(hasta)</span></td></tr>
+      <tr><td class="pro">er/sie/es</td><td><span class="given-r">war</span></td><td>Er ___ zu Hause. <span style="color:var(--muted);font-size:0.8rem">(evdeydi)</span></td></tr>
+      <tr><td class="pro">wir</td><td><input class="ci" data-a="waren" id="k3" placeholder="..."></td><td>Wir ___ in Berlin. <span style="color:var(--muted);font-size:0.8rem">(Berlin'deydik)</span></td></tr>
+      <tr><td class="pro">ihr</td><td><input class="ci" data-a="wart" id="k4" placeholder="..."></td><td>Ihr ___ sehr jung. <span style="color:var(--muted);font-size:0.8rem">(çok gençtiniz)</span></td></tr>
+      <tr><td class="pro">sie/Sie</td><td><input class="ci" data-a="waren" id="k5" placeholder="..."></td><td>Sie ___ glücklich. <span style="color:var(--muted);font-size:0.8rem">(mutluydular)</span></td></tr>
+    </table>
+    <br>
+    <p style="font-weight:700;margin-bottom:12px;color:var(--pret);">B) haben – sahip olmak</p>
+    <table class="ctable">
+      <tr><th>Pronomen</th><th>Präteritum</th><th>Örnek cümle</th></tr>
+      <tr><td class="pro">ich</td><td><input class="ci" data-a="hatte" id="k6" placeholder="..."></td><td>Ich ___ Hunger. <span style="color:var(--muted);font-size:0.8rem">(açtım)</span></td></tr>
+      <tr><td class="pro">du</td><td><input class="ci" data-a="hattest" id="k7" placeholder="..."></td><td>Du ___ Durst. <span style="color:var(--muted);font-size:0.8rem">(susamıştın)</span></td></tr>
+      <tr><td class="pro">er/sie/es</td><td><input class="ci" data-a="hatte" id="k8" placeholder="..."></td><td>Sie ___ keine Zeit. <span style="color:var(--muted);font-size:0.8rem">(vakti yoktu)</span></td></tr>
+      <tr><td class="pro">wir</td><td><span class="given-r">hatten</span></td><td>Wir ___ Spaß. <span style="color:var(--muted);font-size:0.8rem">(eğlendik)</span></td></tr>
+      <tr><td class="pro">ihr</td><td><input class="ci" data-a="hattet" id="k9" placeholder="..."></td><td>Ihr ___ Glück. <span style="color:var(--muted);font-size:0.8rem">(şanslıydınız)</span></td></tr>
+      <tr><td class="pro">sie/Sie</td><td><input class="ci" data-a="hatten" id="k10" placeholder="..."></td><td>Sie ___ ein Problem. <span style="color:var(--muted);font-size:0.8rem">(bir sorunları vardı)</span></td></tr>
+    </table>
+    <button class="btn btn-pr" onclick="L1.checkConj()">✔ Kontrol Et</button>
+    <div id="cr1" style="margin-top:10px;font-weight:700;font-size:0.88rem;"></div>
+  </div>
+</div>
+
+<!-- Übung 2: Präteritum Lückentext -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">2</div>
+    <h3>Lückentext – Präteritum <span>war/waren/hatte/hatten ile boşlukları doldurun</span></h3>
+    <span class="pill pr-pill">Präteritum</span>
+  </div>
+  <div class="card">
+    <p class="info">Doğru formu seçin: <b>war · warst · wart · waren · hatte · hattest · hatte · hattet · hatten</b></p>
+    <div class="frow"><span class="fnum">1.</span>Ich <input class="fi" id="p1" data-a="war"> gestern sehr müde.<span class="fhint">(dün – sein)</span><span class="ficon" id="pi1"></span><span class="fshow" id="ps1">→ war</span></div>
+    <div class="frow"><span class="fnum">2.</span>Du <input class="fi" id="p2" data-a="hattest"> kein Geld.<span class="fhint">(haben)</span><span class="ficon" id="pi2"></span><span class="fshow" id="ps2">→ hattest</span></div>
+    <div class="frow"><span class="fnum">3.</span>Er <input class="fi" id="p3" data-a="war"> in der Schule.<span class="fhint">(sein)</span><span class="ficon" id="pi3"></span><span class="fshow" id="ps3">→ war</span></div>
+    <div class="frow"><span class="fnum">4.</span>Wir <input class="fi" id="p4" data-a="hatten"> einen Hund.<span class="fhint">(haben)</span><span class="ficon" id="pi4"></span><span class="fshow" id="ps4">→ hatten</span></div>
+    <div class="frow"><span class="fnum">5.</span>Sie (o-kadın) <input class="fi" id="p5" data-a="war"> sehr nett.<span class="fhint">(sein)</span><span class="ficon" id="pi5"></span><span class="fshow" id="ps5">→ war</span></div>
+    <div class="frow"><span class="fnum">6.</span>Ihr <input class="fi" id="p6" data-a="hattet"> viel Spaß.<span class="fhint">(haben)</span><span class="ficon" id="pi6"></span><span class="fshow" id="ps6">→ hattet</span></div>
+    <div class="frow"><span class="fnum">7.</span>Sie (onlar) <input class="fi" id="p7" data-a="waren"> in München.<span class="fhint">(sein)</span><span class="ficon" id="pi7"></span><span class="fshow" id="ps7">→ waren</span></div>
+    <div class="frow"><span class="fnum">8.</span>Das Wetter <input class="fi" id="p8" data-a="war"> schön.<span class="fhint">(sein)</span><span class="ficon" id="pi8"></span><span class="fshow" id="ps8">→ war</span></div>
+    <div class="frow"><span class="fnum">9.</span>Wir <input class="fi" id="p9" data-a="hatten"> keine Zeit.<span class="fhint">(haben)</span><span class="ficon" id="pi9"></span><span class="fshow" id="ps9">→ hatten</span></div>
+    <div class="frow"><span class="fnum">10.</span>Ich <input class="fi" id="p10" data-a="war"> als Kind in Wien.<span class="fhint">(sein)</span><span class="ficon" id="pi10"></span><span class="fshow" id="ps10">→ war</span></div>
+    <div class="frow"><span class="fnum">11.</span>Das Konzert <input class="fi" id="p11" data-a="war"> toll.<span class="fhint">(sein)</span><span class="ficon" id="pi11"></span><span class="fshow" id="ps11">→ war</span></div>
+    <div class="frow"><span class="fnum">12.</span>Die Kinder <input class="fi" id="p12" data-a="hatten"> Angst.<span class="fhint">(haben – korktular)</span><span class="ficon" id="pi12"></span><span class="fshow" id="ps12">→ hatten</span></div>
+    <button class="btn btn-pr" onclick="L1.checkPret()">✔ Kontrol Et</button>
+  </div>
+</div>
+
+<!-- Übung 3: Partizip II -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">3</div>
+    <h3>Partizip II Bilden <span>Her fiil için Partizip II formunu yazın</span></h3>
+    <span class="pill pe-pill">Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">Schwache Verben (düzenli): <b>ge + Stamm + t</b> | Starke Verben (düzensiz): <b>ge + Stamm + en</b> (değişebilir)</p>
+    <div class="frow"><span class="fnum">1.</span>machen → <input class="fi" id="q1" data-a="gemacht" style="width:120px"><span class="fhint">(yapmak)</span><span class="ficon" id="qi1"></span><span class="fshow" id="qs1">→ gemacht</span></div>
+    <div class="frow"><span class="fnum">2.</span>kaufen → <input class="fi" id="q2" data-a="gekauft" style="width:120px"><span class="fhint">(satın almak)</span><span class="ficon" id="qi2"></span><span class="fshow" id="qs2">→ gekauft</span></div>
+    <div class="frow"><span class="fnum">3.</span>spielen → <input class="fi" id="q3" data-a="gespielt" style="width:120px"><span class="fhint">(oynamak)</span><span class="ficon" id="qi3"></span><span class="fshow" id="qs3">→ gespielt</span></div>
+    <div class="frow"><span class="fnum">4.</span>lernen → <input class="fi" id="q4" data-a="gelernt" style="width:120px"><span class="fhint">(öğrenmek)</span><span class="ficon" id="qi4"></span><span class="fshow" id="qs4">→ gelernt</span></div>
+    <div class="frow"><span class="fnum">5.</span>kochen → <input class="fi" id="q5" data-a="gekocht" style="width:120px"><span class="fhint">(pişirmek)</span><span class="ficon" id="qi5"></span><span class="fshow" id="qs5">→ gekocht</span></div>
+    <div class="frow"><span class="fnum">6.</span>hören → <input class="fi" id="q6" data-a="gehört" style="width:120px"><span class="fhint">(duymak)</span><span class="ficon" id="qi6"></span><span class="fshow" id="qs6">→ gehört</span></div>
+    <div class="frow"><span class="fnum">7.</span>essen → <input class="fi" id="q7" data-a="gegessen" style="width:120px"><span class="fhint">(yemek – düzensiz!)</span><span class="ficon" id="qi7"></span><span class="fshow" id="qs7">→ gegessen</span></div>
+    <div class="frow"><span class="fnum">8.</span>trinken → <input class="fi" id="q8" data-a="getrunken" style="width:120px"><span class="fhint">(içmek – düzensiz!)</span><span class="ficon" id="qi8"></span><span class="fshow" id="qs8">→ getrunken</span></div>
+    <div class="frow"><span class="fnum">9.</span>schreiben → <input class="fi" id="q9" data-a="geschrieben" style="width:140px"><span class="fhint">(yazmak)</span><span class="ficon" id="qi9"></span><span class="fshow" id="qs9">→ geschrieben</span></div>
+    <div class="frow"><span class="fnum">10.</span>lesen → <input class="fi" id="q10" data-a="gelesen" style="width:120px"><span class="fhint">(okumak)</span><span class="ficon" id="qi10"></span><span class="fshow" id="qs10">→ gelesen</span></div>
+    <div class="frow"><span class="fnum">11.</span>gehen → <input class="fi" id="q11" data-a="gegangen" style="width:130px"><span class="fhint">(gitmek – sein!)</span><span class="ficon" id="qi11"></span><span class="fshow" id="qs11">→ gegangen</span></div>
+    <div class="frow"><span class="fnum">12.</span>kommen → <input class="fi" id="q12" data-a="gekommen" style="width:130px"><span class="fhint">(gelmek – sein!)</span><span class="ficon" id="qi12"></span><span class="fshow" id="qs12">→ gekommen</span></div>
+    <div class="frow"><span class="fnum">13.</span>fahren → <input class="fi" id="q13" data-a="gefahren" style="width:130px"><span class="fhint">(gitmek/sürmek – sein!)</span><span class="ficon" id="qi13"></span><span class="fshow" id="qs13">→ gefahren</span></div>
+    <div class="frow"><span class="fnum">14.</span>bleiben → <input class="fi" id="q14" data-a="geblieben" style="width:130px"><span class="fhint">(kalmak – sein!)</span><span class="ficon" id="qi14"></span><span class="fshow" id="qs14">→ geblieben</span></div>
+    <button class="btn btn-pe" onclick="L1.checkPart()">✔ Kontrol Et</button>
+  </div>
+</div>
+
+<!-- Übung 4: Perfekt Satz -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">4</div>
+    <h3>Perfekt – Satz Bilden <span>Tam Perfekt cümlesini doldurun (haben/sein + Partizip II)</span></h3>
+    <span class="pill pe-pill">Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">İpucu: Yardımcı fiil (haben/sein) 2. pozisyona, Partizip II en sona gider!<br>
+    Örnek: Ich <b>habe</b> Fußball <b>gespielt</b>. / Sie <b>ist</b> nach Hause <b>gegangen</b>.</p>
+    <div class="frow"><span class="fnum">1.</span>Ich <input class="fi" id="e1" data-a="habe" style="width:80px"> Musik <input class="fi" id="e2" data-a="gehört" style="width:110px">.<span class="fhint">(Müzik dinledim – hören)</span><span class="ficon" id="ei1"></span></div>
+    <div class="frow"><span class="fnum">2.</span>Du <input class="fi" id="e3" data-a="hast" style="width:80px"> Pizza <input class="fi" id="e4" data-a="gegessen" style="width:110px">.<span class="fhint">(Pizza yedin – essen)</span><span class="ficon" id="ei2"></span></div>
+    <div class="frow"><span class="fnum">3.</span>Er <input class="fi" id="e5" data-a="ist" style="width:70px"> nach Hause <input class="fi" id="e6" data-a="gegangen" style="width:120px">.<span class="fhint">(Eve gitti – gehen)</span><span class="ficon" id="ei3"></span></div>
+    <div class="frow"><span class="fnum">4.</span>Wir <input class="fi" id="e7" data-a="haben" style="width:80px"> Deutsch <input class="fi" id="e8" data-a="gelernt" style="width:110px">.<span class="fhint">(Almanca öğrendik – lernen)</span><span class="ficon" id="ei4"></span></div>
+    <div class="frow"><span class="fnum">5.</span>Sie (o-kadın) <input class="fi" id="e9" data-a="ist" style="width:70px"> nach Berlin <input class="fi" id="e10" data-a="gefahren" style="width:120px">.<span class="fhint">(Berlin'e gitti – fahren)</span><span class="ficon" id="ei5"></span></div>
+    <div class="frow"><span class="fnum">6.</span>Ihr <input class="fi" id="e11" data-a="habt" style="width:80px"> Kaffee <input class="fi" id="e12" data-a="getrunken" style="width:120px">.<span class="fhint">(Kahve içtiniz – trinken)</span><span class="ficon" id="ei6"></span></div>
+    <div class="frow"><span class="fnum">7.</span>Ich <input class="fi" id="e13" data-a="habe" style="width:80px"> ein Buch <input class="fi" id="e14" data-a="gelesen" style="width:110px">.<span class="fhint">(Bir kitap okudum – lesen)</span><span class="ficon" id="ei7"></span></div>
+    <div class="frow"><span class="fnum">8.</span>Sie (onlar) <input class="fi" id="e15" data-a="sind" style="width:80px"> in der Schule <input class="fi" id="e16" data-a="geblieben" style="width:120px">.<span class="fhint">(Okulda kaldılar – bleiben)</span><span class="ficon" id="ei8"></span></div>
+    <div class="frow"><span class="fnum">9.</span>Er <input class="fi" id="e17" data-a="hat" style="width:70px"> einen Brief <input class="fi" id="e18" data-a="geschrieben" style="width:130px">.<span class="fhint">(Bir mektup yazdı – schreiben)</span><span class="ficon" id="ei9"></span></div>
+    <div class="frow"><span class="fnum">10.</span>Wir <input class="fi" id="e19" data-a="haben" style="width:80px"> Fußball <input class="fi" id="e20" data-a="gespielt" style="width:120px">.<span class="fhint">(Futbol oynadık – spielen)</span><span class="ficon" id="ei10"></span></div>
+    <button class="btn btn-pe" onclick="L1.checkPerf()">✔ Kontrol Et</button>
+  </div>
+</div>
+
+<!-- Übung 5: MC -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">5</div>
+    <h3>Multiple Choice <span>Doğru seçeneği işaretleyin</span></h3>
+    <span class="pill bo-pill">Präteritum + Perfekt</span>
+  </div>
+  <div class="card">
+    <div class="mc-block" id="m1"><div class="mc-q">1. „Gestern ___ ich krank." <span class="h">(dün hastaydım – Präteritum)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m1','war')">war</button><button class="opt" onclick="L1.chkMC(this,'m1','war')">habe</button><button class="opt" onclick="L1.chkMC(this,'m1','war')">bin</button><button class="opt" onclick="L1.chkMC(this,'m1','war')">hatte</button></div></div>
+    <div class="mc-block" id="m2"><div class="mc-q">2. „Ich ___ Pizza ___." <span class="h">(pizza yedim – Perfekt)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m2','habe gegessen')">habe gegessen</button><button class="opt" onclick="L1.chkMC(this,'m2','habe gegessen')">bin gegessen</button><button class="opt" onclick="L1.chkMC(this,'m2','habe gegessen')">habe geessen</button><button class="opt" onclick="L1.chkMC(this,'m2','habe gegessen')">hatte gegessen</button></div></div>
+    <div class="mc-block" id="m3"><div class="mc-q">3. „Sie ___ nach Hause ___." <span class="h">(eve gitti – Perfekt, gehen)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m3','ist gegangen')">ist gegangen</button><button class="opt" onclick="L1.chkMC(this,'m3','ist gegangen')">hat gegangen</button><button class="opt" onclick="L1.chkMC(this,'m3','ist gegangen')">ist gegehen</button><button class="opt" onclick="L1.chkMC(this,'m3','ist gegangen')">hat gegehen</button></div></div>
+    <div class="mc-block" id="m4"><div class="mc-q">4. „Wir ___ damals viel Geld." <span class="h">(zamanında çok paramız vardı – Präteritum)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m4','hatten')">hatten</button><button class="opt" onclick="L1.chkMC(this,'m4','hatten')">waren</button><button class="opt" onclick="L1.chkMC(this,'m4','hatten')">haben</button><button class="opt" onclick="L1.chkMC(this,'m4','hatten')">hattet</button></div></div>
+    <div class="mc-block" id="m5"><div class="mc-q">5. „Er ___ gestern nach München ___." <span class="h">(dün Münih'e gitti – Perfekt, fahren)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m5','ist gefahren')">ist gefahren</button><button class="opt" onclick="L1.chkMC(this,'m5','ist gefahren')">hat gefahren</button><button class="opt" onclick="L1.chkMC(this,'m5','ist gefahren')">ist geführen</button><button class="opt" onclick="L1.chkMC(this,'m5','ist gefahren')">hat geführt</button></div></div>
+    <div class="mc-block" id="m6"><div class="mc-q">6. „Du ___ ein Buch ___." <span class="h">(bir kitap okudun – Perfekt, lesen)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m6','hast gelesen')">hast gelesen</button><button class="opt" onclick="L1.chkMC(this,'m6','hast gelesen')">bist gelesen</button><button class="opt" onclick="L1.chkMC(this,'m6','hast gelesen')">hast lesen</button><button class="opt" onclick="L1.chkMC(this,'m6','hast gelesen')">hast geleest</button></div></div>
+    <div class="mc-block" id="m7"><div class="mc-q">7. „Das Wetter ___ sehr schlecht." <span class="h">(hava çok kötüydü – Präteritum)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m7','war')">war</button><button class="opt" onclick="L1.chkMC(this,'m7','war')">hatte</button><button class="opt" onclick="L1.chkMC(this,'m7','war')">wart</button><button class="opt" onclick="L1.chkMC(this,'m7','war')">ist</button></div></div>
+    <div class="mc-block" id="m8"><div class="mc-q">8. „Ihr ___ Tee ___." <span class="h">(çay içtiniz – Perfekt, trinken)</span></div><div class="opts"><button class="opt" onclick="L1.chkMC(this,'m8','habt getrunken')">habt getrunken</button><button class="opt" onclick="L1.chkMC(this,'m8','habt getrunken')">seid getrunken</button><button class="opt" onclick="L1.chkMC(this,'m8','habt getrunken')">habt getrinken</button><button class="opt" onclick="L1.chkMC(this,'m8','habt getrunken')">haben getrunken</button></div></div>
+  </div>
+</div>
+
+<!-- Übung 6: Eşleştirme -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">6</div>
+    <h3>Eşleştirme – Zuordnung <span>Türkçe anlamıyla Almanca cümleyi eşleştirin</span></h3>
+    <span class="pill bo-pill">Präteritum + Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">Sol sütundan bir cümle, sağ sütundan bir anlam seçin.</p>
+    <div class="mgrid">
+      <div class="mcol">
+        <div class="clabel">Almanca</div>
+        <div class="mitem" data-id="x1" data-side="L" onclick="L1.doMatch(this)">Ich war gestern müde.</div>
+        <div class="mitem" data-id="x2" data-side="L" onclick="L1.doMatch(this)">Wir haben Kaffee getrunken.</div>
+        <div class="mitem" data-id="x3" data-side="L" onclick="L1.doMatch(this)">Sie ist nach Paris geflogen.</div>
+        <div class="mitem" data-id="x4" data-side="L" onclick="L1.doMatch(this)">Er hatte keine Zeit.</div>
+        <div class="mitem" data-id="x5" data-side="L" onclick="L1.doMatch(this)">Du hast Musik gehört.</div>
+        <div class="mitem" data-id="x6" data-side="L" onclick="L1.doMatch(this)">Ihr wart in der Schule.</div>
+      </div>
+      <div class="mcol">
+        <div class="clabel">Türkçe Anlam</div>
+        <div class="mitem" data-id="x3" data-side="R" onclick="L1.doMatch(this)">Paris'e uçtu.</div>
+        <div class="mitem" data-id="x1" data-side="R" onclick="L1.doMatch(this)">Dün yorgundum.</div>
+        <div class="mitem" data-id="x6" data-side="R" onclick="L1.doMatch(this)">Okuldaydınız.</div>
+        <div class="mitem" data-id="x4" data-side="R" onclick="L1.doMatch(this)">Vakti yoktu.</div>
+        <div class="mitem" data-id="x2" data-side="R" onclick="L1.doMatch(this)">Kahve içtik.</div>
+        <div class="mitem" data-id="x5" data-side="R" onclick="L1.doMatch(this)">Müzik dinledin.</div>
+      </div>
+    </div>
+    <div class="mscore" id="mscore"></div>
+  </div>
+</div>
+
+<!-- Übung 7: Präsens → Perfekt -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">7</div>
+    <h3>Präsens → Perfekt <span>Cümleyi Perfekt'e çevirin</span></h3>
+    <span class="pill pe-pill">Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">Verilen Präsens cümlesini Perfekt'e çevirin. Yardımcı fiili (haben/sein) doğru seçin!</p>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Ich mache meine Hausaufgaben. <span style="color:var(--muted);font-size:0.8rem">(Ödevimi yapıyorum.)</span></div><div class="trans-label">Perfekt</div><input class="trans-input" id="l1-t1" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta1">✅ Ich habe meine Hausaufgaben gemacht.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Sie geht ins Kino. <span style="color:var(--muted);font-size:0.8rem">(Sinemaya gidiyor.)</span></div><input class="trans-input" id="l1-t2" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta2">✅ Sie ist ins Kino gegangen.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Wir trinken Orangensaft. <span style="color:var(--muted);font-size:0.8rem">(Portakal suyu içiyoruz.)</span></div><input class="trans-input" id="l1-t3" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta3">✅ Wir haben Orangensaft getrunken.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Er fährt nach Hamburg. <span style="color:var(--muted);font-size:0.8rem">(Hamburg'a gidiyor.)</span></div><input class="trans-input" id="l1-t4" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta4">✅ Er ist nach Hamburg gefahren.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Du liest ein Buch. <span style="color:var(--muted);font-size:0.8rem">(Kitap okuyorsun.)</span></div><input class="trans-input" id="l1-t5" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta5">✅ Du hast ein Buch gelesen.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Ich schreibe einen Brief. <span style="color:var(--muted);font-size:0.8rem">(Bir mektup yazıyorum.)</span></div><input class="trans-input" id="l1-t6" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta6">✅ Ich habe einen Brief geschrieben.</div></div>
+    <div class="trans-block"><div class="trans-label">Präsens</div><div class="trans-from">Sie bleiben zu Hause. <span style="color:var(--muted);font-size:0.8rem">(Evde kalıyorlar.)</span></div><input class="trans-input" id="l1-t7" placeholder="Perfekt'e çevirin..."><div class="trans-ans" id="l1-ta7">✅ Sie sind zu Hause geblieben.</div></div>
+    <button class="btn btn-pe" onclick="L1.revealTrans()">💡 Cevapları Göster</button>
+  </div>
+</div>
+
+<!-- Übung 8: Hata Düzeltme -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">8</div>
+    <h3>Hata Düzeltme – Fehlerkorrektur <span>Yanlış formu bulun ve düzeltin</span></h3>
+    <span class="pill bo-pill">Präteritum + Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">Her cümlede bir hata var. Altı çizili kelimeyi bulun ve doğru formu yazın.</p>
+    <div class="err-block"><div class="err-sent">Ich <span class="ww">bin</span> gestern müde. <span style="color:var(--muted);font-size:0.8rem">(Präteritum – dün yorgundum)</span></div><input class="err-input" id="er1" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea1">✅ Ich <b>war</b> gestern müde.</div></div>
+    <div class="err-block"><div class="err-sent">Er hat nach Hause <span class="ww">gehaben</span>. <span style="color:var(--muted);font-size:0.8rem">(Perfekt – eve gitti, gehen)</span></div><input class="err-input" id="er2" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea2">✅ Er <b>ist</b> nach Hause <b>gegangen</b>.</div></div>
+    <div class="err-block"><div class="err-sent">Wir <span class="ww">hatten</span> viel Spaß gehabt. <span style="color:var(--muted);font-size:0.8rem">(Perfekt – çok eğlendik)</span></div><input class="err-input" id="er3" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea3">✅ Wir <b>haben</b> viel Spaß gehabt.</div></div>
+    <div class="err-block"><div class="err-sent">Du <span class="ww">bist</span> kein Geld. <span style="color:var(--muted);font-size:0.8rem">(Präteritum – paran yoktu, haben)</span></div><input class="err-input" id="er4" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea4">✅ Du <b>hattest</b> kein Geld.</div></div>
+    <div class="err-block"><div class="err-sent">Sie hat nach Berlin <span class="ww">gefahrt</span>. <span style="color:var(--muted);font-size:0.8rem">(Perfekt – fahren)</span></div><input class="err-input" id="er5" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea5">✅ Sie <b>ist</b> nach Berlin <b>gefahren</b>.</div></div>
+    <div class="err-block"><div class="err-sent">Ich habe Kaffee <span class="ww">getrinkt</span>. <span style="color:var(--muted);font-size:0.8rem">(Perfekt – trinken)</span></div><input class="err-input" id="er6" placeholder="Doğru cümleyi yazın..."><div class="err-ans" id="ea6">✅ Ich habe Kaffee <b>getrunken</b>.</div></div>
+    <button class="btn btn-go" onclick="L1.revealErrors()">💡 Cevapları Göster</button>
+  </div>
+</div>
+
+<!-- Übung 9: Hikaye -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">9</div>
+    <h3>Hikaye Tamamlama <span>Boşlukları doldurun</span></h3>
+    <span class="pill bo-pill">Präteritum + Perfekt</span>
+  </div>
+  <div class="card">
+    <div class="wbox">
+      <span class="wtag">war (×3)</span><span class="wtag">hatte</span><span class="wtag">waren</span>
+      <span class="wtag">habe gegessen</span><span class="wtag">habe getrunken</span><span class="wtag">habe gekauft</span>
+      <span class="wtag">bin gegangen</span><span class="wtag">habe gespielt</span><span class="wtag">ist gekommen</span>
+    </div>
+    <div class="story">
+      Gestern <span class="shint">(gestern = dün)</span>
+      <input class="si" id="s1" data-a="war"> ich frei.
+      Das Wetter <input class="si" id="s2" data-a="war"> sehr schön und ich
+      <input class="si" id="s3" data-a="hatte"> gute Laune. <span class="shint">(iyi moddaydım)</span>
+      Am Morgen <input class="si" id="s4" data-a="bin gegangen"> ich in die Bäckerei
+      <span class="shint">(fırına gittim)</span> und ich <input class="si" id="s5" data-a="habe gekauft"> frisches Brot.
+      <span class="shint">(taze ekmek aldım)</span>
+      Dann <span class="shint">(sonra)</span> <input class="si" id="s6" data-a="habe ich gegessen" style="width:170px"> Frühstück <span class="shint">(kahvaltı yaptım)</span>
+      und <input class="si" id="s7" data-a="habe getrunken"> Kaffee.
+      Nachmittags <span class="shint">(öğleden sonra)</span> <input class="si" id="s8" data-a="habe gespielt"> ich mit meinem Freund Fußball.
+      Mein Freund <input class="si" id="s9" data-a="ist gekommen"> um drei Uhr.
+      <span class="shint">(saat üçte geldi)</span>
+      Wir <input class="si" id="s10" data-a="waren"> sehr glücklich.
+      Es <input class="si" id="s11" data-a="war"> ein toller Tag! <span class="shint">(harika bir gündü)</span>
+    </div>
+    <button class="btn btn-go" onclick="L1.checkStory()">✔ Hikayeyi Kontrol Et</button>
+    <div id="story-res" style="margin-top:12px;font-weight:700;font-size:0.88rem;"></div>
+  </div>
+</div>
+
+<!-- Übung 10: Diyalog -->
+<div class="w">
+  <div class="stitle">
+    <div class="snum">10</div>
+    <h3>Diyalog Tamamlama <span>Boşlukları doldurun</span></h3>
+    <span class="pill bo-pill">Präteritum + Perfekt</span>
+  </div>
+  <div class="card">
+    <p class="info">Kutudaki kelimelerden doğru olanı seçin ve diyaloğu tamamlayın.</p>
+    <div class="wbox">
+      <span class="wtag">war</span><span class="wtag">habe gemacht</span><span class="wtag">habt gegessen</span>
+      <span class="wtag">sind gefahren</span><span class="wtag">hatte</span><span class="wtag">waren</span>
+      <span class="wtag">habe getrunken</span><span class="wtag">ist geworden</span>
+    </div>
+    <div class="dial">
+      <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Lukas</div><div class="dtext">„Hallo Anna! Wie <input class="si" id="d1" data-a="war"> dein Wochenende?" <span class="shint">(hafta sonun nasıldı?)</span></div></div></div>
+      <div class="dline"><div class="dicon">👩</div><div><div class="dname">Anna</div><div class="dtext">„Super! Wir <input class="si" id="d2" data-a="sind gefahren"> ans Meer. <span class="shint">(denize gittik)</span> Das Wetter <input class="si" id="d3" data-a="war"> wunderbar."</div></div></div>
+      <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Lukas</div><div class="dtext">„Was <input class="si" id="d4" data-a="habt gegessen"> ihr dort?" <span class="shint">(orada ne yediniz?)</span></div></div></div>
+      <div class="dline"><div class="dicon">👩</div><div><div class="dname">Anna</div><div class="dtext">„Wir <input class="si" id="d5" data-a="waren"> in einem Restaurant. Ich <input class="si" id="d6" data-a="habe getrunken"> frischen Orangensaft." <span class="shint">(taze portakal suyu içtim)</span></div></div></div>
+      <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Lukas</div><div class="dtext">„Und du, <input class="si" id="d7" data-a="habe gemacht"> ich Sport. <span class="shint">(spor yaptım)</span> Aber ich <input class="si" id="d8" data-a="hatte"> Muskelschmerzen danach!" <span class="shint">(kas ağrısı)</span></div></div></div>
+    </div>
+    <button class="btn btn-dk" onclick="L1.checkDialogue()">✔ Diyalogu Kontrol Et</button>
+    <div id="dial-res" style="margin-top:12px;font-weight:700;font-size:0.88rem;"></div>
+  </div>
+</div>
+
+<!-- Score L1 -->
+<div class="score-wrap">
+  <div class="score-inner">
+    <h3>🏆 Gesamtergebnis – Toplam Sonuç</h3>
+    <div class="score-grid">
+      <div class="si2 rc"><div class="val" id="sc-pr">–</div><div class="lbl">Präteritum</div></div>
+      <div class="si2 bc"><div class="val" id="sc-pe">–</div><div class="lbl">Perfekt</div></div>
+      <div class="si2 gc"><div class="val" id="sc-bo">–</div><div class="lbl">Gemischt</div></div>
+    </div>
+    <div class="score-big" id="sc-total">–</div>
+    <div class="score-of" id="sc-of">Toplam Puan</div>
+    <div class="score-msg" id="sc-msg">Tüm alıştırmaları tamamlayın, sonra hesaplayın.</div>
+    <br>
+    <button class="btn btn-go" onclick="L1.calcAll()">Puanı Hesapla</button>
+  </div>
+</div>
+
+</div><!-- end lesson-1 -->
+
+
+<!-- ╔═══════════════════════════════════════════════════════╗ -->
+<!-- ║  LESSON 2: Possessivpronomen                          ║ -->
+<!-- ╚═══════════════════════════════════════════════════════╝ -->
+<div class="lesson-panel" id="lesson-2" data-lesson="2">
+
+<div class="lesson-hero">
+  <span class="hero-icon">🇩🇪</span>
+  <h1>Possessivpronomen</h1>
+  <p>Wessen? – Kimin? – İnteraktif Alıştırmalar</p>
+  <div class="hero-tags"><span class="htag">A1 Niveau</span><span class="htag">5 Alıştırma</span></div>
+</div>
+
+<!-- Grammar -->
+<div class="grammar" style="margin-top:36px">
+  <h2>📖 Grammatik: Possessivpronomen (Nominativ)</h2>
+  <div class="table-wrap">
+  <table class="gtable">
+    <tr><th>Pronomen</th><th>Maskulin (der)</th><th>Feminin (die)</th><th>Neutrum (das)</th><th>Plural (die)</th></tr>
+    <tr><td>ich</td><td class="hl">mein</td><td class="hl">meine</td><td class="hl">mein</td><td class="hl">meine</td></tr>
+    <tr><td>du</td><td class="hl">dein</td><td class="hl">deine</td><td class="hl">dein</td><td class="hl">deine</td></tr>
+    <tr><td>er/es</td><td class="hl">sein</td><td class="hl">seine</td><td class="hl">sein</td><td class="hl">seine</td></tr>
+    <tr><td>sie (she)</td><td class="hl">ihr</td><td class="hl">ihre</td><td class="hl">ihr</td><td class="hl">ihre</td></tr>
+    <tr><td>wir</td><td class="hl">unser</td><td class="hl">unsere</td><td class="hl">unser</td><td class="hl">unsere</td></tr>
+    <tr><td>ihr (you pl.)</td><td class="hl">euer</td><td class="hl">eure</td><td class="hl">euer</td><td class="hl">eure</td></tr>
+    <tr><td>sie/Sie</td><td class="hl">ihr/Ihr</td><td class="hl">ihre/Ihre</td><td class="hl">ihr/Ihr</td><td class="hl">ihre/Ihre</td></tr>
+  </table>
+  </div>
+  <div class="note">
+    ❓ <b>Wessen Buch ist das?</b> (Bu kimin kitabı?) → <b>Das ist mein Buch.</b> (Bu benim kitabım.)<br>
+    ❓ <b>Ist das deine Tasche?</b> (Bu senin çantan mı?) → <b>Ja, das ist meine Tasche.</b>
+  </div>
+</div>
+
+<!-- Activity 1: Fill -->
+<div class="sec-head"><div class="sec-num">1</div><h3>Boşluk Doldurma <span>– Doğru iyelik zamirini yazın</span></h3></div>
+<div class="card gold-accent">
+  <p style="color:var(--muted);font-size:0.87rem;margin-bottom:18px;">Doğru iyelik zamirini yazın. (Schreiben Sie das richtige Possessivpronomen.)</p>
+  <div class="frow"><span class="fnum">1.</span>Das ist <input class="finput" id="l2-f1" placeholder="..."> Buch. (ich – das Buch)<span class="fhint">(benim kitabım)</span><span class="ficon" id="l2-fi1"></span></div>
+  <div class="frow"><span class="fnum">2.</span>Ist das <input class="finput" id="l2-f2" placeholder="..."> Tasche? (du – die Tasche)<span class="fhint">(senin çantan mı?)</span><span class="ficon" id="l2-fi2"></span></div>
+  <div class="frow"><span class="fnum">3.</span>Das ist <input class="finput" id="l2-f3" placeholder="..."> Auto. (er – das Auto)<span class="fhint">(onun arabası)</span><span class="ficon" id="l2-fi3"></span></div>
+  <div class="frow"><span class="fnum">4.</span>Das ist <input class="finput" id="l2-f4" placeholder="..."> Katze. (sie (o-kadın) – die Katze)<span class="fhint">(onun kedisi)</span><span class="ficon" id="l2-fi4"></span></div>
+  <div class="frow"><span class="fnum">5.</span>Das ist <input class="finput" id="l2-f5" placeholder="..."> Haus. (wir – das Haus)<span class="fhint">(bizim evimiz)</span><span class="ficon" id="l2-fi5"></span></div>
+  <div class="frow"><span class="fnum">6.</span>Wo ist <input class="finput" id="l2-f6" placeholder="..."> Hund? (ihr (siz) – der Hund)<span class="fhint">(sizin köpeğiniz?)</span><span class="ficon" id="l2-fi6"></span></div>
+  <div class="frow"><span class="fnum">7.</span>Das sind <input class="finput" id="l2-f7" placeholder="..."> Bücher. (sie (onlar) – die Bücher)<span class="fhint">(onların kitapları)</span><span class="ficon" id="l2-fi7"></span></div>
+  <button class="btn btn-gold" onclick="L2.checkFill()">✔ Kontrol Et</button>
+</div>
+
+<!-- Activity 2: MC -->
+<div class="sec-head"><div class="sec-num">2</div><h3>Multiple Choice <span>– Doğru cevabı seçin</span></h3></div>
+<div class="card blue-accent">
+  <div class="mc-block" id="l2-mc1"><div class="mc-q">1. „Wessen Schlüssel ist das?" – „Das ist ___ Schlüssel." (ich – der Schlüssel) <span class="hint">(benim anahtarım)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc1','mein')">mein</button><button class="opt" onclick="L2.checkMC(this,'l2-mc1','mein')">meine</button><button class="opt" onclick="L2.checkMC(this,'l2-mc1','mein')">meinen</button></div></div>
+  <div class="mc-block" id="l2-mc2"><div class="mc-q">2. „Ist das ___ Schwester?" (er – die Schwester) <span class="hint">(onun kız kardeşi)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc2','seine')">seine</button><button class="opt" onclick="L2.checkMC(this,'l2-mc2','seine')">sein</button><button class="opt" onclick="L2.checkMC(this,'l2-mc2','seine')">ihr</button></div></div>
+  <div class="mc-block" id="l2-mc3"><div class="mc-q">3. „Das ist ___ Wohnung." (wir – die Wohnung) <span class="hint">(bizim dairemiz)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc3','unsere')">unsere</button><button class="opt" onclick="L2.checkMC(this,'l2-mc3','unsere')">unser</button><button class="opt" onclick="L2.checkMC(this,'l2-mc3','unsere')">eure</button></div></div>
+  <div class="mc-block" id="l2-mc4"><div class="mc-q">4. „Wo ist ___ Handy?" (du – das Handy) <span class="hint">(senin telefonun)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc4','dein')">dein</button><button class="opt" onclick="L2.checkMC(this,'l2-mc4','dein')">deine</button><button class="opt" onclick="L2.checkMC(this,'l2-mc4','dein')">mein</button></div></div>
+  <div class="mc-block" id="l2-mc5"><div class="mc-q">5. „Das sind ___ Kinder." (sie pl. – die Kinder) <span class="hint">(onların çocukları)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc5','ihre')">ihre</button><button class="opt" onclick="L2.checkMC(this,'l2-mc5','ihre')">sein</button><button class="opt" onclick="L2.checkMC(this,'l2-mc5','ihre')">unsere</button></div></div>
+  <div class="mc-block" id="l2-mc6"><div class="mc-q">6. „Ist das ___ Fahrrad?" (sie (o-kadın) – das Fahrrad) <span class="hint">(onun bisikleti)</span></div><div class="opts"><button class="opt" onclick="L2.checkMC(this,'l2-mc6','ihr')">ihr</button><button class="opt" onclick="L2.checkMC(this,'l2-mc6','ihr')">ihre</button><button class="opt" onclick="L2.checkMC(this,'l2-mc6','ihr')">sein</button></div></div>
+</div>
+
+<!-- Activity 3: Matching -->
+<div class="sec-head"><div class="sec-num">3</div><h3>Eşleştirme <span>– Çiftleri eşleştirin</span></h3></div>
+<div class="card red-accent">
+  <p style="color:var(--muted);font-size:0.87rem;margin-bottom:16px;">Her sütundan birer öğe seçin. (Klicken Sie je ein Element aus jeder Spalte.)</p>
+  <div class="match-grid">
+    <div class="match-col">
+      <div class="col-label">Almanca</div>
+      <div class="mitem" data-id="p1" data-side="L" onclick="L2.doMatch(this)">mein Bruder</div>
+      <div class="mitem" data-id="p2" data-side="L" onclick="L2.doMatch(this)">ihre Tasche</div>
+      <div class="mitem" data-id="p3" data-side="L" onclick="L2.doMatch(this)">unser Auto</div>
+      <div class="mitem" data-id="p4" data-side="L" onclick="L2.doMatch(this)">euer Lehrer</div>
+      <div class="mitem" data-id="p5" data-side="L" onclick="L2.doMatch(this)">sein Hund</div>
+    </div>
+    <div class="match-col">
+      <div class="col-label">Türkçe</div>
+      <div class="mitem" data-id="p3" data-side="R" onclick="L2.doMatch(this)">bizim arabamız</div>
+      <div class="mitem" data-id="p5" data-side="R" onclick="L2.doMatch(this)">onun köpeği</div>
+      <div class="mitem" data-id="p1" data-side="R" onclick="L2.doMatch(this)">benim erkek kardeşim</div>
+      <div class="mitem" data-id="p2" data-side="R" onclick="L2.doMatch(this)">onun çantası</div>
+      <div class="mitem" data-id="p4" data-side="R" onclick="L2.doMatch(this)">sizin öğretmeniniz</div>
+    </div>
+  </div>
+  <div class="match-msg" id="l2-match-msg"></div>
+</div>
+
+<!-- Activity 4: Sentence Order -->
+<div class="sec-head"><div class="sec-num">4</div><h3>Cümle Bulmacası <span>– Cümleleri oluşturun</span></h3></div>
+<div class="card green-accent">
+  <p style="color:var(--muted);font-size:0.87rem;margin-bottom:20px;">Kelimelere tıklayarak cümle oluşturun. (Klicken Sie auf die Wörter, um den Satz zu bilden.)</p>
+  <div id="l2-ord-blocks"></div>
+  <button class="btn btn-green" onclick="L2.checkOrder()">✔ Cümleleri Kontrol Et</button>
+</div>
+
+<!-- Activity 5: Translate -->
+<div class="sec-head"><div class="sec-num">5</div><h3>Çeviri <span>– Almancaya çevirin</span></h3></div>
+<div class="card gold-accent">
+  <p style="color:var(--muted);font-size:0.87rem;margin-bottom:18px;">Türkçe cümleleri Almancaya çevirin. (Übersetzen Sie die türkischen Sätze ins Deutsche.)</p>
+  <div class="tr-block"><div class="tr-en">1. "Bu kimin kitabı?" → „Wessen ___ ist das?"</div><input class="tr-input" id="l2-t1" placeholder="Almancaya çevirin..."><div class="tr-ans" id="l2-ta1">✅ Wessen Buch ist das?</div></div>
+  <div class="tr-block"><div class="tr-en">2. "Bu benim kedim." (die Katze)</div><input class="tr-input" id="l2-t2" placeholder="Almancaya çevirin..."><div class="tr-ans" id="l2-ta2">✅ Das ist meine Katze.</div></div>
+  <div class="tr-block"><div class="tr-en">3. "Bu senin evin mi?" (du – das Haus)</div><input class="tr-input" id="l2-t3" placeholder="Almancaya çevirin..."><div class="tr-ans" id="l2-ta3">✅ Ist das dein Haus?</div></div>
+  <div class="tr-block"><div class="tr-en">4. "Bizim öğretmenimiz iyi." (der Lehrer)</div><input class="tr-input" id="l2-t4" placeholder="Almancaya çevirin..."><div class="tr-ans" id="l2-ta4">✅ Unser Lehrer ist nett.</div></div>
+  <div class="tr-block"><div class="tr-en">5. "Onun kız kardeşi doktor." (die Schwester / die Ärztin)</div><input class="tr-input" id="l2-t5" placeholder="Almancaya çevirin..."><div class="tr-ans" id="l2-ta5">✅ Ihre Schwester ist Ärztin.</div></div>
+  <button class="btn btn-blue" onclick="L2.revealAll()">💡 Cevapları Göster</button>
+</div>
+
+<!-- Score L2 -->
+<div class="score-section">
+  <h3>🏆 Toplam Puan</h3>
+  <div class="big-score" id="l2-totalScore">–</div>
+  <div class="score-sub" id="l2-scoreMsg">Tüm alıştırmaları tamamlayın, sonra puanınızı hesaplayın.</div>
+  <br>
+  <button class="btn btn-gold" onclick="L2.calcScore()">Puanı Hesapla</button>
+</div>
+
+</div><!-- end lesson-2 -->
+
+
+<!-- ╔═══════════════════════════════════════════════════════╗ -->
+<!-- ║  LESSON 3: Dativ & Akkusativ                          ║ -->
+<!-- ╚═══════════════════════════════════════════════════════╝ -->
+<div class="lesson-panel" id="lesson-3" data-lesson="3">
+
+<div class="lesson-hero">
+  <span class="hero-icon">🌟</span>
+  <h1><span style="color:#E85D5D">Akkusativ</span> & <span style="color:#3DBCB0">Dativ</span></h1>
+  <p>Deutsch A1 – İnteraktif Alıştırmalar</p>
+  <div class="hero-tags"><span class="htag">A1 Niveau</span><span class="htag">4 Alıştırma</span></div>
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 16px">
+
+<div class="score-bar" style="margin-top:28px">
+  <div>
+    <div class="score-label">Toplam Puan</div>
+    <div class="score-num" id="l3-total-score">0 / 0</div>
+  </div>
+  <div><button class="reset-btn" onclick="L3.resetAll()">🔄 Sıfırla</button></div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot acc"></span> Akkusativ – wen? / was?</div>
+  <div class="legend-item"><span class="dot dat"></span> Dativ – wem?</div>
+</div>
+
+<!-- Kurallar -->
+<div class="section">
+  <div class="section-title">📘 Temel Kural <span class="badge mixed">REFERANS</span></div>
+  <div class="section-sub">Erkek (maskulin) isimler değişir – diğerleri aynı kalır!</div>
+  <div class="table-wrap">
+  <table class="grammar-table">
+    <tr><th>Fall</th><th>Frage</th><th>maskulin (r)</th><th>feminin (e)</th><th>neutrum (s)</th><th>Plural (e)</th></tr>
+    <tr><td><strong>Nominativ</strong></td><td>Wer/Was?</td><td>der Mann</td><td>die Frau</td><td>das Kind</td><td>die Kinder</td></tr>
+    <tr><td><strong class="acc-cell">Akkusativ</strong></td><td class="acc-cell">Wen/Was?</td><td class="acc-cell">den Mann</td><td>die Frau</td><td>das Kind</td><td>die Kinder</td></tr>
+    <tr><td><strong class="dat-cell">Dativ</strong></td><td class="dat-cell">Wem?</td><td class="dat-cell">dem Mann</td><td class="dat-cell">der Frau</td><td class="dat-cell">dem Kind</td><td class="dat-cell">den Kindern</td></tr>
+  </table>
+  </div>
+</div>
+
+<!-- Bölüm 1: MC -->
+<div class="section">
+  <div class="section-title">✏️ Bölüm 1: Doğru Artikeli Seç <span class="badge acc">AKKUSATİV</span></div>
+  <div class="section-sub">Cümledeki boşluğa hangi artikel gelir? Tıkla!</div>
+  <div id="l3-mc-container"></div>
+</div>
+
+<!-- Bölüm 2: Fill -->
+<div class="section">
+  <div class="section-title">✏️ Bölüm 2: Doğru Formu Yaz <span class="badge dat">DATİV</span></div>
+  <div class="section-sub">Boşluğa doğru kelimeyi yaz</div>
+  <div id="l3-fill-container"></div>
+  <button class="check-btn" onclick="L3.checkFill()">✔ Kontrol Et</button>
+</div>
+
+<!-- Bölüm 3: Mixed -->
+<div class="section">
+  <div class="section-title">🎯 Bölüm 3: Dativ mi Akkusativ mi? <span class="badge mixed">KARMA</span></div>
+  <div class="section-sub">Cümleyi oku ve hangi hal olduğunu seç!</div>
+  <div id="l3-mixed-container"></div>
+</div>
+
+<!-- Bölüm 4: Sort -->
+<div class="section">
+  <div class="section-title">🔤 Bölüm 4: Cümle Kur <span class="badge mixed">KARMA</span></div>
+  <div class="section-sub">Kelimelere tıklayarak doğru sıraya diz!</div>
+  <div id="l3-sort-container"></div>
+</div>
+
+</div><!-- end inner wrapper -->
+</div><!-- end lesson-3 -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- JAVASCRIPT                              -->
+<!-- ═══════════════════════════════════════ -->
+<script>
+/* ── POLYFILLS for older iOS WebView (WhatsApp in-app browser) ── */
+if(!NodeList.prototype.forEach){NodeList.prototype.forEach=Array.prototype.forEach;}
+if(!HTMLCollection.prototype.forEach){HTMLCollection.prototype.forEach=Array.prototype.forEach;}
+/* classList multi-arg polyfill */
+(function(){
+  var orig=DOMTokenList.prototype.remove;
+  DOMTokenList.prototype.remove=function(){for(var i=0;i<arguments.length;i++)orig.call(this,arguments[i]);};
+  var origA=DOMTokenList.prototype.add;
+  DOMTokenList.prototype.add=function(){for(var i=0;i<arguments.length;i++)origA.call(this,arguments[i]);};
+})();
+
+/* ── TAB SWITCHING ── */
+function switchTab(n,isExtra){document.querySelectorAll('.lesson-panel,.iframe-panel').forEach(function(p){p.classList.remove('active');});var panel=isExtra?document.getElementById('extra-'+n):document.getElementById('lesson-'+n);if(panel)panel.classList.add('active');document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});var t=isExtra?document.querySelector('[data-extra="'+n+'"]'):document.querySelector('[data-tab="'+n+'"]');if(t)t.classList.add('active');}
+function toggleSidebar(){var sb=document.getElementById('sidebar');var ov=document.getElementById('sidebarOverlay');var btn=document.getElementById('sidebarToggle');sb.classList.toggle('open');ov.classList.toggle('open');btn.classList.toggle('open');}
+function fileNameToTitle(f){return f.replace('.html','').replace(/-[a-f0-9]{6,10}$/,'').replace(/-/g,' ').replace(/w/g,function(c){return c.toUpperCase();});}
+function loadHtmlFiles(files){var container=document.getElementById('extra-tabs-container');var body=document.body;if(!container||!files||!files.length)return;container.innerHTML='';var sep=document.createElement('div');sep.className='sidebar-title';sep.style.marginTop='12px';sep.textContent='Ek Dersler';container.appendChild(sep);files.forEach(function(f){var title=fileNameToTitle(f);var btn=document.createElement('button');btn.className='tab-btn';btn.setAttribute('data-extra',f);btn.textContent=title;btn.onclick=function(){switchTab(f,true);};container.appendChild(btn);if(!document.getElementById('extra-'+f)){var iframe=document.createElement('iframe');iframe.id='extra-'+f;iframe.className='iframe-panel';iframe.src='html/'+f;iframe.setAttribute('loading','lazy');body.appendChild(iframe);}});}
+(function(){fetch('html/').then(function(r){return r.text();}).then(function(text){var matches=text.match(/href="[^"]*html/([^"]+.html)"/g)||[];var files=[...new Set(matches.map(function(m){var x=m.match(/html/([^"]+.html)/);return x?x[1]:null;}).filter(Boolean))];loadHtmlFiles(files);}).catch(function(){});})();
+
+/* ══════════════════════════════════════════════════════════ */
+/* LESSON 1: Präteritum & Perfekt                            */
+/* ══════════════════════════════════════════════════════════ */
+var L1=(function(){
+  function setCi(id,ok){
+    var el=document.getElementById(id);if(!el)return;
+    el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+  }
+  function setSi(id,ok){
+    var el=document.getElementById(id);if(!el)return;
+    el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+  }
+
+  var conjScore=0;
+  var conjHints={
+    k1:'„sein" fiili → ich war',k2:'„sein" fiili → du warst',k3:'„sein" fiili → wir waren',
+    k4:'„sein" fiili → ihr wart',k5:'„sein" fiili → sie/Sie waren',
+    k6:'„haben" fiili → ich hatte',k7:'„haben" fiili → du hattest',k8:'„haben" fiili → er/sie/es hatte',
+    k9:'„haben" fiili → ihr hattet',k10:'„haben" fiili → sie/Sie hatten'
+  };
+  function checkConj(){
+    conjScore=0;
+    ['k1','k2','k3','k4','k5','k6','k7','k8','k9','k10'].forEach(function(id){
+      var el=document.getElementById(id);
+      var ok=el.value.trim().toLowerCase()===el.dataset.a;
+      setCi(id,ok);if(ok)conjScore++;
+      var fb=document.getElementById(id+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id=id+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';el.parentNode.appendChild(fb);}
+      if(ok){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(el.value.trim()){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+el.dataset.a+' — '+conjHints[id];}
+      else{fb.textContent='';}
+    });
+    document.getElementById('cr1').style.color=conjScore===10?'var(--green)':'var(--red)';
+    document.getElementById('cr1').textContent=conjScore+'/10 doğru';
+  }
+
+  var pretScore=0;
+  var pretHints={
+    p1:'ich + sein → war',p2:'du + haben → hattest',p3:'er + sein → war',
+    p4:'wir + haben → hatten',p5:'sie (o) + sein → war',p6:'ihr + haben → hattet',
+    p7:'sie (onlar) + sein → waren',p8:'es + sein → war (tekil)',
+    p9:'wir + haben → hatten',p10:'ich + sein → war',
+    p11:'es + sein → war (tekil)',p12:'die Kinder (çoğul) + haben → hatten'
+  };
+  function checkPret(){
+    pretScore=0;
+    for(var i=1;i<=12;i++){
+      var el=document.getElementById('p'+i);
+      var ok=el.value.trim().toLowerCase()===el.dataset.a;
+      el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+      var ic=document.getElementById('pi'+i);if(ic)ic.textContent=ok?'✅':'❌';
+      var sh=document.getElementById('ps'+i);if(sh&&!ok)sh.classList.add('on');
+      if(ok)pretScore++;
+      var fb=document.getElementById('p'+i+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id='p'+i+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';el.parentNode.appendChild(fb);}
+      if(ok){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(el.value.trim()){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+el.dataset.a+' — '+pretHints['p'+i];}
+      else{fb.textContent='';}
+    }
+  }
+
+  var partScore=0;
+  var partHints={
+    q1:'düzenli: ge+mach+t',q2:'düzenli: ge+kauf+t',q3:'düzenli: ge+spiel+t',
+    q4:'düzenli: ge+lern+t',q5:'düzenli: ge+koch+t',q6:'düzenli: ge+hör+t',
+    q7:'düzensiz! essen → gegessen (kök değişir)',q8:'düzensiz! trinken → getrunken (kök değişir)',
+    q9:'düzensiz! schreiben → geschrieben',q10:'düzensiz! lesen → gelesen',
+    q11:'düzensiz + sein ile! gehen → gegangen',q12:'düzensiz + sein ile! kommen → gekommen',
+    q13:'düzensiz + sein ile! fahren → gefahren',q14:'düzensiz + sein ile! bleiben → geblieben'
+  };
+  function checkPart(){
+    partScore=0;
+    for(var i=1;i<=14;i++){
+      var el=document.getElementById('q'+i);
+      var ok=el.value.trim().toLowerCase()===el.dataset.a;
+      el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+      var ic=document.getElementById('qi'+i);if(ic)ic.textContent=ok?'✅':'❌';
+      var sh=document.getElementById('qs'+i);if(sh&&!ok)sh.classList.add('on');
+      if(ok)partScore++;
+      var fb=document.getElementById('q'+i+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id='q'+i+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';el.parentNode.appendChild(fb);}
+      if(ok){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(el.value.trim()){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+el.dataset.a+' — '+partHints['q'+i];}
+      else{fb.textContent='';}
+    }
+  }
+
+  var perfScore=0;
+  var perfHints=[
+    {aux:'habe',part:'gehört',rule:'hören → haben + gehört (düzenli)'},
+    {aux:'hast',part:'gegessen',rule:'essen → haben + gegessen (düzensiz, kök değişir)'},
+    {aux:'ist',part:'gegangen',rule:'gehen → sein + gegangen (hareket fiili!)'},
+    {aux:'haben',part:'gelernt',rule:'lernen → haben + gelernt (düzenli)'},
+    {aux:'ist',part:'gefahren',rule:'fahren → sein + gefahren (hareket fiili!)'},
+    {aux:'habt',part:'getrunken',rule:'trinken → haben + getrunken (düzensiz)'},
+    {aux:'habe',part:'gelesen',rule:'lesen → haben + gelesen (düzensiz)'},
+    {aux:'sind',part:'geblieben',rule:'bleiben → sein + geblieben (durum değişikliği!)'},
+    {aux:'hat',part:'geschrieben',rule:'schreiben → haben + geschrieben (düzensiz)'},
+    {aux:'haben',part:'gespielt',rule:'spielen → haben + gespielt (düzenli)'}
+  ];
+  function checkPerf(){
+    perfScore=0;
+    var pairs=[[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20]];
+    pairs.forEach(function(pair,idx){
+      var a=document.getElementById('e'+pair[0]);
+      var b=document.getElementById('e'+pair[1]);
+      var okA=a.value.trim().toLowerCase()===a.dataset.a;
+      var okB=b.value.trim().toLowerCase()===b.dataset.a;
+      a.classList.remove('ok','no');a.classList.add(okA?'ok':'no');
+      b.classList.remove('ok','no');b.classList.add(okB?'ok':'no');
+      var ic=document.getElementById('ei'+(idx+1));
+      if(ic)ic.textContent=(okA&&okB)?'✅':'❌';
+      if(okA&&okB)perfScore++;
+      var fb=document.getElementById('ei'+(idx+1)+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id='ei'+(idx+1)+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;width:100%;';ic.parentNode.appendChild(fb);}
+      if(okA&&okB){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(a.value.trim()||b.value.trim()){
+        var h=perfHints[idx];var msgs=[];
+        if(!okA)msgs.push('Yardımcı fiil: '+h.aux);
+        if(!okB)msgs.push('Partizip II: '+h.part);
+        fb.style.color='var(--red)';fb.textContent='❌ '+msgs.join(' | ')+' — '+h.rule;
+      }else{fb.textContent='';}
+    });
+  }
+
+  var mcDone={},mcScore=0;
+  var mcHints={
+    m1:'Präteritum: „sein" → ich war (durum bildirmek için)',
+    m2:'Perfekt: essen → haben + gegessen (düzensiz fiil)',
+    m3:'Perfekt: gehen → sein + gegangen (hareket fiili, sein ile!)',
+    m4:'Präteritum: „haben" → wir hatten (sahiplik bildirmek için)',
+    m5:'Perfekt: fahren → sein + gefahren (hareket fiili, sein ile!)',
+    m6:'Perfekt: lesen → haben + gelesen (düzensiz fiil)',
+    m7:'Präteritum: „sein" → es war (durum bildirmek için)',
+    m8:'Perfekt: trinken → haben + getrunken (düzensiz fiil)'
+  };
+  function chkMC(btn,qid,correct){
+    if(mcDone[qid])return;
+    var block=document.getElementById(qid);
+    var all=block.querySelectorAll('.opt');
+    var isRight=btn.textContent.trim()===correct;
+    if(isRight){btn.classList.add('right');mcScore++;}
+    else{btn.classList.add('wrong');all.forEach(function(b){if(b.textContent.trim()===correct)b.classList.add('show-r');});}
+    mcDone[qid]=true;
+    var fb=document.createElement('div');fb.style.cssText='font-size:0.82rem;margin-top:6px;padding:6px 10px;border-radius:8px;';
+    if(isRight){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+    else{fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+correct+' — '+mcHints[qid];}
+    block.appendChild(fb);
+  }
+
+  var selL=null,selR=null,matchScore=0,matchTotal=6;
+  function doMatch(el){
+    if(el.classList.contains('dok'))return;
+    var side=el.dataset.side;
+    if(side==='L'){if(selL)selL.classList.remove('sel');selL=el;el.classList.add('sel');}
+    else{if(selR)selR.classList.remove('sel');selR=el;el.classList.add('sel');}
+    if(selL&&selR){
+      if(selL.dataset.id===selR.dataset.id){
+        selL.classList.remove('sel');selL.classList.add('dok');
+        selR.classList.remove('sel');selR.classList.add('dok');
+        matchScore++;
+        document.getElementById('mscore').textContent=matchScore===matchTotal?'🎉 Mükemmel! Tüm eşleşmeler doğru!':matchScore+'/'+matchTotal+' doğru';
+      }else{
+        selL.classList.add('dno');selR.classList.add('dno');
+        var _l=selL,_r=selR;
+        setTimeout(function(){_l.classList.remove('dno','sel');_r.classList.remove('dno','sel');selL=null;selR=null;},700);
+        return;
+      }
+      selL=null;selR=null;
+    }
+  }
+
+  function revealTrans(){
+    for(var i=1;i<=7;i++){
+      document.getElementById('l1-ta'+i).classList.add('on');
+      document.getElementById('l1-t'+i).classList.add('ok');
+    }
+  }
+
+  function revealErrors(){
+    for(var i=1;i<=6;i++)document.getElementById('ea'+i).classList.add('on');
+  }
+
+  var storyScore=0;
+  var storyAns={s1:'war',s2:'war',s3:'hatte',s4:'bin gegangen',s5:'habe gekauft',s6:'habe ich gegessen',s7:'habe getrunken',s8:'habe gespielt',s9:'ist gekommen',s10:'waren',s11:'war'};
+  var storyHints={
+    s1:'sein → ich war (Präteritum)',s2:'sein → es war (Präteritum)',s3:'haben → ich hatte (Präteritum)',
+    s4:'gehen → ich bin gegangen (Perfekt, sein ile!)',s5:'kaufen → ich habe gekauft (Perfekt, düzenli)',
+    s6:'essen → habe ich gegessen (Perfekt, düzensiz)',s7:'trinken → habe getrunken (Perfekt, düzensiz)',
+    s8:'spielen → habe gespielt (Perfekt, düzenli)',s9:'kommen → ist gekommen (Perfekt, sein ile!)',
+    s10:'sein → wir waren (Präteritum, çoğul)',s11:'sein → es war (Präteritum)'
+  };
+  function checkStory(){
+    storyScore=0;
+    Object.keys(storyAns).forEach(function(id){
+      var el=document.getElementById(id);
+      var ok=el.value.trim().toLowerCase()===storyAns[id];
+      el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+      if(ok)storyScore++;
+      var fb=document.getElementById(id+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id=id+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';el.parentNode.appendChild(fb);}
+      if(ok){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(el.value.trim()){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+storyAns[id]+' — '+storyHints[id];}
+      else{fb.textContent='';}
+    });
+    var res=document.getElementById('story-res');
+    var total=Object.keys(storyAns).length;
+    res.style.color=storyScore===total?'var(--green)':'var(--red)';
+    res.textContent=storyScore+'/'+total+' doğru'+(storyScore===total?' 🎉':'');
+  }
+
+  var dialScore=0;
+  var dialAns={d1:'war',d2:'sind gefahren',d3:'war',d4:'habt gegessen',d5:'waren',d6:'habe getrunken',d7:'habe gemacht',d8:'hatte'};
+  var dialHints={
+    d1:'sein → es war (Präteritum, durum)',d2:'fahren → wir sind gefahren (Perfekt, sein ile!)',
+    d3:'sein → es war (Präteritum)',d4:'essen → ihr habt gegessen (Perfekt, düzensiz)',
+    d5:'sein → die Leute waren (Präteritum, çoğul)',d6:'trinken → ich habe getrunken (Perfekt, düzensiz)',
+    d7:'machen → ich habe gemacht (Perfekt, düzenli)',d8:'haben → ich hatte (Präteritum)'
+  };
+  function checkDialogue(){
+    dialScore=0;
+    Object.keys(dialAns).forEach(function(id){
+      var el=document.getElementById(id);
+      var ok=el.value.trim().toLowerCase()===dialAns[id];
+      el.classList.remove('ok','no');el.classList.add(ok?'ok':'no');
+      if(ok)dialScore++;
+      var fb=document.getElementById(id+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id=id+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';el.parentNode.appendChild(fb);}
+      if(ok){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(el.value.trim()){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+dialAns[id]+' — '+dialHints[id];}
+      else{fb.textContent='';}
+    });
+    var res=document.getElementById('dial-res');
+    var total=Object.keys(dialAns).length;
+    res.style.color=dialScore===total?'var(--green)':'var(--red)';
+    res.textContent=dialScore+'/'+total+' doğru'+(dialScore===total?' 🎉':'');
+  }
+
+  function calcAll(){
+    var pr=conjScore+pretScore;
+    var pe=partScore+perfScore;
+    var bo=mcScore+matchScore+storyScore+dialScore;
+    var total=pr+pe+bo;
+    var max=22+24+33;
+    document.getElementById('sc-pr').textContent=pr+'/22';
+    document.getElementById('sc-pe').textContent=pe+'/24';
+    document.getElementById('sc-bo').textContent=bo+'/33';
+    document.getElementById('sc-total').textContent=total;
+    document.getElementById('sc-of').textContent='/ '+max+' Puan';
+    var pct=total/max;
+    var msg='';
+    if(pct>=0.9)msg='🌟 Mükemmel! Harikasınız!';
+    else if(pct>=0.75)msg='👍 Çok iyi! Böyle devam edin!';
+    else if(pct>=0.6)msg='📚 İyi! Biraz daha çalışın!';
+    else if(pct>=0.4)msg='💪 Fena değil. Tekrar çalışmanız gerekiyor!';
+    else msg='📖 Vazgeçmeyin! Gramer tablosunu tekrar okuyun!';
+    document.getElementById('sc-msg').textContent=msg;
+  }
+
+  return{checkConj:checkConj,checkPret:checkPret,checkPart:checkPart,checkPerf:checkPerf,chkMC:chkMC,doMatch:doMatch,revealTrans:revealTrans,revealErrors:revealErrors,checkStory:checkStory,checkDialogue:checkDialogue,calcAll:calcAll};
+})();
+
+
+/* ══════════════════════════════════════════════════════════ */
+/* LESSON 2: Possessivpronomen                               */
+/* ══════════════════════════════════════════════════════════ */
+var L2=(function(){
+  var fillAns={'l2-f1':'mein','l2-f2':'deine','l2-f3':'sein','l2-f4':'ihre','l2-f5':'unser','l2-f6':'euer','l2-f7':'ihre'};
+  var fillScore=0;
+  var fillHints={
+    'l2-f1':'ich → mein (das Buch, neutrum: mein değişmez)',
+    'l2-f2':'du → dein, die Tasche feminin → deine',
+    'l2-f3':'er → sein (das Auto, neutrum: sein değişmez)',
+    'l2-f4':'sie (o-kadın) → ihr, die Katze feminin → ihre',
+    'l2-f5':'wir → unser (das Haus, neutrum: unser değişmez)',
+    'l2-f6':'ihr (siz) → euer (der Hund, maskulin: euer değişmez)',
+    'l2-f7':'sie (onlar) → ihr, die Bücher çoğul → ihre'
+  };
+  function checkFill(){
+    fillScore=0;
+    Object.keys(fillAns).forEach(function(id){
+      var inp=document.getElementById(id);
+      var num=id.replace('l2-f','');
+      var icon=document.getElementById('l2-fi'+num);
+      var val=inp.value.trim().toLowerCase();
+      if(val===fillAns[id]){inp.classList.add('ok');inp.classList.remove('no');icon.textContent='✅';fillScore++;}
+      else{inp.classList.add('no');inp.classList.remove('ok');icon.textContent='❌';}
+      var fb=document.getElementById(id+'-fb');
+      if(!fb){fb=document.createElement('div');fb.id=id+'-fb';fb.style.cssText='font-size:0.8rem;margin-top:2px;';inp.parentNode.appendChild(fb);}
+      if(val===fillAns[id]){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+      else if(val){fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+fillAns[id]+' — '+fillHints[id];}
+      else{fb.textContent='';}
+    });
+  }
+
+  var mcDone={},mcScore=0;
+  var mcHintsL2={
+    'l2-mc1':'ich → mein (der Schlüssel, maskulin Nominativ → mein)',
+    'l2-mc2':'er → sein, die Schwester feminin → seine',
+    'l2-mc3':'wir → unser, die Wohnung feminin → unsere',
+    'l2-mc4':'du → dein (das Handy, neutrum → dein değişmez)',
+    'l2-mc5':'sie (onlar) → ihr, die Kinder çoğul → ihre',
+    'l2-mc6':'sie (o-kadın) → ihr (das Fahrrad, neutrum → ihr değişmez)'
+  };
+  function checkMC(btn,qid,correct){
+    if(mcDone[qid])return;
+    var block=document.getElementById(qid);
+    var all=block.querySelectorAll('.opt');
+    var isRight=btn.textContent.trim()===correct;
+    if(isRight){btn.classList.add('right');mcScore++;}
+    else{btn.classList.add('wrong');all.forEach(function(b){if(b.textContent.trim()===correct)b.classList.add('show-right');});}
+    mcDone[qid]=true;
+    var fb=document.createElement('div');fb.style.cssText='font-size:0.82rem;margin-top:6px;padding:6px 10px;border-radius:8px;';
+    if(isRight){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';}
+    else{fb.style.color='var(--red)';fb.textContent='❌ Doğrusu: '+correct+' — '+mcHintsL2[qid];}
+    block.appendChild(fb);
+  }
+
+  var selL=null,selR=null,matchScore=0,matchTotal=5;
+  function doMatch(el){
+    if(el.classList.contains('done-ok'))return;
+    var side=el.dataset.side;
+    if(side==='L'){if(selL)selL.classList.remove('sel');selL=el;el.classList.add('sel');}
+    else{if(selR)selR.classList.remove('sel');selR=el;el.classList.add('sel');}
+    if(selL&&selR){
+      if(selL.dataset.id===selR.dataset.id){
+        selL.classList.remove('sel');selL.classList.add('done-ok');
+        selR.classList.remove('sel');selR.classList.add('done-ok');
+        matchScore++;
+        var msg=document.getElementById('l2-match-msg');
+        msg.textContent=matchScore===matchTotal?'🎉 Mükemmel! Tüm eşleşmeler bulundu!':matchScore+'/'+matchTotal+' doğru';
+      }else{
+        selL.classList.add('done-no');selR.classList.add('done-no');
+        var _l=selL,_r=selR;
+        setTimeout(function(){_l.classList.remove('done-no','sel');_r.classList.remove('done-no','sel');selL=null;selR=null;},700);
+        return;
+      }
+      selL=null;selR=null;
+    }
+  }
+
+  function shuffle(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+    if(a.join(' ')===arr.join(' '))return shuffle(arr);
+    return a;
+  }
+
+  var puzzles=[
+    {q:'Sıralayın:',hint:'(Bu onun evi.)',words:['Das','ist','ihr','Haus','.'],answer:'Das ist ihr Haus .'},
+    {q:'Sıralayın:',hint:'(Senin köpeğin nerede?)',words:['Wo','ist','dein','Hund','?'],answer:'Wo ist dein Hund ?'},
+    {q:'Sıralayın:',hint:'(Bu bizim okulumuz.)',words:['Das','ist','unsere','Schule','.'],answer:'Das ist unsere Schule .'}
+  ];
+  var ordStates=puzzles.map(function(){return{built:[]};});
+
+  function renderPuzzles(){
+    var container=document.getElementById('l2-ord-blocks');
+    container.innerHTML='';
+    puzzles.forEach(function(p,i){
+      var shuffled=shuffle(p.words);
+      var div=document.createElement('div');
+      div.className='ord-block';
+      div.innerHTML='<div class="ord-q">'+(i+1)+'. '+p.q+' <span class="hint">'+p.hint+'</span></div>'+
+        '<div class="build-label">Havuz – Eklemek için tıklayın</div>'+
+        '<div class="words-pool" id="l2-pool-'+i+'">'+
+        shuffled.map(function(w,wi){return '<span class="word-chip" data-wi="'+wi+'" data-pi="'+i+'" onclick="L2.addWord(this)">'+w+'</span>';}).join('')+
+        '</div>'+
+        '<div class="build-label">Cümleniz – Kaldırmak için tıklayın</div>'+
+        '<div class="sentence-build" id="l2-build-'+i+'"></div>'+
+        '<div class="ord-feedback" id="l2-of-'+i+'"></div>';
+      container.appendChild(div);
+    });
+  }
+
+  function addWord(el){
+    if(el.classList.contains('placed'))return;
+    var i=parseInt(el.dataset.pi);
+    var wi=parseInt(el.dataset.wi);
+    ordStates[i].built.push({wi:wi,word:el.textContent});
+    el.classList.add('placed');
+    renderBuild(i);
+  }
+  function renderBuild(i){
+    var build=document.getElementById('l2-build-'+i);
+    build.innerHTML='';
+    ordStates[i].built.forEach(function(item,idx){
+      var chip=document.createElement('span');
+      chip.className='word-chip';
+      chip.textContent=item.word;
+      chip.onclick=function(){removeWord(i,idx,item.wi);};
+      build.appendChild(chip);
+    });
+  }
+  function removeWord(i,idx,wi){
+    ordStates[i].built.splice(idx,1);
+    var pool=document.getElementById('l2-pool-'+i);
+    pool.querySelectorAll('.word-chip').forEach(function(c){if(parseInt(c.dataset.wi)===wi)c.classList.remove('placed');});
+    renderBuild(i);
+  }
+
+  var orderScore=0;
+  function checkOrder(){
+    orderScore=0;
+    puzzles.forEach(function(p,i){
+      var built=ordStates[i].built.map(function(x){return x.word;}).join(' ');
+      var fb=document.getElementById('l2-of-'+i);
+      fb.style.display='block';
+      if(built===p.answer){fb.style.color='var(--green)';fb.textContent='✅ Doğru!';orderScore++;}
+      else{fb.style.color='var(--red)';fb.textContent='❌ Tekrar deneyin! Doğru cevap: '+p.answer;}
+    });
+  }
+
+  function revealAll(){
+    for(var i=1;i<=5;i++){
+      document.getElementById('l2-ta'+i).classList.add('show');
+      var inp=document.getElementById('l2-t'+i);
+      if(inp.value.trim())inp.style.borderColor='var(--green)';
+    }
+  }
+
+  function calcScore(){
+    var total=fillScore+mcScore+matchScore+orderScore;
+    var max=7+6+5+3;
+    document.getElementById('l2-totalScore').textContent=total+' / '+max;
+    var pct=total/max;
+    var msg='';
+    if(pct>=0.9)msg='🌟 Mükemmel! Çok iyi yaptınız!';
+    else if(pct>=0.7)msg='👍 İyi! Pratik yapmaya devam edin!';
+    else if(pct>=0.5)msg='📚 Fena değil. Grameri tekrar gözden geçirin!';
+    else msg='💪 Vazgeçmeyin! Tekrar çalışmak ustalaştırır!';
+    document.getElementById('l2-scoreMsg').textContent=msg;
+  }
+
+  renderPuzzles();
+
+  return{checkFill:checkFill,checkMC:checkMC,doMatch:doMatch,addWord:addWord,checkOrder:checkOrder,revealAll:revealAll,calcScore:calcScore};
+})();
+
+
+/* ══════════════════════════════════════════════════════════ */
+/* LESSON 3: Dativ & Akkusativ                               */
+/* ══════════════════════════════════════════════════════════ */
+var L3=(function(){
+  var totalCorrect=0,totalAttempts=0;
+
+  function updateScore(correct){
+    totalAttempts++;
+    if(correct)totalCorrect++;
+    document.getElementById('l3-total-score').textContent=totalCorrect+' / '+totalAttempts;
+  }
+
+  function resetAll(){
+    totalCorrect=0;totalAttempts=0;
+    document.getElementById('l3-total-score').textContent='0 / 0';
+    buildMC();buildFill();buildMixed();buildSort();
+  }
+
+  var mcQuestions=[
+    {sentence:"Ich sehe ___ Mann.",answer:"den",options:["der","den","dem"],hint:"sehen → Akkusativ, maskulin → den"},
+    {sentence:"Er kauft ___ Buch.",answer:"das",options:["das","dem","den"],hint:"kaufen → Akkusativ, neutrum → das (değişmez!)"},
+    {sentence:"Sie liebt ___ Hund.",answer:"den",options:["dem","die","den"],hint:"lieben → Akkusativ, maskulin → den"},
+    {sentence:"Wir brauchen ___ Stift.",answer:"einen",options:["ein","einen","einem"],hint:"brauchen → Akkusativ, maskulin → einen"},
+    {sentence:"Ich habe ___ Schwester.",answer:"eine",options:["eine","einer","ein"],hint:"haben → Akkusativ, feminin → eine (değişmez!)"},
+    {sentence:"Er trinkt ___ Tee.",answer:"den",options:["der","den","dem"],hint:"trinken → Akkusativ, maskulin → den"}
+  ];
+
+  function buildMC(){
+    var container=document.getElementById('l3-mc-container');
+    container.innerHTML='';
+    mcQuestions.forEach(function(q,i){
+      var div=document.createElement('div');
+      div.className='exercise-item';div.id='l3-mc-'+i;
+      div.innerHTML='<div class="sentence">'+(i+1)+'. '+q.sentence+'</div>'+
+        '<div class="options" id="l3-mc-opts-'+i+'">'+
+        q.options.map(function(o){return '<button class="opt-btn" onclick="L3.answerMC('+i+',\''+o+'\')">'+o+'</button>';}).join('')+
+        '</div><div class="feedback" id="l3-mc-fb-'+i+'"></div>';
+      container.appendChild(div);
+    });
+  }
+
+  function answerMC(i,chosen){
+    var q=mcQuestions[i];
+    var item=document.getElementById('l3-mc-'+i);
+    var fb=document.getElementById('l3-mc-fb-'+i);
+    var btns=document.querySelectorAll('#l3-mc-opts-'+i+' .opt-btn');
+    var correct=chosen===q.answer;
+    btns.forEach(function(b){
+      b.disabled=true;
+      if(b.textContent===q.answer)b.classList.add('show-answer');
+      if(b.textContent===chosen)b.classList.add(correct?'selected-correct':'selected-wrong');
+    });
+    item.classList.add(correct?'correct':'wrong');
+    fb.className='feedback '+(correct?'ok':'err');
+    fb.textContent=correct?'✅ Doğru!':'❌ Yanlış. Doğrusu: '+q.answer+' — '+q.hint;
+    updateScore(correct);
+  }
+
+  var fillQuestions=[
+    {parts:["Ich gebe "," Frau eine Blume.","der"],answers:["der"],hint:"geben → Dativ, feminin → der"},
+    {parts:["Er hilft "," Kind.","dem"],answers:["dem"],hint:"helfen → Dativ, neutrum → dem"},
+    {parts:["Sie dankt "," Mann.","dem"],answers:["dem"],hint:"danken → Dativ, maskulin → dem"},
+    {parts:["Wir helfen "," Lehrerin.","der"],answers:["der"],hint:"helfen → Dativ, feminin → der"},
+    {parts:["Das Buch gehört "," Studentin.","der"],answers:["der"],hint:"gehören → Dativ, feminin → der"}
+  ];
+
+  function buildFill(){
+    var container=document.getElementById('l3-fill-container');
+    container.innerHTML='';
+    fillQuestions.forEach(function(q,i){
+      var div=document.createElement('div');
+      div.className='exercise-item';div.id='l3-fill-'+i;
+      div.innerHTML='<div class="fill-group"><span>'+(i+1)+'. '+q.parts[0]+'</span>'+
+        '<input class="fill-input" id="l3-fill-inp-'+i+'" placeholder="___" autocomplete="off" />'+
+        '<span>'+q.parts[1]+'</span></div>'+
+        '<div class="feedback" id="l3-fill-fb-'+i+'"></div>';
+      container.appendChild(div);
+    });
+  }
+
+  function checkFill(){
+    fillQuestions.forEach(function(q,i){
+      var inp=document.getElementById('l3-fill-inp-'+i);
+      var fb=document.getElementById('l3-fill-fb-'+i);
+      var item=document.getElementById('l3-fill-'+i);
+      var val=inp.value.trim().toLowerCase();
+      var correct=val===q.answers[0].toLowerCase();
+      inp.className='fill-input '+(correct?'correct':'wrong');
+      item.className='exercise-item '+(correct?'correct':'wrong');
+      fb.className='feedback '+(correct?'ok':'err');
+      fb.textContent=correct?'✅ Doğru!':'❌ Doğrusu: '+q.answers[0]+' — '+q.hint;
+      if(!inp.dataset.scored){updateScore(correct);inp.dataset.scored='1';}
+    });
+  }
+
+  var mixedQuestions=[
+    {sentence:"Ich schenke dem Vater ein Buch.",underline:"dem Vater",answer:"Dativ",hint:"schenken → wem? → dem Vater"},
+    {sentence:"Wir kaufen den Computer.",underline:"den Computer",answer:"Akkusativ",hint:"kaufen → was? → den Computer"},
+    {sentence:"Sie hilft der Mutter.",underline:"der Mutter",answer:"Dativ",hint:"helfen → wem? → der Mutter"},
+    {sentence:"Er besucht einen Freund.",underline:"einen Freund",answer:"Akkusativ",hint:"besuchen → wen? → einen Freund"},
+    {sentence:"Das Kind gibt dem Hund Essen.",underline:"dem Hund",answer:"Dativ",hint:"geben → wem? → dem Hund"},
+    {sentence:"Ich lese ein Buch.",underline:"ein Buch",answer:"Akkusativ",hint:"lesen → was? → ein Buch"}
+  ];
+
+  function buildMixed(){
+    var container=document.getElementById('l3-mixed-container');
+    container.innerHTML='';
+    mixedQuestions.forEach(function(q,i){
+      var highlighted=q.sentence.replace(q.underline,'<strong style="color:var(--l3-dark);text-decoration:underline">'+q.underline+'</strong>');
+      var div=document.createElement('div');
+      div.className='exercise-item';div.id='l3-mix-'+i;
+      div.innerHTML='<div class="sentence">'+(i+1)+'. '+highlighted+'</div>'+
+        '<div class="options">'+
+        '<button class="opt-btn" onclick="L3.answerMixed('+i+',\'Akkusativ\')" style="border-color:var(--acc);color:var(--acc)">🔴 Akkusativ</button>'+
+        '<button class="opt-btn" onclick="L3.answerMixed('+i+',\'Dativ\')" style="border-color:var(--dat);color:#2a9d8f">🟢 Dativ</button>'+
+        '</div><div class="feedback" id="l3-mix-fb-'+i+'"></div>';
+      container.appendChild(div);
+    });
+  }
+
+  function answerMixed(i,chosen){
+    var q=mixedQuestions[i];
+    var item=document.getElementById('l3-mix-'+i);
+    var fb=document.getElementById('l3-mix-fb-'+i);
+    var btns=item.querySelectorAll('.opt-btn');
+    var correct=chosen===q.answer;
+    btns.forEach(function(b){
+      b.disabled=true;
+      if(b.textContent.includes(q.answer))b.classList.add('show-answer');
+      if(b.textContent.includes(chosen))b.classList.add(correct?'selected-correct':'selected-wrong');
+    });
+    item.classList.add(correct?'correct':'wrong');
+    fb.className='feedback '+(correct?'ok':'err');
+    fb.textContent=correct?'✅ Doğru!':'❌ Doğrusu: '+q.answer+' — '+q.hint;
+    updateScore(correct);
+  }
+
+  var sortQuestions=[
+    {words:["Ich","gebe","dem","Kind","ein","Spielzeug","."],hint:"Tam cümle sırası"},
+    {words:["Er","kauft","den","Stift","für","die","Schule","."],hint:""},
+    {words:["Sie","hilft","der","alten","Frau","."],hint:""}
+  ];
+  var sortState=[];
+
+  function shuffleL3(arr){
+    var a=arr.map(function(w,i){return{w:w,i:i};});
+    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+    if(a.every(function(x,idx){return x.i===idx;}))return shuffleL3(arr);
+    return a;
+  }
+
+  function buildSort(){
+    var container=document.getElementById('l3-sort-container');
+    container.innerHTML='';
+    sortState=sortQuestions.map(function(q){return{placed:[],remaining:[].concat(q.words)};});
+    sortQuestions.forEach(function(q,i){
+      var shuffled=shuffleL3(q.words);
+      var div=document.createElement('div');
+      div.className='exercise-item';div.id='l3-sort-'+i;
+      div.innerHTML='<div class="sentence">'+(i+1)+'. Kelimeleri sıraya diz:</div>'+
+        '<div class="sort-words" id="l3-sort-chips-'+i+'">'+
+        shuffled.map(function(item){return '<span class="word-chip" id="l3-chip-'+i+'-'+item.i+'" onclick="L3.placeWord('+i+','+item.i+',\''+item.w+'\')">'+item.w+'</span>';}).join('')+
+        '</div>'+
+        '<div class="sort-answer-row" id="l3-sort-ans-'+i+'"></div>'+
+        '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
+        '<button class="check-btn" style="margin-top:0;padding:7px 20px;font-size:0.88rem" onclick="L3.checkSort('+i+')">✔ Kontrol</button>'+
+        '<button class="check-btn" style="margin-top:0;padding:7px 20px;font-size:0.88rem;background:#888" onclick="L3.resetSort('+i+')">↩ Sıfırla</button>'+
+        '</div>'+
+        '<div class="feedback" id="l3-sort-fb-'+i+'"></div>';
+      container.appendChild(div);
+    });
+  }
+
+  function placeWord(qi,wi,word){
+    var chip=document.getElementById('l3-chip-'+qi+'-'+wi);
+    if(chip.classList.contains('used'))return;
+    chip.classList.add('used');
+    sortState[qi].placed.push({wi:wi,word:word});
+    var ansRow=document.getElementById('l3-sort-ans-'+qi);
+    var span=document.createElement('span');
+    span.className='sort-placed';span.textContent=word;span.dataset.wi=wi;
+    span.onclick=function(){removeWord(qi,wi,span);};
+    ansRow.appendChild(span);
+  }
+
+  function removeWord(qi,wi,span){
+    span.remove();
+    sortState[qi].placed=sortState[qi].placed.filter(function(p){return p.wi!==wi;});
+    document.getElementById('l3-chip-'+qi+'-'+wi).classList.remove('used');
+  }
+
+  function checkSort(qi){
+    var q=sortQuestions[qi];
+    var placed=sortState[qi].placed.map(function(p){return p.word;});
+    var correct=JSON.stringify(placed)===JSON.stringify(q.words);
+    var fb=document.getElementById('l3-sort-fb-'+qi);
+    fb.className='feedback '+(correct?'ok':'err');
+    fb.textContent=correct?'✅ Mükemmel!':'❌ Doğru sıra: '+q.words.join(' ');
+    if(!document.getElementById('l3-sort-'+qi).dataset.scored){
+      updateScore(correct);
+      document.getElementById('l3-sort-'+qi).dataset.scored='1';
+    }
+  }
+
+  function resetSort(qi){
+    sortState[qi].placed=[];
+    document.getElementById('l3-sort-ans-'+qi).innerHTML='';
+    document.querySelectorAll('[id^="l3-chip-'+qi+'-"]').forEach(function(c){c.classList.remove('used');});
+    document.getElementById('l3-sort-fb-'+qi).textContent='';
+  }
+
+  function init(){buildMC();buildFill();buildMixed();buildSort();}
+
+  return{init:init,resetAll:resetAll,checkFill:checkFill,answerMC:answerMC,answerMixed:answerMixed,placeWord:placeWord,removeWord:removeWord,checkSort:checkSort,resetSort:resetSort};
+})();
+
+// Init L3
+L3.init();
+
+// iOS WebView touch fix: ensure onclick fires on tap for all elements
+document.addEventListener('touchstart',function(){},true);
+
+// Global error handler - show errors visibly for debugging
+window.onerror=function(msg,url,line){
+  var d=document.createElement('div');
+  d.style.cssText='background:red;color:white;padding:8px;font-size:12px;position:fixed;bottom:0;left:0;right:0;z-index:9999';
+  d.textContent='JS Hata: '+msg+' (satır '+line+')';
+  document.body.appendChild(d);
+};
+</script>
+</body>
+</html>
  <!DOCTYPE html>
 <html lang="de">
 <head>
