@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prima Plus A1.1 – Große Wiederholung</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3EE;
+  --paper:#FFFFFF;
+  --ink:#1A1A2E;
+  --orange:#E8640A;
+  --orange2:#FF8C42;
+  --blue:#2563EB;
+  --teal:#0891B2;
+  --green:#16A34A;
+  --red:#DC2626;
+  --purple:#7C3AED;
+  --yellow:#D97706;
+  --pink:#DB2777;
+  --muted:#6B7280;
+  --border:#E5E7EB;
+  --shadow:0 6px 28px rgba(26,26,46,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);padding-bottom:80px;}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);
+  color:#fff;padding:48px 20px 40px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(232,100,10,0.15) 0%,transparent 60%);}
+.hero-emoji{font-size:3rem;display:block;margin-bottom:10px;}
+.hero h1{font-family:'Fredoka One',cursive;font-size:2.6rem;line-height:1.1;color:#fff;}
+.hero h1 span{color:#FF8C42;}
+.hero-sub{color:rgba(255,255,255,0.55);margin-top:8px;font-size:0.95rem;}
+.unit-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px;}
+.utag{font-size:0.7rem;font-weight:800;padding:5px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;}
+.u1{background:rgba(232,100,10,0.2);color:#FF8C42;border:1px solid rgba(232,100,10,0.4);}
+.u2{background:rgba(37,99,235,0.2);color:#60A5FA;border:1px solid rgba(37,99,235,0.4);}
+.u3{background:rgba(22,163,74,0.2);color:#4ADE80;border:1px solid rgba(22,163,74,0.4);}
+.u4{background:rgba(124,58,237,0.2);color:#A78BFA;border:1px solid rgba(124,58,237,0.4);}
+.u5{background:rgba(8,145,178,0.2);color:#38BDF8;border:1px solid rgba(8,145,178,0.4);}
+.u6{background:rgba(219,39,119,0.2);color:#F472B6;border:1px solid rgba(219,39,119,0.4);}
+.u7{background:rgba(217,119,6,0.2);color:#FCD34D;border:1px solid rgba(217,119,6,0.4);}
+
+/* ── TIMER ── */
+.timer-bar{
+  background:#fff;border-bottom:3px solid var(--orange);
+  padding:10px 20px;display:flex;align-items:center;justify-content:center;
+  gap:20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+.timer-display{font-family:'Fredoka One',cursive;font-size:1.8rem;color:var(--orange);min-width:90px;text-align:center;}
+.timer-label{font-size:0.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.timer-btn{background:var(--orange);color:#fff;border:none;border-radius:10px;padding:6px 16px;font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:800;cursor:pointer;transition:opacity 0.15s;}
+.timer-btn:hover{opacity:0.85;}
+.progress-wrap{flex:1;max-width:300px;}
+.progress-bar-bg{background:var(--border);border-radius:10px;height:8px;overflow:hidden;}
+.progress-bar-fill{background:linear-gradient(90deg,var(--green),var(--orange));height:100%;border-radius:10px;transition:width 0.5s;}
+
+/* ── SECTION ── */
+.w{max-width:920px;margin:0 auto;padding:0 16px;}
+.unit-header{
+  display:flex;align-items:center;gap:14px;
+  max-width:920px;margin:40px auto 14px;padding:0 16px;
+  padding-bottom:12px;border-bottom:3px solid var(--border);
+}
+.unit-badge{
+  font-family:'Fredoka One',cursive;font-size:1rem;
+  padding:6px 16px;border-radius:20px;flex-shrink:0;color:#fff;
+}
+.unit-header h2{font-family:'Fredoka One',cursive;font-size:1.4rem;}
+.unit-header h2 small{font-family:'Nunito',sans-serif;font-size:0.8rem;color:var(--muted);font-weight:600;display:block;margin-top:2px;}
+.time-est{margin-left:auto;font-size:0.72rem;color:var(--muted);font-weight:800;background:rgba(0,0,0,0.05);padding:4px 10px;border-radius:10px;flex-shrink:0;}
+
+/* ── CARD ── */
+.card{background:var(--paper);border-radius:16px;box-shadow:var(--shadow);padding:24px 26px;margin:0 16px 16px;max-width:920px;margin-left:auto;margin-right:auto;border:1px solid var(--border);}
+.card-title{font-weight:900;font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.ctag{font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.info{font-size:0.82rem;color:var(--muted);background:rgba(37,99,235,0.05);padding:8px 12px;border-radius:10px;border-left:4px solid var(--blue);margin-bottom:14px;line-height:1.6;}
+.info b{color:var(--ink);}
+
+/* ── FILL ── */
+.frow{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin-bottom:13px;font-size:0.97rem;font-weight:600;line-height:1.9;}
+.frow:last-of-type{margin-bottom:0;}
+.fnum{font-weight:900;color:var(--orange);min-width:22px;font-size:0.83rem;}
+.fi{background:var(--bg);border:2px solid var(--border);border-radius:8px;color:var(--ink);font-family:'Nunito',sans-serif;font-size:0.92rem;font-weight:700;padding:3px 10px;width:140px;outline:none;transition:border-color 0.2s;text-align:center;}
+.fi:focus{border-color:var(--blue);}
+.fi.ok{border-color:var(--green);background:rgba(22,163,74,0.07);color:var(--green);}
+.fi.no{border-color:var(--red);background:rgba(220,38,38,0.07);color:var(--red);}
+.fhint{color:var(--muted);font-size:0.77rem;font-style:italic;font-weight:400;}
+.ficon{font-size:0.9rem;}
+.fans{font-size:0.75rem;color:var(--green);font-weight:800;display:none;}
+.fans.on{display:inline;}
+
+/* ── MC ── */
+.mc-block{margin-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.06);padding-bottom:18px;}
+.mc-block:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0;}
+.mc-q{font-weight:700;font-size:0.96rem;margin-bottom:10px;line-height:1.6;}
+.mc-q .h{color:var(--muted);font-size:0.78rem;font-weight:500;font-style:italic;}
+.opts{display:flex;flex-wrap:wrap;gap:8px;}
+.opt{background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:6px 16px;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;color:var(--ink);cursor:pointer;transition:all 0.15s;}
+.opt:hover{border-color:var(--orange);color:var(--orange);}
+.opt.right{border-color:var(--green);background:rgba(22,163,74,0.08);color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(220,38,38,0.08);color:var(--red);}
+.opt.show-r{border-color:var(--green);opacity:0.5;color:var(--green);}
+
+/* ── MATCHING ── */
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:500px){.mgrid{grid-template-columns:1fr;}}
+.mcol{display:flex;flex-direction:column;gap:7px;}
+.clabel{font-size:0.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:800;padding-bottom:6px;border-bottom:2px solid var(--border);}
+.mitem{background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:9px 12px;font-weight:700;font-size:0.86rem;cursor:pointer;transition:all 0.15s;text-align:center;user-select:none;line-height:1.4;}
+.mitem:hover{border-color:var(--orange);}
+.mitem.sel{border-color:var(--blue);background:rgba(37,99,235,0.08);color:var(--blue);}
+.mitem.dok{border-color:var(--green);background:rgba(22,163,74,0.08);color:var(--green);pointer-events:none;}
+.mitem.dno{border-color:var(--red);background:rgba(220,38,38,0.08);}
+.mscore{margin-top:12px;font-weight:800;font-size:0.88rem;color:var(--green);}
+
+/* ── TRANSLATE ── */
+.trans-block{margin-bottom:16px;border-bottom:1px dashed var(--border);padding-bottom:14px;}
+.trans-block:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+.trans-from{font-size:0.96rem;font-weight:700;margin-bottom:8px;background:rgba(217,119,6,0.07);padding:8px 12px;border-radius:10px;border-left:4px solid var(--yellow);}
+.trans-input{width:100%;background:var(--bg);border:2px solid var(--border);border-radius:10px;color:var(--ink);font-family:'Nunito',sans-serif;font-size:0.92rem;font-weight:600;padding:8px 14px;outline:none;transition:border-color 0.2s;}
+.trans-input:focus{border-color:var(--orange);}
+.trans-input.ok{border-color:var(--green);background:rgba(22,163,74,0.04);}
+.trans-ans{font-size:0.78rem;color:var(--green);margin-top:4px;font-weight:800;display:none;}
+.trans-ans.on{display:block;}
+
+/* ── DIALOGUE ── */
+.dial{display:flex;flex-direction:column;gap:14px;}
+.dline{display:flex;align-items:flex-start;gap:10px;}
+.dicon{font-size:1.5rem;flex-shrink:0;}
+.dname{font-weight:900;font-size:0.73rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;}
+.dtext{font-size:0.95rem;line-height:1.9;font-weight:600;}
+.si{display:inline-block;background:var(--bg);border:2px solid var(--border);border-radius:8px;color:var(--ink);font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:700;padding:2px 8px;outline:none;width:145px;text-align:center;transition:border-color 0.2s;vertical-align:middle;}
+.si:focus{border-color:var(--orange);}
+.si.ok{border-color:var(--green);background:rgba(22,163,74,0.07);color:var(--green);}
+.si.no{border-color:var(--red);background:rgba(220,38,38,0.07);color:var(--red);}
+
+/* ── WORD BOX ── */
+.wbox{display:flex;flex-wrap:wrap;gap:7px;background:rgba(0,0,0,0.03);border-radius:10px;padding:10px 12px;margin-bottom:14px;border:1.5px dashed var(--border);}
+.wtag{background:var(--paper);border:1.5px solid var(--border);border-radius:7px;padding:3px 10px;font-size:0.84rem;font-weight:800;color:var(--ink);}
+
+/* ── CONJ TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:0.86rem;margin-bottom:0;}
+.ctable th{background:rgba(0,0,0,0.04);padding:7px 10px;text-align:left;font-weight:800;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);border-bottom:2px solid var(--border);}
+.ctable td{padding:7px 10px;border-bottom:1px solid rgba(0,0,0,0.04);vertical-align:middle;}
+.ctable tr:last-child td{border-bottom:none;}
+.pro{font-weight:700;color:var(--muted);}
+.ci{background:var(--bg);border:none;border-bottom:2px solid var(--border);color:var(--ink);font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;padding:3px 8px;width:110px;outline:none;text-align:center;transition:border-color 0.2s;}
+.ci:focus{border-bottom-color:var(--orange);}
+.ci.ok{border-bottom-color:var(--green);color:var(--green);}
+.ci.no{border-bottom-color:var(--red);color:var(--red);}
+.given{font-weight:700;color:var(--orange);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-block;margin-top:16px;border:none;border-radius:12px;padding:10px 24px;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;transition:opacity 0.15s,transform 0.1s;text-transform:uppercase;letter-spacing:0.5px;}
+.btn:hover{opacity:0.85;transform:translateY(-1px);}
+.btn-or{background:var(--orange);color:#fff;box-shadow:0 4px 12px rgba(232,100,10,0.3);}
+.btn-bl{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgba(37,99,235,0.3);}
+.btn-gr{background:var(--green);color:#fff;box-shadow:0 4px 12px rgba(22,163,74,0.3);}
+.btn-pu{background:var(--purple);color:#fff;box-shadow:0 4px 12px rgba(124,58,237,0.3);}
+.btn-te{background:var(--teal);color:#fff;box-shadow:0 4px 12px rgba(8,145,178,0.3);}
+.btn-pi{background:var(--pink);color:#fff;box-shadow:0 4px 12px rgba(219,39,119,0.3);}
+.btn-ye{background:var(--yellow);color:#fff;box-shadow:0 4px 12px rgba(217,119,6,0.3);}
+.btn-dk{background:var(--ink);color:#fff;}
+
+/* ── RESULT DISPLAY ── */
+.res-line{margin-top:10px;font-weight:800;font-size:0.88rem;}
+
+/* ── SCORE ── */
+.score-wrap{max-width:920px;margin:50px auto 0;padding:0 16px;}
+.score-inner{background:linear-gradient(135deg,#1A1A2E,#0F3460);border-radius:20px;padding:40px;text-align:center;color:#fff;box-shadow:var(--shadow);}
+.score-inner h3{font-family:'Fredoka One',cursive;font-size:2rem;color:#FF8C42;margin-bottom:20px;}
+.score-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:18px 0;}
+.sg .val{font-family:'Fredoka One',cursive;font-size:1.7rem;display:block;}
+.sg .lbl{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);font-weight:700;}
+.score-big{font-family:'Fredoka One',cursive;font-size:5rem;line-height:1;}
+.score-msg{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-top:12px;font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">📖</span>
+  <h1>Prima Plus A1.1<br><span>Große Wiederholung</span></h1>
+  <div class="hero-sub">Tüm Üniteler – Büyük Tekrar · 1 Saatlik Ders · 7 Einheiten</div>
+  <div class="unit-tags">
+    <span class="utag u1">Einheit 1 – Neu hier?</span>
+    <span class="utag u2">Einheit 2 – Meine Klasse</span>
+    <span class="utag u3">Einheit 3 – Tiere</span>
+    <span class="utag u4">Einheit 4 – Mein Tag</span>
+    <span class="utag u5">Einheit 5 – Hobbys</span>
+    <span class="utag u6">Einheit 6 – Meine Familie</span>
+    <span class="utag u7">Einheit 7 – Was kostet das?</span>
+  </div>
+</div>
+
+<!-- TIMER -->
+<div class="timer-bar">
+  <div>
+    <div class="timer-label">⏱ Ders Süresi</div>
+    <div class="timer-display" id="timerDisplay">60:00</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="timer-label" style="margin-bottom:4px;text-align:center;">İlerleme</div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div>
+    <button class="timer-btn" onclick="startTimer()" id="timerStartBtn">▶ Başlat</button>
+    <button class="timer-btn" onclick="resetTimer()" style="background:var(--muted);margin-top:4px;display:block;">↺ Sıfırla</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 1: NEU HİER? -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--orange);">E1</span>
+  <h2>Neu hier? – Tanışma & Selamlama <small>Begrüßen · Name · Wohnort · mögen · Verben</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<!-- Fiil Çekimi -->
+<div class="card">
+  <div class="card-title">🔤 Fiil Çekimi – Verben konjugieren <span class="ctag" style="background:rgba(232,100,10,0.1);color:var(--orange);">Grammatik</span></div>
+  <p class="info">Fiilleri doğru formla doldurun. (Conjugate the verbs correctly.)</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <table class="ctable">
+      <tr><th>Pronomen</th><th>heißen</th><th>kommen</th><th>wohnen</th></tr>
+      <tr><td class="pro">ich</td><td><input class="ci" data-a="heiße" id="v1"></td><td><input class="ci" data-a="komme" id="v2"></td><td><input class="ci" data-a="wohne" id="v3"></td></tr>
+      <tr><td class="pro">du</td><td><input class="ci" data-a="heißt" id="v4"></td><td><input class="ci" data-a="kommst" id="v5"></td><td><input class="ci" data-a="wohnst" id="v6"></td></tr>
+      <tr><td class="pro">er/sie</td><td><span class="given">heißt</span></td><td><span class="given">kommt</span></td><td><span class="given">wohnt</span></td></tr>
+      <tr><td class="pro">Sie (höflich)</td><td><input class="ci" data-a="heißen" id="v7"></td><td><input class="ci" data-a="kommen" id="v8"></td><td><input class="ci" data-a="wohnen" id="v9"></td></tr>
+    </table>
+    <table class="ctable">
+      <tr><th>Pronomen</th><th>sein</th><th>mögen</th><th>machen</th></tr>
+      <tr><td class="pro">ich</td><td><span class="given">bin</span></td><td><input class="ci" data-a="mag" id="v10"></td><td><input class="ci" data-a="mache" id="v11"></td></tr>
+      <tr><td class="pro">du</td><td><input class="ci" data-a="bist" id="v12"></td><td><input class="ci" data-a="magst" id="v13"></td><td><input class="ci" data-a="machst" id="v14"></td></tr>
+      <tr><td class="pro">er/sie</td><td><input class="ci" data-a="ist" id="v15"></td><td><input class="ci" data-a="mag" id="v16"></td><td><input class="ci" data-a="macht" id="v17"></td></tr>
+      <tr><td class="pro">wir</td><td><input class="ci" data-a="sind" id="v18"></td><td><input class="ci" data-a="mögen" id="v19"></td><td><input class="ci" data-a="machen" id="v20"></td></tr>
+    </table>
+  </div>
+  <button class="btn btn-or" onclick="checkConj1()">✔ Prüfen</button>
+  <div class="res-line" id="cr1"></div>
+</div>
+
+<!-- Diyalog -->
+<div class="card">
+  <div class="card-title">💬 Diyalog Tamamlama <span class="ctag" style="background:rgba(232,100,10,0.1);color:var(--orange);">Sprechen</span></div>
+  <div class="wbox">
+    <span class="wtag">Hallo</span><span class="wtag">Wie heißt du</span><span class="wtag">Woher kommst du</span>
+    <span class="wtag">Wo wohnst du</span><span class="wtag">Was magst du</span><span class="wtag">Ich heiße</span>
+    <span class="wtag">Ich komme aus</span><span class="wtag">Ich wohne in</span><span class="wtag">Auf Wiedersehen</span>
+  </div>
+  <div class="dial">
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Oskar</div><div class="dtext"><input class="si" id="d1" data-a="hallo">, ich bin Oskar. <span style="color:var(--muted);font-size:0.8rem">(Selamlama)</span></div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Carla</div><div class="dtext">Hi! <input class="si" id="d2" data-a="ich heiße"> Carla. <span style="color:var(--muted);font-size:0.8rem">(adını söyle)</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Oskar</div><div class="dtext"><input class="si" id="d3" data-a="woher kommst du">? <span style="color:var(--muted);font-size:0.8rem">(Nereden geliyorsun?)</span></div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Carla</div><div class="dtext"><input class="si" id="d4" data-a="ich komme aus"> Spanien. Und du?</div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Oskar</div><div class="dtext"><input class="si" id="d5" data-a="ich wohne in"> Köln. <input class="si" id="d6" data-a="was magst du">? <span style="color:var(--muted);font-size:0.8rem">(Ne seversin?)</span></div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Carla</div><div class="dtext">Ich mag Tennis und Kino. Tschüs!</div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Oskar</div><div class="dtext"><input class="si" id="d7" data-a="auf wiedersehen">! <span style="color:var(--muted);font-size:0.8rem">(Hoşçakal – resmi)</span></div></div></div>
+  </div>
+  <button class="btn btn-or" onclick="checkD1()">✔ Prüfen</button>
+  <div class="res-line" id="dr1"></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 2: MEİNE KLASSE -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--blue);">E2</span>
+  <h2>Meine Klasse – Okul & Sayılar <small>Zahlen · Schulfächer · Artikel · Schulsachen</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🔢 Sayıları Yaz – Zahlen schreiben <span class="ctag" style="background:rgba(37,99,235,0.1);color:var(--blue);">Zahlen</span></div>
+  <div class="frow"><span class="fnum">1.</span>13 = <input class="fi" id="z1" data-a="dreizehn"><span class="ficon" id="zi1"></span><span class="fans" id="zs1">→ dreizehn</span></div>
+  <div class="frow"><span class="fnum">2.</span>19 = <input class="fi" id="z2" data-a="neunzehn"><span class="ficon" id="zi2"></span><span class="fans" id="zs2">→ neunzehn</span></div>
+  <div class="frow"><span class="fnum">3.</span>45 = <input class="fi" id="z3" data-a="fünfundvierzig"><span class="ficon" id="zi3"></span><span class="fans" id="zs3">→ fünfundvierzig</span></div>
+  <div class="frow"><span class="fnum">4.</span>78 = <input class="fi" id="z4" data-a="achtundsiebzig"><span class="ficon" id="zi4"></span><span class="fans" id="zs4">→ achtundsiebzig</span></div>
+  <div class="frow"><span class="fnum">5.</span>100 = <input class="fi" id="z5" data-a="hundert"><span class="ficon" id="zi5"></span><span class="fans" id="zs5">→ hundert</span></div>
+  <button class="btn btn-bl" onclick="checkZahlen()">✔ Prüfen</button>
+  <div class="res-line" id="zr1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">📚 Artikel & Schulsachen <span class="ctag" style="background:rgba(37,99,235,0.1);color:var(--blue);">Artikel</span></div>
+  <p class="info">Her okul eşyasına doğru artikeli yazın: <b>der / die / das</b></p>
+  <div class="frow"><span class="fnum">1.</span><input class="fi" id="s1" data-a="der"> Kuli<span class="fhint">(kalem)</span><span class="ficon" id="si1"></span><span class="fans" id="ss1">→ der</span></div>
+  <div class="frow"><span class="fnum">2.</span><input class="fi" id="s2" data-a="das"> Heft<span class="fhint">(defter)</span><span class="ficon" id="si2"></span><span class="fans" id="ss2">→ das</span></div>
+  <div class="frow"><span class="fnum">3.</span><input class="fi" id="s3" data-a="die"> Schere<span class="fhint">(makas)</span><span class="ficon" id="si3"></span><span class="fans" id="ss3">→ die</span></div>
+  <div class="frow"><span class="fnum">4.</span><input class="fi" id="s4" data-a="der"> Bleistift<span class="fhint">(kurşun kalem)</span><span class="ficon" id="si4"></span><span class="fans" id="ss4">→ der</span></div>
+  <div class="frow"><span class="fnum">5.</span><input class="fi" id="s5" data-a="das"> Lineal<span class="fhint">(cetvel)</span><span class="ficon" id="si5"></span><span class="fans" id="ss5">→ das</span></div>
+  <div class="frow"><span class="fnum">6.</span><input class="fi" id="s6" data-a="der"> Rucksack<span class="fhint">(sırt çantası)</span><span class="ficon" id="si6"></span><span class="fans" id="ss6">→ der</span></div>
+  <div class="frow"><span class="fnum">7.</span><input class="fi" id="s7" data-a="das"> Wörterbuch<span class="fhint">(sözlük)</span><span class="ficon" id="si7"></span><span class="fans" id="ss7">→ das</span></div>
+  <div class="frow"><span class="fnum">8.</span><input class="fi" id="s8" data-a="das"> Tablet<span class="fhint">(tablet)</span><span class="ficon" id="si8"></span><span class="fans" id="ss8">→ das</span></div>
+  <button class="btn btn-bl" onclick="checkSachen()">✔ Prüfen</button>
+  <div class="res-line" id="sr1"></div>
+</div>
+
+<!-- MC - Schulfächer -->
+<div class="card">
+  <div class="card-title">🏫 Schulfächer – Çoktan Seçmeli <span class="ctag" style="background:rgba(37,99,235,0.1);color:var(--blue);">Multiple Choice</span></div>
+  <div class="mc-block" id="mc2a">
+    <div class="mc-q">1. „Magst du Bio?" – „<span class="h">___, Bio ist langweilig."</span></div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc2a','Nein, ich mag Bio nicht')">Nein, ich mag Bio nicht</button>
+      <button class="opt" onclick="chkMC(this,'mc2a','Nein, ich mag Bio nicht')">Nein, Bio mag ich</button>
+      <button class="opt" onclick="chkMC(this,'mc2a','Nein, ich mag Bio nicht')">Ja, Bio ist toll</button>
+    </div>
+  </div>
+  <div class="mc-block" id="mc2b">
+    <div class="mc-q">2. „Was ist das?" – „Das ist <span class="h">___</span> Kuli." (ein / eine / einen)</div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc2b','ein')">ein</button>
+      <button class="opt" onclick="chkMC(this,'mc2b','ein')">eine</button>
+      <button class="opt" onclick="chkMC(this,'mc2b','ein')">einen</button>
+    </div>
+  </div>
+  <div class="mc-block" id="mc2c">
+    <div class="mc-q">3. „Ich mag Mathe nicht. Mathe ist ___." <span class="h">(sıkıcı)</span></div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc2c','langweilig')">langweilig</button>
+      <button class="opt" onclick="chkMC(this,'mc2c','langweilig')">super</button>
+      <button class="opt" onclick="chkMC(this,'mc2c','langweilig')">toll</button>
+      <button class="opt" onclick="chkMC(this,'mc2c','langweilig')">interessant</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 3: TİERE -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--green);">E3</span>
+  <h2>Tiere – Hayvanlar <small>haben · Nominativ / Akkusativ · kein / keine · Pluralformen</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🐾 Nominativ & Akkusativ – haben <span class="ctag" style="background:rgba(22,163,74,0.1);color:var(--green);">Grammatik</span></div>
+  <p class="info"><b>Nominativ:</b> Das ist ein Hund. (der→ein, das→ein, die→eine) &nbsp;|&nbsp; <b>Akkusativ:</b> Ich habe einen Hund. (der→einen!)</p>
+  <div class="frow"><span class="fnum">1.</span>Das ist <input class="fi" id="t1" data-a="ein"> Hamster. (der Hamster – Nominativ)<span class="ficon" id="ti1"></span><span class="fans" id="ts1">→ ein</span></div>
+  <div class="frow"><span class="fnum">2.</span>Ich habe <input class="fi" id="t2" data-a="einen"> Hund. (der Hund – Akkusativ)<span class="ficon" id="ti2"></span><span class="fans" id="ts2">→ einen</span></div>
+  <div class="frow"><span class="fnum">3.</span>Ich habe <input class="fi" id="t3" data-a="keine"> Katze. (die Katze – kein-)<span class="ficon" id="ti3"></span><span class="fans" id="ts3">→ keine</span></div>
+  <div class="frow"><span class="fnum">4.</span>Hast du <input class="fi" id="t4" data-a="einen"> Papagei? (der Papagei – Akkusativ)<span class="ficon" id="ti4"></span><span class="fans" id="ts4">→ einen</span></div>
+  <div class="frow"><span class="fnum">5.</span>Ich habe <input class="fi" id="t5" data-a="kein"> Pferd. (das Pferd – kein-)<span class="ficon" id="ti5"></span><span class="fans" id="ts5">→ kein</span></div>
+  <div class="frow"><span class="fnum">6.</span>Das ist <input class="fi" id="t6" data-a="eine"> Spinne. (die Spinne – Nominativ)<span class="ficon" id="ti6"></span><span class="fans" id="ts6">→ eine</span></div>
+  <button class="btn btn-gr" onclick="checkTiere()">✔ Prüfen</button>
+  <div class="res-line" id="tr1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">🐕 Eşleştirme – Hayvan / Anlam <span class="ctag" style="background:rgba(22,163,74,0.1);color:var(--green);">Zuordnung</span></div>
+  <div class="mgrid" id="mg3">
+    <div class="mcol">
+      <div class="clabel">Deutsch</div>
+      <div class="mitem" data-id="a1" data-side="L" data-mg="3" onclick="doMatch(this,'3')">der Hund</div>
+      <div class="mitem" data-id="a2" data-side="L" data-mg="3" onclick="doMatch(this,'3')">die Katze</div>
+      <div class="mitem" data-id="a3" data-side="L" data-mg="3" onclick="doMatch(this,'3')">das Kaninchen</div>
+      <div class="mitem" data-id="a4" data-side="L" data-mg="3" onclick="doMatch(this,'3')">der Wellensittich</div>
+      <div class="mitem" data-id="a5" data-side="L" data-mg="3" onclick="doMatch(this,'3')">das Meerschweinchen</div>
+    </div>
+    <div class="mcol">
+      <div class="clabel">Türkçe</div>
+      <div class="mitem" data-id="a3" data-side="R" data-mg="3" onclick="doMatch(this,'3')">tavşan</div>
+      <div class="mitem" data-id="a5" data-side="R" data-mg="3" onclick="doMatch(this,'3')">guinea domuzu</div>
+      <div class="mitem" data-id="a1" data-side="R" data-mg="3" onclick="doMatch(this,'3')">köpek</div>
+      <div class="mitem" data-id="a2" data-side="R" data-mg="3" onclick="doMatch(this,'3')">kedi</div>
+      <div class="mitem" data-id="a4" data-side="R" data-mg="3" onclick="doMatch(this,'3')">muhabbet kuşu</div>
+    </div>
+  </div>
+  <div class="mscore" id="ms3"></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 4: MEİN TAG -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--purple);">E4</span>
+  <h2>Mein Tag – Günlük Hayat <small>Uhrzeiten · Wochentage · Präpositionen: um / von-bis / am / gegen</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🕐 Saat Söyle – Uhrzeit sagen <span class="ctag" style="background:rgba(124,58,237,0.1);color:var(--purple);">Uhrzeiten</span></div>
+  <p class="info">Saatleri Almancaya çevirin.</p>
+  <div class="frow"><span class="fnum">1.</span>07:15 → <input class="fi" id="u1" data-a="es ist viertel nach sieben" style="width:220px"><span class="ficon" id="ui1"></span><span class="fans" id="us1">→ Es ist Viertel nach sieben.</span></div>
+  <div class="frow"><span class="fnum">2.</span>12:30 → <input class="fi" id="u2" data-a="es ist halb eins" style="width:220px"><span class="ficon" id="ui2"></span><span class="fans" id="us2">→ Es ist halb eins.</span></div>
+  <div class="frow"><span class="fnum">3.</span>16:45 → <input class="fi" id="u3" data-a="es ist viertel vor fünf" style="width:220px"><span class="ficon" id="ui3"></span><span class="fans" id="us3">→ Es ist Viertel vor fünf.</span></div>
+  <div class="frow"><span class="fnum">4.</span>08:00 → <input class="fi" id="u4" data-a="es ist acht uhr" style="width:220px"><span class="ficon" id="ui4"></span><span class="fans" id="us4">→ Es ist acht Uhr.</span></div>
+  <button class="btn btn-pu" onclick="checkUhr()">💡 Cevapları Göster</button>
+  <div class="res-line" id="ur1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">📅 Präpositionen & Wochentage <span class="ctag" style="background:rgba(124,58,237,0.1);color:var(--purple);">Grammatik</span></div>
+  <p class="info"><b>um</b> (saat için) · <b>am</b> (gün için) · <b>von…bis</b> (saat aralığı) · <b>gegen</b> (yaklaşık)</p>
+  <div class="frow"><span class="fnum">1.</span>Der Unterricht beginnt <input class="fi" id="pr1" data-a="um"> acht Uhr.<span class="fhint">(saat 8'de)</span><span class="ficon" id="pri1"></span><span class="fans" id="prs1">→ um</span></div>
+  <div class="frow"><span class="fnum">2.</span>Ich habe Mathe <input class="fi" id="pr2" data-a="am"> Montag.<span class="fhint">(Pazartesi)</span><span class="ficon" id="pri2"></span><span class="fans" id="prs2">→ am</span></div>
+  <div class="frow"><span class="fnum">3.</span>Wir haben Schule <input class="fi" id="pr3" data-a="von"> 8 <input class="fi" id="pr4" data-a="bis" style="width:80px"> 16 Uhr.<span class="fhint">(saat 8'den 4'e kadar)</span><span class="ficon" id="pri3"></span></div>
+  <div class="frow"><span class="fnum">4.</span><input class="fi" id="pr5" data-a="gegen"> 16 Uhr bin ich zu Hause.<span class="fhint">(yaklaşık 4'te)</span><span class="ficon" id="pri4"></span><span class="fans" id="prs3">→ gegen</span></div>
+  <div class="frow"><span class="fnum">5.</span>Hast du <input class="fi" id="pr6" data-a="am"> Mittwoch Sport?<span class="fhint">(Çarşamba)</span><span class="ficon" id="pri5"></span><span class="fans" id="prs4">→ am</span></div>
+  <button class="btn btn-pu" onclick="checkPraepo()">✔ Prüfen</button>
+  <div class="res-line" id="prr1"></div>
+</div>
+
+<!-- MC E4 -->
+<div class="card">
+  <div class="card-title">❓ Timos Schultag – Doğru mu Yanlış mı? <span class="ctag" style="background:rgba(124,58,237,0.1);color:var(--purple);">Lesen</span></div>
+  <p class="info" style="font-style:italic;color:var(--ink);">Timo wohnt in Heidelberg. Sein Wecker klingelt um halb sieben. Er geht um Viertel nach sieben aus dem Haus. Der Unterricht beginnt um Viertel vor acht. Die Schule ist um 16 Uhr zu Ende.</p>
+  <div class="mc-block" id="mc4a">
+    <div class="mc-q">1. Timos Wecker klingelt um 7:00 Uhr.</div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc4a','Falsch – um halb sieben (6:30)')">Richtig</button>
+      <button class="opt" onclick="chkMC(this,'mc4a','Falsch – um halb sieben (6:30)')">Falsch – um halb sieben (6:30)</button>
+    </div>
+  </div>
+  <div class="mc-block" id="mc4b">
+    <div class="mc-q">2. Der Unterricht beginnt um 7:45 Uhr.</div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc4b','Richtig')">Richtig</button>
+      <button class="opt" onclick="chkMC(this,'mc4b','Richtig')">Falsch</button>
+    </div>
+  </div>
+  <div class="mc-block" id="mc4c">
+    <div class="mc-q">3. Die Schule endet um 15:00 Uhr.</div>
+    <div class="opts">
+      <button class="opt" onclick="chkMC(this,'mc4c','Falsch – um 16 Uhr')">Richtig</button>
+      <button class="opt" onclick="chkMC(this,'mc4c','Falsch – um 16 Uhr')">Falsch – um 16 Uhr</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 5: HOBBYS -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--teal);">E5</span>
+  <h2>Hobbys – Boş Zaman <small>können · trennbare Verben · Freizeitaktivitäten · Verabredungen</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">💪 können – Konjugation & Sätze <span class="ctag" style="background:rgba(8,145,178,0.1);color:var(--teal);">Grammatik</span></div>
+  <p class="info">Boşlukları <b>können</b> fiilinin doğru formuyla doldurun. Modalverb → Infinitiv sona gider!</p>
+  <div class="frow"><span class="fnum">1.</span>Ich <input class="fi" id="k1" data-a="kann"> gut schwimmen.<span class="fhint">(iyi yüzebilirim)</span><span class="ficon" id="ki1"></span><span class="fans" id="ks1">→ kann</span></div>
+  <div class="frow"><span class="fnum">2.</span>Kannst du Gitarre <input class="fi" id="k2" data-a="spielen">?<span class="fhint">(gitara çalabilir misin?)</span><span class="ficon" id="ki2"></span><span class="fans" id="ks2">→ spielen</span></div>
+  <div class="frow"><span class="fnum">3.</span>Wir <input class="fi" id="k3" data-a="können"> Deutsch sprechen.<span class="fhint">(Almanca konuşabiliriz)</span><span class="ficon" id="ki3"></span><span class="fans" id="ks3">→ können</span></div>
+  <div class="frow"><span class="fnum">4.</span>Er <input class="fi" id="k4" data-a="kann"> nicht kochen.<span class="fhint">(yemek yapamaz)</span><span class="ficon" id="ki4"></span><span class="fans" id="ks4">→ kann</span></div>
+  <div class="frow"><span class="fnum">5.</span><input class="fi" id="k5" data-a="könnt"> ihr Skateboard fahren?<span class="fhint">(siz – Könnt ihr?)</span><span class="ficon" id="ki5"></span><span class="fans" id="ks5">→ Könnt</span></div>
+  <button class="btn btn-te" onclick="checkKoennen()">✔ Prüfen</button>
+  <div class="res-line" id="kr1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">✂️ Trennbare Verben – Ayrılabilir Fiiller <span class="ctag" style="background:rgba(8,145,178,0.1);color:var(--teal);">Grammatik</span></div>
+  <p class="info">Ayrılabilir fiillerin öneki (Präfix) cümle sonuna gider! <b>aufstehen → Ich stehe um 7 auf.</b></p>
+  <div class="frow"><span class="fnum">1.</span>Florian steht am Sonntag um 9 Uhr <input class="fi" id="tr1" data-a="auf">.<span class="fhint">(aufstehen)</span><span class="ficon" id="tri1"></span><span class="fans" id="trs1">→ auf</span></div>
+  <div class="frow"><span class="fnum">2.</span>Er sieht abends gerne fern<input class="fi" id="tr2" data-a="">.<span class="fhint">(fernsehen – Präfix ist schon da! Schreibe nichts.)</span><span class="ficon" id="tri2"></span><span class="fans" id="trs2">→ (leer)</span></div>
+  <div class="frow"><span class="fnum">3.</span>Ich hole dich um 18 Uhr <input class="fi" id="tr3" data-a="ab">.<span class="fhint">(abholen)</span><span class="ficon" id="tri3"></span><span class="fans" id="trs3">→ ab</span></div>
+  <div class="frow"><span class="fnum">4.</span>Der Film fängt um 8 Uhr <input class="fi" id="tr4" data-a="an">.<span class="fhint">(anfangen)</span><span class="ficon" id="tri4"></span><span class="fans" id="trs4">→ an</span></div>
+  <div class="frow"><span class="fnum">5.</span>Kommst du mit<input class="fi" id="tr5" data-a="">?<span class="fhint">(mitkommen – Präfix schon da!)</span><span class="ficon" id="tri5"></span><span class="fans" id="trs5">→ (leer)</span></div>
+  <button class="btn btn-te" onclick="checkTrennbar()">✔ Prüfen</button>
+  <div class="res-line" id="trr1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">📞 Verabredung – Randevu Diyaloğu <span class="ctag" style="background:rgba(8,145,178,0.1);color:var(--teal);">Sprechen</span></div>
+  <div class="wbox">
+    <span class="wtag">Kommst du mit?</span><span class="wtag">Keine Zeit</span><span class="wtag">um fünf</span>
+    <span class="wtag">Ich hole dich ab</span><span class="wtag">Der Film fängt an</span><span class="wtag">Schade</span>
+  </div>
+  <div class="dial">
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Tim</div><div class="dtext">Ich gehe ins Kino. <input class="si" id="v1d" data-a="kommst du mit">? <span style="color:var(--muted);font-size:0.8rem">(Sen de gelir misin?)</span></div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Anna</div><div class="dtext">Nein, ich habe <input class="si" id="v2d" data-a="keine zeit">. <span style="color:var(--muted);font-size:0.8rem">(zamanım yok)</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Tim</div><div class="dtext"><input class="si" id="v3d" data-a="schade">. <span style="color:var(--muted);font-size:0.8rem">(Yazık.)</span> Vielleicht ein anderes Mal!</div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Tim (zu Florian)</div><div class="dtext"><input class="si" id="v4d" data-a="ich hole dich ab"> <input class="si" id="v5d" data-a="um fünf">. <span style="color:var(--muted);font-size:0.8rem">(Seni 5'te alırım)</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Tim</div><div class="dtext"><input class="si" id="v6d" data-a="der film fängt an"> um sechs Uhr. <span style="color:var(--muted);font-size:0.8rem">(film saat 6'da başlıyor)</span></div></div></div>
+  </div>
+  <button class="btn btn-te" onclick="checkV5()">✔ Prüfen</button>
+  <div class="res-line" id="vr5"></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 6: MEİNE FAMİLİE -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--pink);">E6</span>
+  <h2>Meine Familie – Ailem <small>Possessivartikel · Familienmitglieder · Berufe · Possessives -s</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">👨‍👩‍👧 Possessivartikel – mein / dein / sein / ihr… <span class="ctag" style="background:rgba(219,39,119,0.1);color:var(--pink);">Grammatik</span></div>
+  <p class="info">Doğru Possessivartikel'i yazın. <b>der</b>→ mein &nbsp;|&nbsp; <b>das</b>→ mein &nbsp;|&nbsp; <b>die</b>→ meine &nbsp;|&nbsp; <b>Pl.</b>→ meine</p>
+  <div class="frow"><span class="fnum">1.</span>Das ist <input class="fi" id="p1" data-a="mein"> Vater. (ich – der Vater)<span class="ficon" id="pi1"></span><span class="fans" id="ps1">→ mein</span></div>
+  <div class="frow"><span class="fnum">2.</span>Wie heißt <input class="fi" id="p2" data-a="deine"> Mutter? (du – die Mutter)<span class="ficon" id="pi2"></span><span class="fans" id="ps2">→ deine</span></div>
+  <div class="frow"><span class="fnum">3.</span>Das ist <input class="fi" id="p3" data-a="sein"> Hobby. (er – das Hobby)<span class="ficon" id="pi3"></span><span class="fans" id="ps3">→ sein</span></div>
+  <div class="frow"><span class="fnum">4.</span>Wer sind <input class="fi" id="p4" data-a="ihre"> Geschwister? (sie/she – die Geschwister Pl.)<span class="ficon" id="pi4"></span><span class="fans" id="ps4">→ ihre</span></div>
+  <div class="frow"><span class="fnum">5.</span>Das ist <input class="fi" id="p5" data-a="unser"> Hund. (wir – der Hund)<span class="ficon" id="pi5"></span><span class="fans" id="ps5">→ unser</span></div>
+  <div class="frow"><span class="fnum">6.</span>Was ist <input class="fi" id="p6" data-a="euer"> Hobby? (ihr – das Hobby)<span class="ficon" id="pi6"></span><span class="fans" id="ps6">→ euer</span></div>
+  <div class="frow"><span class="fnum">7.</span>Das sind <input class="fi" id="p7" data-a="ihre"> Kinder. (sie pl. – die Kinder Pl.)<span class="ficon" id="pi7"></span><span class="fans" id="ps7">→ ihre</span></div>
+  <button class="btn btn-pi" onclick="checkPossessiv()">✔ Prüfen</button>
+  <div class="res-line" id="pr6"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">👩‍⚕️ Berufe & Familie – Eşleştirme <span class="ctag" style="background:rgba(219,39,119,0.1);color:var(--pink);">Zuordnung</span></div>
+  <div class="mgrid" id="mg6">
+    <div class="mcol">
+      <div class="clabel">Deutsch</div>
+      <div class="mitem" data-id="b1" data-side="L" data-mg="6" onclick="doMatch(this,'6')">die Lehrerin</div>
+      <div class="mitem" data-id="b2" data-side="L" data-mg="6" onclick="doMatch(this,'6')">der Bruder</div>
+      <div class="mitem" data-id="b3" data-side="L" data-mg="6" onclick="doMatch(this,'6')">die Großeltern</div>
+      <div class="mitem" data-id="b4" data-side="L" data-mg="6" onclick="doMatch(this,'6')">der Tierarzt</div>
+      <div class="mitem" data-id="b5" data-side="L" data-mg="6" onclick="doMatch(this,'6')">die Cousine</div>
+    </div>
+    <div class="mcol">
+      <div class="clabel">Türkçe</div>
+      <div class="mitem" data-id="b3" data-side="R" data-mg="6" onclick="doMatch(this,'6')">büyükanne ve büyükbaba</div>
+      <div class="mitem" data-id="b1" data-side="R" data-mg="6" onclick="doMatch(this,'6')">öğretmen (kadın)</div>
+      <div class="mitem" data-id="b5" data-side="R" data-mg="6" onclick="doMatch(this,'6')">kuzen (kız)</div>
+      <div class="mitem" data-id="b2" data-side="R" data-mg="6" onclick="doMatch(this,'6')">erkek kardeş</div>
+      <div class="mitem" data-id="b4" data-side="R" data-mg="6" onclick="doMatch(this,'6')">veteriner</div>
+    </div>
+  </div>
+  <div class="mscore" id="ms6"></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- EİNHEİT 7: WAS KOSTET DAS? -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--yellow);">E7</span>
+  <h2>Was kostet das? – Alışveriş <small>möchten · nehmen · Preise · Akkusativ · Einkaufsdialoge</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🛒 möchten & Einkauf <span class="ctag" style="background:rgba(217,119,6,0.1);color:var(--yellow);">Grammatik</span></div>
+  <p class="info">Boşlukları <b>möchten</b> veya diğer doğru formla doldurun.</p>
+  <div class="frow"><span class="fnum">1.</span>Ich <input class="fi" id="e1" data-a="möchte"> einen Kaugummi.<span class="fhint">(bir çiklet istiyorum)</span><span class="ficon" id="ei1"></span><span class="fans" id="es1">→ möchte</span></div>
+  <div class="frow"><span class="fnum">2.</span>Was <input class="fi" id="e2" data-a="kostet"> der Comic?<span class="fhint">(ne kadar?)</span><span class="ficon" id="ei2"></span><span class="fans" id="es2">→ kostet</span></div>
+  <div class="frow"><span class="fnum">3.</span>Der Schokoriegel <input class="fi" id="e3" data-a="kostet"> 70 Cent.<span class="fhint">(70 cent)</span><span class="ficon" id="ei3"></span><span class="fans" id="es3">→ kostet</span></div>
+  <div class="frow"><span class="fnum">4.</span>Ich <input class="fi" id="e4" data-a="nehme"> den Apfelsaft.<span class="fhint">(alıyorum/aldım – nehmen)</span><span class="ficon" id="ei4"></span><span class="fans" id="es4">→ nehme</span></div>
+  <div class="frow"><span class="fnum">5.</span>Das macht zusammen 1 Euro <input class="fi" id="e5" data-a="45">.<span class="fhint">(toplam 1,45€ – Zahl schreiben)</span><span class="ficon" id="ei5"></span><span class="fans" id="es5">→ 45</span></div>
+  <button class="btn btn-ye" onclick="checkEinkauf()">✔ Prüfen</button>
+  <div class="res-line" id="er1"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">🏪 Am Kiosk – Diyalog <span class="ctag" style="background:rgba(217,119,6,0.1);color:var(--yellow);">Sprechen</span></div>
+  <div class="wbox">
+    <span class="wtag">Ich hätte gerne</span><span class="wtag">Was kosten die</span><span class="wtag">Dann nehme ich</span>
+    <span class="wtag">Noch etwas?</span><span class="wtag">Das macht zusammen</span><span class="wtag">Das sind</span>
+  </div>
+  <div class="dial">
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Käuferin</div><div class="dtext">Guten Tag. <input class="si" id="ek1" data-a="ich hätte gerne"> Gummibärchen. <span style="color:var(--muted);font-size:0.8rem">(... istiyorum)</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Verkäufer</div><div class="dtext">Die kosten 75 Cent.</div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Käuferin</div><div class="dtext">Und <input class="si" id="ek2" data-a="was kosten die"> Schokoriegel? <span style="color:var(--muted);font-size:0.8rem">(ne kadar?)</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Verkäufer</div><div class="dtext">70 und 90 Cent.</div></div></div>
+    <div class="dline"><div class="dicon">👩</div><div><div class="dname">Käuferin</div><div class="dtext"><input class="si" id="ek3" data-a="dann nehme ich"> den für 70 Cent. <input class="si" id="ek4" data-a="noch etwas?"> <span style="color:var(--muted);font-size:0.8rem">Nein, das ist alles.</span></div></div></div>
+    <div class="dline"><div class="dicon">🧑</div><div><div class="dname">Verkäufer</div><div class="dtext"><input class="si" id="ek5" data-a="das macht zusammen"> 1 Euro 45. – <input class="si" id="ek6" data-a="das sind"> 2 Euro – und 55 Cent zurück.</div></div></div>
+  </div>
+  <button class="btn btn-ye" onclick="checkEK()">✔ Prüfen</button>
+  <div class="res-line" id="ekr1"></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- GENEL TEKRAR MC -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--ink);">GR</span>
+  <h2>Genel Tekrar – Alle Einheiten <small>Tüm konulardan karma sorular</small></h2>
+  <span class="time-est">⏱ ~10 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🎯 Karma Sorular – Multiple Choice <span class="ctag" style="background:rgba(26,26,46,0.1);color:var(--ink);">Wiederholung</span></div>
+  <div class="mc-block" id="mg1"><div class="mc-q">1. „Wie heißt du?" – „Ich ___ Murat." <span class="h">(E1)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg1','heiße')">heiße</button><button class="opt" onclick="chkMC(this,'mg1','heiße')">heißt</button><button class="opt" onclick="chkMC(this,'mg1','heiße')">bin</button></div></div>
+  <div class="mc-block" id="mg2"><div class="mc-q">2. „Hast du einen Hund?" – „Nein, ich habe ___ Hund." <span class="h">(E3)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg2','keinen')">keinen</button><button class="opt" onclick="chkMC(this,'mg2','keinen')">kein</button><button class="opt" onclick="chkMC(this,'mg2','keinen')">keine</button></div></div>
+  <div class="mc-block" id="mg3q"><div class="mc-q">3. „Wann hast du Sport?" – „___ Montag." <span class="h">(E4)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg3q','Am')">Am</button><button class="opt" onclick="chkMC(this,'mg3q','Am')">Um</button><button class="opt" onclick="chkMC(this,'mg3q','Am')">Von</button><button class="opt" onclick="chkMC(this,'mg3q','Am')">Gegen</button></div></div>
+  <div class="mc-block" id="mg4"><div class="mc-q">4. „Sie ___ sehr gut Ski fahren." <span class="h">(E5 – können, sie/she)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg4','kann')">kann</button><button class="opt" onclick="chkMC(this,'mg4','kann')">können</button><button class="opt" onclick="chkMC(this,'mg4','kann')">kannst</button></div></div>
+  <div class="mc-block" id="mg5"><div class="mc-q">5. „Das ist ___ Mutter." <span class="h">(E6 – er / sein)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg5','seine')">seine</button><button class="opt" onclick="chkMC(this,'mg5','seine')">sein</button><button class="opt" onclick="chkMC(this,'mg5','seine')">ihr</button></div></div>
+  <div class="mc-block" id="mg6q"><div class="mc-q">6. „Ich ___ gerne einen Kaugummi." <span class="h">(E7 – möchten)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg6q','hätte')">hätte</button><button class="opt" onclick="chkMC(this,'mg6q','hätte')">habe</button><button class="opt" onclick="chkMC(this,'mg6q','hätte')">hatte</button></div></div>
+  <div class="mc-block" id="mg7"><div class="mc-q">7. Der Film fängt um 18 Uhr ___.  <span class="h">(E5 – anfangen)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg7','an')">an</button><button class="opt" onclick="chkMC(this,'mg7','an')">auf</button><button class="opt" onclick="chkMC(this,'mg7','an')">ab</button></div></div>
+  <div class="mc-block" id="mg8"><div class="mc-q">8. „Was ist das?" – „Das ist ___ Schere." <span class="h">(E2 – die Schere)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg8','eine')">eine</button><button class="opt" onclick="chkMC(this,'mg8','eine')">ein</button><button class="opt" onclick="chkMC(this,'mg8','eine')">einen</button></div></div>
+  <div class="mc-block" id="mg9"><div class="mc-q">9. Ich stehe um 7 Uhr ___. <span class="h">(E5 – aufstehen)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg9','auf')">auf</button><button class="opt" onclick="chkMC(this,'mg9','auf')">ab</button><button class="opt" onclick="chkMC(this,'mg9','auf')">an</button></div></div>
+  <div class="mc-block" id="mg10"><div class="mc-q">10. „Woher kommst du?" – „Ich komme ___ Deutschland." <span class="h">(E1)</span></div><div class="opts"><button class="opt" onclick="chkMC(this,'mg10','aus')">aus</button><button class="opt" onclick="chkMC(this,'mg10','aus')">von</button><button class="opt" onclick="chkMC(this,'mg10','aus')">in</button></div></div>
+</div>
+
+<!-- ════════════════════════════════ -->
+<!-- ÇEVİRİ BÖLÜMÜ -->
+<!-- ════════════════════════════════ -->
+<div class="unit-header w">
+  <span class="unit-badge" style="background:var(--blue);">TR</span>
+  <h2>Türkçe → Almanca Çeviri <small>Tüm ünitelerden seçme cümleler</small></h2>
+  <span class="time-est">⏱ ~8 dk</span>
+</div>
+
+<div class="card">
+  <div class="card-title">🌍 Çeviri Yapın <span class="ctag" style="background:rgba(37,99,235,0.1);color:var(--blue);">Übersetzen</span></div>
+  <p class="info">Türkçe cümleleri Almancaya çevirin. Cevapları görmek için butona basın.</p>
+  <div class="trans-block"><div class="trans-from">1. Ben İspanya'dan geliyorum ve Berlin'de yaşıyorum. <span style="color:var(--muted);font-size:0.8rem">(E1)</span></div><input class="trans-input" id="tr1" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra1">✅ Ich komme aus Spanien und wohne in Berlin.</div></div>
+  <div class="trans-block"><div class="trans-from">2. Bu cetvel mi? Hayır, bu bir kalemdir. <span style="color:var(--muted);font-size:0.8rem">(E2)</span></div><input class="trans-input" id="tr2" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra2">✅ Ist das ein Lineal? Nein, das ist ein Bleistift.</div></div>
+  <div class="trans-block"><div class="trans-from">3. Bir köpeğim var ama kedim yok. <span style="color:var(--muted);font-size:0.8rem">(E3)</span></div><input class="trans-input" id="tr3" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra3">✅ Ich habe einen Hund, aber ich habe keine Katze.</div></div>
+  <div class="trans-block"><div class="trans-from">4. Ders saat 8'de başlıyor ve saat 4'te bitiyor. <span style="color:var(--muted);font-size:0.8rem">(E4)</span></div><input class="trans-input" id="tr4" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra4">✅ Der Unterricht beginnt um 8 Uhr und endet um 16 Uhr.</div></div>
+  <div class="trans-block"><div class="trans-from">5. İyi yüzebiliyorum ama kayak yapamam. <span style="color:var(--muted);font-size:0.8rem">(E5)</span></div><input class="trans-input" id="tr5" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra5">✅ Ich kann gut schwimmen, aber ich kann nicht Ski fahren.</div></div>
+  <div class="trans-block"><div class="trans-from">6. Annem doktor, babam ise öğretmen. <span style="color:var(--muted);font-size:0.8rem">(E6)</span></div><input class="trans-input" id="tr6" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra6">✅ Meine Mutter ist Ärztin und mein Vater ist Lehrer.</div></div>
+  <div class="trans-block"><div class="trans-from">7. Çikolata bar ne kadar? – 70 Cent. <span style="color:var(--muted);font-size:0.8rem">(E7)</span></div><input class="trans-input" id="tr7" placeholder="Almancaya çevirin..."><div class="trans-ans" id="tra7">✅ Was kostet der Schokoriegel? – 70 Cent.</div></div>
+  <button class="btn btn-bl" onclick="revealTrans()">💡 Cevapları Göster</button>
+</div>
+
+<!-- SCORE -->
+<div class="score-wrap">
+  <div class="score-inner">
+    <h3>🏆 Prima Plus A1.1 – Toplam Skor</h3>
+    <div class="score-grid">
+      <div class="sg" style="color:#FF8C42;"><span class="val" id="sc1">–</span><span class="lbl">E1 Tanışma</span></div>
+      <div class="sg" style="color:#60A5FA;"><span class="val" id="sc2">–</span><span class="lbl">E2 Klasse</span></div>
+      <div class="sg" style="color:#4ADE80;"><span class="val" id="sc3">–</span><span class="lbl">E3 Tiere</span></div>
+      <div class="sg" style="color:#A78BFA;"><span class="val" id="sc4">–</span><span class="lbl">E4 Tag</span></div>
+      <div class="sg" style="color:#38BDF8;"><span class="val" id="sc5">–</span><span class="lbl">E5 Hobbys</span></div>
+      <div class="sg" style="color:#F472B6;"><span class="val" id="sc6">–</span><span class="lbl">E6 Familie</span></div>
+      <div class="sg" style="color:#FCD34D;"><span class="val" id="sc7">–</span><span class="lbl">E7 Kauf</span></div>
+      <div class="sg" style="color:#6EE7B7;"><span class="val" id="sc8">–</span><span class="lbl">MC & Eşl.</span></div>
+    </div>
+    <div class="score-big" id="sc-total" style="color:#FF8C42;">–</div>
+    <div style="color:rgba(255,255,255,0.35);font-size:1rem;" id="sc-of">Gesamtpunktzahl</div>
+    <div class="score-msg" id="sc-msg">Tüm alıştırmaları tamamlayın!</div>
+    <br>
+    <button class="btn btn-dk" onclick="calcAll()">🎯 Toplam Skoru Hesapla</button>
+  </div>
+</div>
+
+<script>
+/* ─── TIMER ─── */
+let timerSec=3600, timerInt=null, running=false;
+function startTimer(){
+  if(running){clearInterval(timerInt);running=false;document.getElementById('timerStartBtn').textContent='▶ Devam';return;}
+  running=true;document.getElementById('timerStartBtn').textContent='⏸ Durdur';
+  timerInt=setInterval(()=>{
+    if(timerSec<=0){clearInterval(timerInt);running=false;document.getElementById('timerDisplay').textContent='00:00';document.getElementById('timerDisplay').style.color='var(--red)';return;}
+    timerSec--;
+    const m=Math.floor(timerSec/60),s=timerSec%60;
+    document.getElementById('timerDisplay').textContent=(m<10?'0'+m:m)+':'+(s<10?'0'+s:s);
+    const pct=((3600-timerSec)/3600)*100;
+    document.getElementById('progressFill').style.width=pct+'%';
+    if(timerSec<300) document.getElementById('timerDisplay').style.color='var(--red)';
+    else if(timerSec<600) document.getElementById('timerDisplay').style.color='var(--yellow)';
+  },1000);
+}
+function resetTimer(){clearInterval(timerInt);running=false;timerSec=3600;document.getElementById('timerDisplay').textContent='60:00';document.getElementById('timerDisplay').style.color='var(--orange)';document.getElementById('progressFill').style.width='0%';document.getElementById('timerStartBtn').textContent='▶ Başlat';}
+
+/* ─── HELPERS ─── */
+var scores={e1:0,e2z:0,e2s:0,e2mc:0,e3t:0,e3m:0,e4u:0,e4p:0,e4mc:0,e5k:0,e5tr:0,e5v:0,e6p:0,e6m:0,e7e:0,e7ek:0,mc:0,match:0};
+
+function markCI(ids,scoreKey){
+  let c=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const ok=el.value.trim().toLowerCase()===el.dataset.a.toLowerCase();
+    el.classList.remove('ok','no'); el.classList.add(ok?'ok':'no');
+    if(ok) c++;
+  });
+  scores[scoreKey]=(scores[scoreKey]||0)+c;
+  return c;
+}
+function markFill(ids,prefix,scoreKey){
+  let c=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const n=id.replace(/[a-z]/gi,'');
+    const ok=el.value.trim().toLowerCase()===el.dataset.a.toLowerCase();
+    el.classList.remove('ok','no'); el.classList.add(ok?'ok':'no');
+    const ic=document.getElementById(prefix+'i'+n);if(ic)ic.textContent=ok?'✅':'❌';
+    const sh=document.getElementById(prefix+'s'+n);if(sh&&!ok)sh.classList.add('on');
+    if(ok) c++;
+  });
+  scores[scoreKey]=(scores[scoreKey]||0)+c;
+  return c;
+}
+function setRes(id,c,max,color){
+  const el=document.getElementById(id);if(!el)return;
+  el.style.color=c===max?'var(--green)':'var(--red)';
+  el.textContent=c+'/'+max+' richtig'+(c===max?' 🎉':'');
+}
+function markSI(ids,scoreKey){
+  let c=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const ok=el.value.trim().toLowerCase()===el.dataset.a.toLowerCase();
+    el.classList.remove('ok','no'); el.classList.add(ok?'ok':'no');
+    if(ok) c++;
+  });
+  scores[scoreKey]=(scores[scoreKey]||0)+c;
+  return c;
+}
+
+/* ─── E1 CONJ ─── */
+var conjScore1=0;
+function checkConj1(){
+  conjScore1=0;
+  ['v1','v2','v3','v4','v5','v6','v7','v8','v9','v10','v11','v12','v13','v14','v15','v16','v17','v18','v19','v20'].forEach(id=>{
+    const el=document.getElementById(id); if(!el)return;
+    const ok=el.value.trim().toLowerCase()===el.dataset.a.toLowerCase();
+    el.classList.remove('ok','no'); el.classList.add(ok?'ok':'no');
+    if(ok) conjScore1++;
+  });
+  scores.e1=conjScore1;
+  setRes('cr1',conjScore1,20,'');
+}
+
+/* ─── E1 DIALOGUE ─── */
+var d1Score=0;
+function checkD1(){
+  d1Score=markSI(['d1','d2','d3','d4','d5','d6','d7'],'e1d');
+  scores.e1=(scores.e1||0)+d1Score;
+  setRes('dr1',d1Score,7,'');
+}
+
+/* ─── E2 ZAHLEN ─── */
+function checkZahlen(){
+  const c=markFill(['z1','z2','z3','z4','z5'],'z','e2z');
+  setRes('zr1',c,5,'');
+}
+
+/* ─── E2 SACHEN ─── */
+function checkSachen(){
+  const c=markFill(['s1','s2','s3','s4','s5','s6','s7','s8'],'s','e2s');
+  setRes('sr1',c,8,'');
+}
+
+/* ─── E3 TIERE ─── */
+function checkTiere(){
+  const c=markFill(['t1','t2','t3','t4','t5','t6'],'t','e3t');
+  setRes('tr1',c,6,'');
+}
+
+/* ─── E4 UHR ─── */
+function checkUhr(){
+  ['u1','u2','u3','u4'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    const ans=el.dataset.a.toLowerCase();
+    document.getElementById('ui'+(i+1)).textContent='💡';
+    document.getElementById('us'+(i+1)).classList.add('on');
+    el.classList.add('ok');
+  });
+  scores.e4u=4;
+  document.getElementById('ur1').style.color='var(--blue)';
+  document.getElementById('ur1').textContent='Cevaplar gösterildi!';
+}
+
+/* ─── E4 PRÄPO ─── */
+function checkPraepo(){
+  let c=0;
+  [['pr1','um'],['pr2','am'],['pr3','von'],['pr4','bis'],['pr5','gegen'],['pr6','am']].forEach(([id,ans],i)=>{
+    const el=document.getElementById(id);if(!el)return;
+    const ok=el.value.trim().toLowerCase()===ans;
+    el.classList.remove('ok','no'); el.classList.add(ok?'ok':'no');
+    if(ok) c++;
+    const icons=['pri1','pri2','pri3','pri3','pri4','pri5'];
+    const ic=document.getElementById(icons[i]);if(ic)ic.textContent=ok?'✅':'❌';
+    const sids=['prs1','prs2',null,null,'prs3','prs4'];
+    if(sids[i]&&!ok){const sh=document.getElementById(sids[i]);if(sh)sh.classList.add('on');}
+  });
+  scores.e4p=c;
+  setRes('prr1',c,6,'');
+}
+
+/* ─── E5 KÖNNEN ─── */
+function checkKoennen(){
+  const c=markFill(['k1','k2','k3','k4','k5'],'k','e5k');
+  setRes('kr1',c,5,'');
+}
+
+/* ─── E5 TRENNBAR ─── */
+function checkTrennbar(){
+  const c=markFill(['tr1','tr2','tr3','tr4','tr5'],'tr','e5tr');
+  setRes('trr1',c,5,'');
+}
+
+/* ─── E5 VERABREDUNG ─── */
+function checkV5(){
+  const c=markSI(['v1d','v2d','v3d','v4d','v5d','v6d'],'e5v');
+  setRes('vr5',c,6,'');
+}
+
+/* ─── E6 POSSESSIV ─── */
+function checkPossessiv(){
+  const c=markFill(['p1','p2','p3','p4','p5','p6','p7'],'p','e6p');
+  setRes('pr6',c,7,'');
+}
+
+/* ─── E7 EINKAUF ─── */
+function checkEinkauf(){
+  const c=markFill(['e1','e2','e3','e4','e5'],'e','e7e');
+  setRes('er1',c,5,'');
+}
+function checkEK(){
+  const c=markSI(['ek1','ek2','ek3','ek4','ek5','ek6'],'e7ek');
+  setRes('ekr1',c,6,'');
+}
+
+/* ─── MC ─── */
+var mcDone={};
+function chkMC(btn,qid,correct){
+  if(mcDone[qid]) return;
+  const all=document.getElementById(qid).querySelectorAll('.opt');
+  if(btn.textContent.trim()===correct){btn.classList.add('right');scores.mc=(scores.mc||0)+1;}
+  else{btn.classList.add('wrong');all.forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('show-r');});}
+  mcDone[qid]=true;
+}
+
+/* ─── MATCHING ─── */
+var selL={},selR={},matchScore={};
+function doMatch(el,group){
+  if(el.classList.contains('dok')) return;
+  const side=el.dataset.side;
+  if(side==='L'){if(selL[group])selL[group].classList.remove('sel');selL[group]=el;el.classList.add('sel');}
+  else{if(selR[group])selR[group].classList.remove('sel');selR[group]=el;el.classList.add('sel');}
+  if(selL[group]&&selR[group]){
+    if(selL[group].dataset.id===selR[group].dataset.id){
+      selL[group].classList.remove('sel');selL[group].classList.add('dok');
+      selR[group].classList.remove('sel');selR[group].classList.add('dok');
+      matchScore[group]=(matchScore[group]||0)+1;
+      const totals={'3':5,'6':5};
+      const scEl=document.getElementById('ms'+group);
+      if(scEl) scEl.textContent=matchScore[group]===totals[group]?'🎉 Tüm eşleştirmeler doğru!':matchScore[group]+'/'+totals[group]+' doğru';
+      scores.match=(scores.match||0)+1;
+    } else {
+      selL[group].classList.add('dno');selR[group].classList.add('dno');
+      const _l=selL[group],_r=selR[group];
+      setTimeout(()=>{_l.classList.remove('dno','sel');_r.classList.remove('dno','sel');selL[group]=null;selR[group]=null;},700);
+      return;
+    }
+    selL[group]=null;selR[group]=null;
+  }
+}
+
+/* ─── TRANSLATE ─── */
+function revealTrans(){
+  for(let i=1;i<=7;i++){
+    document.getElementById('tra'+i).classList.add('on');
+    document.getElementById('tr'+i).classList.add('ok');
+  }
+}
+
+/* ─── TOTAL SCORE ─── */
+function calcAll(){
+  const e1=conjScore1+d1Score;
+  const e2=(scores.e2z||0)+(scores.e2s||0)+(scores.e2mc||0);
+  const e3=(scores.e3t||0)+(scores.e3m||0);
+  const e4=(scores.e4u||0)+(scores.e4p||0)+(scores.e4mc||0);
+  const e5=(scores.e5k||0)+(scores.e5tr||0)+(scores.e5v||0);
+  const e6=(scores.e6p||0)+(scores.e6m||0);
+  const e7=(scores.e7e||0)+(scores.e7ek||0);
+  const mcTotal=(scores.mc||0)+(scores.match||0);
+  const total=e1+e2+e3+e4+e5+e6+e7+mcTotal;
+  const max=27+16+11+13+16+12+11+20; // ~126
+  document.getElementById('sc1').textContent=e1+'/27';
+  document.getElementById('sc2').textContent=e2+'/16';
+  document.getElementById('sc3').textContent=e3+'/11';
+  document.getElementById('sc4').textContent=e4+'/13';
+  document.getElementById('sc5').textContent=e5+'/16';
+  document.getElementById('sc6').textContent=e6+'/12';
+  document.getElementById('sc7').textContent=e7+'/11';
+  document.getElementById('sc8').textContent=mcTotal+'/20';
+  document.getElementById('sc-total').textContent=total;
+  document.getElementById('sc-of').textContent='/ '+max+' Puan';
+  const pct=total/max;
+  let msg='';
+  if(pct>=0.9) msg='🌟 Ausgezeichnet! Prima Plus A1.1 ustasısın!';
+  else if(pct>=0.75) msg='👍 Sehr gut! Harika bir tekrar!';
+  else if(pct>=0.6) msg='📚 Gut! Bazı konuları tekrar gözden geçir!';
+  else if(pct>=0.4) msg='💪 Weiter üben! Devam et!';
+  else msg='📖 Tekrar çalışmaya devam! Nicht aufgeben!';
+  document.getElementById('sc-msg').textContent=msg;
+}
+</script>
+</body>
+</html>
