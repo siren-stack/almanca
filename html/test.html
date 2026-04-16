@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modalverben A1</title>
+  <script type="text/javascript" nonce="afe9a014e4b5468f9f154c859d1" src="//injections.adguard.org?ts=1776304470075&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000141871f4a79c65c1ab8d4799%26ts%3D493418%26p%3Dfs%26cid%3D1%26sig%3D09ba48d73e602cb0ef78850a6e99353393aadb74c0cc08c9bc7820f4b89acc5c%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="afe9a014e4b5468f9f154c859d1" src="//injections.adguard.org?ts=1776304470075&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F4EFE6;
+      --paper: #FFFDF8;
+      --ink: #1C1814;
+      --gold: #9A7D0A;
+      --green: #1E8449;
+      --red: #C0392B;
+      --muted: #7D6E5A;
+      --border: #D9CCBA;
+      --shadow: 0 4px 24px rgba(28,24,20,0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Sans 3", sans-serif;
+      overflow-x: hidden;
+    }
+    body { line-height: 1.55; }
+    .w {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: var(--ink);
+      color: #F8F3EA;
+      padding: 42px 0 34px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -90px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(154,125,10,0.18) 0%, rgba(154,125,10,0.03) 55%, rgba(154,125,10,0) 75%);
+      pointer-events: none;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #EAD8A1;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: .98;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 760px;
+      font-size: 1.08rem;
+      color: #DED3C2;
+    }
+    .hl { color: #E3C65F; }
+
+    main { padding: 26px 0 110px; }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px 22px 20px;
+      margin: 16px 0;
+      max-width: 100%;
+    }
+    .sec { margin-top: 22px; }
+    .stitle {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 16px;
+    }
+    .snum {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: #F0E5C9;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: 1px solid #E4D4A7;
+    }
+    .stitle h2 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.45rem, 2vw, 1.9rem);
+      line-height: 1.1;
+    }
+    .info {
+      color: var(--muted);
+      font-size: .98rem;
+      margin: 6px 0 0;
+    }
+    .rule {
+      border-left: 5px solid var(--gold);
+      background: #FBF5E7;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 16px;
+      color: #3E3325;
+    }
+    .ctable {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-top: 8px;
+      font-size: .98rem;
+    }
+    .ctable th, .ctable td {
+      border: 1px solid var(--border);
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .ctable th {
+      background: #F7F0DF;
+      font-weight: 700;
+    }
+
+    .frow {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-top: 1px solid #EFE5D8;
+    }
+    .frow:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .fnum {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      background: #F6F1E7;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .fi, .ci {
+      width: 100%;
+      max-width: 100%;
+      min-height: 44px;
+      border: 0;
+      border-bottom: 2px solid var(--border);
+      background: transparent;
+      padding: 8px 6px;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      outline: none;
+      border-radius: 0;
+    }
+    .fi:focus, .ci:focus { border-bottom-color: var(--gold); }
+    .fi.ok, .ci.ok { border-bottom-color: var(--green); color: var(--green); font-weight: 700; }
+    .fi.no, .ci.no { border-bottom-color: var(--red); color: var(--red); font-weight: 700; }
+
+    .show-answer {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: .92rem;
+      border-bottom: 1px dashed currentColor;
+      cursor: pointer;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .95rem;
+      background: #FCF8EF;
+      border: 1px solid #EADDBE;
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+
+    .mc-block, .conj-wrap { display: grid; gap: 14px; }
+    .mc-q, .conj-card, .match-card {
+      border: 1px solid #E9DECF;
+      border-radius: 18px;
+      padding: 14px;
+      background: #FFFCF6;
+    }
+    .opts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color .2s ease, transform .2s ease;
+      min-width: 0;
+    }
+    .opt:hover { border-color: #CDBA8F; transform: translateY(-1px); }
+    .opt input { accent-color: var(--gold); flex: 0 0 auto; }
+
+    .conj-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .conj-card h3 { margin: 0 0 12px; font-size: 1.1rem; color: #4A3D2E; }
+    .cline {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .cline:last-child { margin-bottom: 0; }
+
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .match-item {
+      display: grid;
+      grid-template-columns: 1fr minmax(120px, 190px);
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .match-item:last-child { margin-bottom: 0; }
+    select.ci {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 34px;
+    }
+
+    .token-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0 12px;
+    }
+    .token, .slot-word, .mini-btn {
+      font: inherit;
+      cursor: pointer;
+    }
+    .token {
+      border: 1px solid #DCCCA8;
+      background: #FFF5D8;
+      color: #5A4820;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 600;
+    }
+    .sentence-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 52px;
+      padding: 10px;
+      border: 1px dashed #D4C3A8;
+      border-radius: 14px;
+      background: #FFFCF4;
+    }
+    .slot-word {
+      background: #F8EBC4;
+      color: #5A4516;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid #D8C48D;
+      font-weight: 600;
+    }
+    .mini-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .mini-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 12px;
+    }
+
+    .floating {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 10px;
+      max-width: calc(100% - 24px);
+    }
+    .scorebox {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 16px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      font-size: .95rem;
+      display: none;
+    }
+    .scorebox strong { color: #F0D16A; }
+    .check-btn {
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #fff;
+      padding: 14px 20px;
+      font: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(154,125,10,0.25);
+    }
+
+    @media (max-width: 640px) {
+      .w { width: min(100%, calc(100% - 16px)); }
+      .card {
+        padding: 18px 14px 16px;
+        margin: 12px 0;
+        border-radius: 18px;
+      }
+      .opts, .match-grid, .conj-wrap { grid-template-columns: 1fr; }
+      .match-item, .cline { grid-template-columns: 1fr; }
+      .frow { grid-template-columns: 36px 1fr; gap: 10px; }
+      .floating {
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        align-items: stretch;
+      }
+      .check-btn, .scorebox { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="w">
+      <div class="pill">A1 · GRAMMATIK</div>
+      <h1>Modalverben <span class="hl">im Alltag</span></h1>
+      <p>Günlük hayattaki kısa ve net örneklerle <strong>können, müssen, wollen, dürfen, sollen, mögen</strong> kullanımını öğren ve alıştırmalarla pekiştir.</p>
+    </div>
+  </header>
+
+  <main class="w">
+    <section class="card sec">
+      <div class="stitle">
+        <div class="snum">00</div>
+        <div>
+          <h2>Gramer Özeti</h2>
+          <p class="info">Modalverb cümlede çekimli olur, ana fiil çoğu zaman sonda mastar hâlindedir.</p>
+        </div>
+      </div>
+      <table class="ctable">
+        <thead>
+          <tr>
+            <th>Modalverb</th>
+            <th>Anlamı</th>
+            <th>Örnek</th>
+            <th>Türkçesi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>können</strong></td><td>yapabilmek</td><td>Ich kann Deutsch lernen.</td><td>Ben Almanca öğrenebilirim.</td></tr>
+          <tr><td><strong>müssen</strong></td><td>zorunda olmak</td><td>Wir müssen heute arbeiten.</td><td>Biz bugün çalışmak zorundayız.</td></tr>
+          <tr><td><strong>wollen</strong></td><td>istemek</td><td>Er will Pizza essen.</td><td>O pizza yemek istiyor.</td></tr>
+          <tr><td><strong>dürfen</strong></td><td>izinli olmak</td><td>Darf ich hier sitzen?</td><td>Burada oturabilir miyim?</td></tr>
+          <tr><td><strong>sollen</strong></td><td>-meli / tavsiye</td><td>Du sollst mehr schlafen.</td><td>Daha çok uyumalısın.</td></tr>
+          <tr><td><strong>mögen</strong></td><td>sevmek / hoşlanmak</td><td>Sie mag Kaffee.</td><td>O kahveyi sever.</td></tr>
+        </tbody>
+      </table>
+      <div class="rule">
+        <strong>Kural:</strong> Modalverb genelde çekimli olarak ikinci pozisyonda yer alır. Ana fiil ise çoğunlukla cümlenin sonunda mastar kalır.<br>
+        <strong>Örnek:</strong> <em>Ich kann gut schwimmen.</em> / <em>Wir müssen heute lernen.</em>
+      </div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">01</div><div><h2>Fill-in · Boşluk Doldurma</h2><p class="info">Boşluklara uygun modalverbi yaz.</p></div></div>
+      <div class="frow"><div class="fnum">1</div><div>Ich <input class="fi auto-check" data-answer='["kann"]'> gut schwimmen.<div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>kann</strong></div></div></div>
+      <div class="frow"><div class="fnum">2</div><div>Wir <input class="fi auto-check" data-answer='["müssen","muessen"]'> heute Hausaufgaben machen.<div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>müssen</strong></div></div></div>
+      <div class="frow"><div class="fnum">3</div><div>Er <input class="fi auto-check" data-answer='["will"]'> ein Eis essen.<div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>will</strong></div></div></div>
+      <div class="frow"><div class="fnum">4</div><div><input class="fi auto-check" data-answer='["darf"]'> ich hier sitzen?<div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>Darf</strong></div></div></div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">02</div><div><h2>Multiple choice · Çoktan Seçmeli</h2><p class="info">Doğru seçeneği işaretle.</p></div></div>
+      <div class="mc-block">
+        <div class="mc-q" data-mc-answer="kann"><div><strong>1.</strong> Meine Schwester ___ gut tanzen.</div><div class="opts"><label class="opt"><input type="radio" name="mc1" value="kann">kann</label><label class="opt"><input type="radio" name="mc1" value="muss">muss</label><label class="opt"><input type="radio" name="mc1" value="will">will</label><label class="opt"><input type="radio" name="mc1" value="soll">soll</label></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>kann</strong></div></div>
+        <div class="mc-q" data-mc-answer="müssen"><div><strong>2.</strong> Wir ___ morgen früh aufstehen.</div><div class="opts"><label class="opt"><input type="radio" name="mc2" value="mögen">mögen</label><label class="opt"><input type="radio" name="mc2" value="müssen">müssen</label><label class="opt"><input type="radio" name="mc2" value="dürfen">dürfen</label><label class="opt"><input type="radio" name="mc2" value="wollen">wollen</label></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>müssen</strong></div></div>
+        <div class="mc-q" data-mc-answer="will"><div><strong>3.</strong> Paul ___ heute Fußball spielen.</div><div class="opts"><label class="opt"><input type="radio" name="mc3" value="soll">soll</label><label class="opt"><input type="radio" name="mc3" value="darf">darf</label><label class="opt"><input type="radio" name="mc3" value="will">will</label><label class="opt"><input type="radio" name="mc3" value="mag">mag</label></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>will</strong></div></div>
+        <div class="mc-q" data-mc-answer="darf"><div><strong>4.</strong> Ali, du ___ heute länger fernsehen.</div><div class="opts"><label class="opt"><input type="radio" name="mc4" value="kann">kann</label><label class="opt"><input type="radio" name="mc4" value="darf">darf</label><label class="opt"><input type="radio" name="mc4" value="musst">musst</label><label class="opt"><input type="radio" name="mc4" value="magst">magst</label></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>darf</strong></div></div>
+      </div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">03</div><div><h2>Konjugasyon tablosu</h2><p class="info">Modalverbi şahıslara göre çekimle.</p></div></div>
+      <div class="conj-wrap">
+        <div class="conj-card"><h3>können</h3><div class="cline">ich <input class="ci auto-check" data-answer='["kann"]'></div><div class="cline">du <input class="ci auto-check" data-answer='["kannst"]'></div><div class="cline">er/sie/es <input class="ci auto-check" data-answer='["kann"]'></div><div class="cline">wir <input class="ci auto-check" data-answer='["können","koennen"]'></div><div class="cline">ihr <input class="ci auto-check" data-answer='["könnt","koennt"]'></div><div class="cline">sie/Sie <input class="ci auto-check" data-answer='["können","koennen"]'></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">ich kann, du kannst, er/sie/es kann, wir können, ihr könnt, sie/Sie können</div></div>
+        <div class="conj-card"><h3>müssen</h3><div class="cline">ich <input class="ci auto-check" data-answer='["muss"]'></div><div class="cline">du <input class="ci auto-check" data-answer='["musst"]'></div><div class="cline">er/sie/es <input class="ci auto-check" data-answer='["muss"]'></div><div class="cline">wir <input class="ci auto-check" data-answer='["müssen","muessen"]'></div><div class="cline">ihr <input class="ci auto-check" data-answer='["müsst","muesst"]'></div><div class="cline">sie/Sie <input class="ci auto-check" data-answer='["müssen","muessen"]'></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">ich muss, du musst, er/sie/es muss, wir müssen, ihr müsst, sie/Sie müssen</div></div>
+        <div class="conj-card"><h3>wollen</h3><div class="cline">ich <input class="ci auto-check" data-answer='["will"]'></div><div class="cline">du <input class="ci auto-check" data-answer='["willst"]'></div><div class="cline">er/sie/es <input class="ci auto-check" data-answer='["will"]'></div><div class="cline">wir <input class="ci auto-check" data-answer='["wollen"]'></div><div class="cline">ihr <input class="ci auto-check" data-answer='["wollt"]'></div><div class="cline">sie/Sie <input class="ci auto-check" data-answer='["wollen"]'></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">ich will, du willst, er/sie/es will, wir wollen, ihr wollt, sie/Sie wollen</div></div>
+        <div class="conj-card"><h3>dürfen</h3><div class="cline">ich <input class="ci auto-check" data-answer='["darf"]'></div><div class="cline">du <input class="ci auto-check" data-answer='["darfst"]'></div><div class="cline">er/sie/es <input class="ci auto-check" data-answer='["darf"]'></div><div class="cline">wir <input class="ci auto-check" data-answer='["dürfen","duerfen"]'></div><div class="cline">ihr <input class="ci auto-check" data-answer='["dürft","duerft"]'></div><div class="cline">sie/Sie <input class="ci auto-check" data-answer='["dürfen","duerfen"]'></div><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">ich darf, du darfst, er/sie/es darf, wir dürfen, ihr dürft, sie/Sie dürfen</div></div>
+      </div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">04</div><div><h2>Matching · Eşleştirme</h2><p class="info">Cümleyi doğru Türkçe anlamla eşleştir.</p></div></div>
+      <div class="match-grid">
+        <div class="match-card">
+          <div class="match-item"><div>1. Ich kann heute nicht kommen.</div><select class="ci auto-check" data-answer='["Ben bugün gelemem."]'><option value="">Seç</option><option>Ben pizza yemek istiyorum.</option><option>Ben bugün gelemem.</option><option>Biz erken uyumalıyız.</option><option>Burada oturabilir miyim?</option></select></div>
+          <div class="match-item"><div>2. Wir müssen früh schlafen.</div><select class="ci auto-check" data-answer='["Biz erken uyumalıyız."]'><option value="">Seç</option><option>Ben Almanca konuşabiliyorum.</option><option>Biz erken uyumalıyız.</option><option>O sütü sever.</option><option>Sen dışarı çıkabilirsin.</option></select></div>
+        </div>
+        <div class="match-card">
+          <div class="match-item"><div>3. Darf ich hier warten?</div><select class="ci auto-check" data-answer='["Burada bekleyebilir miyim?"]'><option value="">Seç</option><option>Burada bekleyebilir miyim?</option><option>Sen şimdi gitmek istiyorsun.</option><option>Onlar yüzebilir.</option><option>O eve gitmeli.</option></select></div>
+          <div class="match-item"><div>4. Sie will einen Tee trinken.</div><select class="ci auto-check" data-answer='["O bir çay içmek istiyor."]'><option value="">Seç</option><option>O bir çay içmek istiyor.</option><option>Ben bir kitap okumalıyım.</option><option>O burada oynayabilir.</option><option>Sen okula gitmek zorundasın.</option></select></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">05</div><div><h2>Cloze · Diyalog tamamlama</h2><p class="info">Diyalogdaki boşlukları uygun kelimeyle tamamla.</p></div></div>
+      <div class="frow"><div class="fnum">1</div><div>A: <strong>___</strong> ich rein?<br>B: Ja, natürlich.<br><input class="fi auto-check" data-answer='["darf"]'><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>Darf</strong></div></div></div>
+      <div class="frow"><div class="fnum">2</div><div>A: Ich habe viele Hausaufgaben.<br>B: Dann <strong>___</strong> du heute lernen.<br><input class="fi auto-check" data-answer='["musst"]'><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>musst</strong></div></div></div>
+      <div class="frow"><div class="fnum">3</div><div>A: Was <strong>___</strong> du essen?<br>B: Ich will einen Burger essen.<br><input class="fi auto-check" data-answer='["willst"]'><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>willst</strong></div></div></div>
+      <div class="frow"><div class="fnum">4</div><div>A: <strong>___</strong> ihr Fußball spielen?<br>B: Ja, wir können das gut.<br><input class="fi auto-check" data-answer='["könnt","koennt"]'><div><a class="show-answer">Cevabı Göster</a></div><div class="answer-box">Doğru cevap: <strong>könnt</strong></div></div></div>
+    </section>
+
+    <section class="card sec">
+      <div class="stitle"><div class="snum">06</div><div><h2>Cümle sıralama</h2><p class="info">Kelimelere tıklayarak doğru cümleyi oluştur.</p></div></div>
+
+      <div class="mc-q sentence-builder">
+        <div><strong>1.</strong> Doğru cümleyi kur.</div>
+        <div class="token-row" data-answer='["ich kann heute nicht kommen"]'>
+          <button type="button" class="token">heute</button>
+          <button type="button" class="token">kann</button>
+          <button type="button" class="token">Ich</button>
+          <button type="button" class="token">kommen</button>
+          <button type="button" class="token">nicht</button>
+        </div>
+        <div class="sentence-slots"></div>
+        <input type="hidden" class="ci sentence-output auto-check" data-answer='["ich kann heute nicht kommen"]'>
+        <div class="mini-actions"><button type="button" class="mini-btn reset-sentence">Sıfırla</button><a class="show-answer">Cevabı Göster</a></div>
+        <div class="answer-box">Doğru cevap: <strong>Ich kann heute nicht kommen.</strong></div>
+      </div>
+
+      <div class="mc-q sentence-builder">
+        <div><strong>2.</strong> Doğru cümleyi kur.</div>
+        <div class="token-row" data-answer='["wir müssen jetzt nach hause gehen","wir müssen jetzt nachhause gehen"]'>
+          <button type="button" class="token">jetzt</button>
+          <button type="button" class="token">gehen</button>
+          <button type="button" class="token">nach Hause</button>
+          <button type="button" class="token">müssen</button>
+          <button type="button" class="token">wir</button>
+        </div>
+        <div class="sentence-slots"></div>
+        <input type="hidden" class="ci sentence-output auto-check" data-answer='["wir müssen jetzt nach hause gehen","wir müssen jetzt nachhause gehen"]'>
+        <div class="mini-actions"><button type="button" class="mini-btn reset-sentence">Sıfırla</button><a class="show-answer">Cevabı Göster</a></div>
+        <div class="answer-box">Doğru cevap: <strong>Wir müssen jetzt nach Hause gehen.</strong></div>
+      </div>
+
+      <div class="mc-q sentence-builder">
+        <div><strong>3.</strong> Doğru cümleyi kur.</div>
+        <div class="token-row" data-answer='["darf ich hier fotos machen"]'>
+          <button type="button" class="token">hier</button>
+          <button type="button" class="token">machen</button>
+          <button type="button" class="token">ich</button>
+          <button type="button" class="token">Darf</button>
+          <button type="button" class="token">Fotos</button>
+        </div>
+        <div class="sentence-slots"></div>
+        <input type="hidden" class="ci sentence-output auto-check" data-answer='["darf ich hier fotos machen"]'>
+        <div class="mini-actions"><button type="button" class="mini-btn reset-sentence">Sıfırla</button><a class="show-answer">Cevabı Göster</a></div>
+        <div class="answer-box">Doğru cevap: <strong>Darf ich hier Fotos machen?</strong></div>
+      </div>
+
+      <div class="mc-q sentence-builder">
+        <div><strong>4.</strong> Doğru cümleyi kur.</div>
+        <div class="token-row" data-answer='["sie will morgen pizza essen"]'>
+          <button type="button" class="token">Pizza</button>
+          <button type="button" class="token">essen</button>
+          <button type="button" class="token">morgen</button>
+          <button type="button" class="token">Sie</button>
+          <button type="button" class="token">will</button>
+        </div>
+        <div class="sentence-slots"></div>
+        <input type="hidden" class="ci sentence-output auto-check" data-answer='["sie will morgen pizza essen"]'>
+        <div class="mini-actions"><button type="button" class="mini-btn reset-sentence">Sıfırla</button><a class="show-answer">Cevabı Göster</a></div>
+        <div class="answer-box">Doğru cevap: <strong>Sie will morgen Pizza essen.</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating">
+    <div class="scorebox" id="scoreBox">Skor: <strong id="scoreText">0 / 0</strong></div>
+    <button class="check-btn" id="checkBtn">Kontrol Et</button>
+  </div>
+
+  <script>
+    const normalize = (str) => (str || "").toString().trim().toLowerCase().replace(/\s+/g, " ");
+
+    const getAnswers = (el) => {
+      try {
+        const parsed = JSON.parse(el.dataset.answer || "[]");
+        return parsed.map(normalize);
+      } catch {
+        return [normalize(el.dataset.answer || "")];
+      }
+    };
+
+    const validateField = (el) => {
+      const value = normalize(el.value);
+      if (!value) {
+        el.classList.remove("ok", "no");
+        return null;
+      }
+      const ok = getAnswers(el).includes(value);
+      el.classList.remove("ok", "no");
+      el.classList.add(ok ? "ok" : "no");
+      return ok;
+    };
+
+    document.querySelectorAll(".auto-check").forEach((el) => {
+      el.addEventListener("input", () => validateField(el));
+      el.addEventListener("change", () => validateField(el));
+    });
+
+    document.querySelectorAll(".show-answer").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const box = btn.parentElement.nextElementSibling;
+        if (!box) return;
+        box.style.display = box.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    document.querySelectorAll(".mc-q[data-mc-answer]").forEach((block) => {
+      block.querySelectorAll('input[type="radio"]').forEach((radio) => {
+        radio.addEventListener("change", () => {
+          const ok = normalize(radio.value) === normalize(block.dataset.mcAnswer);
+          block.style.borderColor = ok ? "var(--green)" : "var(--red)";
+        });
+      });
+    });
+
+    document.querySelectorAll(".sentence-builder").forEach((builder) => {
+      const bank = builder.querySelector(".token-row");
+      const slots = builder.querySelector(".sentence-slots");
+      const hidden = builder.querySelector(".sentence-output");
+      const resetBtn = builder.querySelector(".reset-sentence");
+      const originalWords = Array.from(bank.querySelectorAll(".token")).map(btn => btn.textContent);
+
+      const sync = () => {
+        hidden.value = Array.from(slots.querySelectorAll(".slot-word")).map(x => x.textContent).join(" ");
+        validateField(hidden);
+      };
+
+      const addBankButton = (word) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "token";
+        btn.textContent = word;
+        btn.addEventListener("click", () => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "slot-word";
+          chip.textContent = word;
+          chip.addEventListener("click", () => {
+            chip.remove();
+            addBankButton(word);
+            sync();
+          });
+          slots.appendChild(chip);
+          btn.remove();
+          sync();
+        });
+        bank.appendChild(btn);
+      };
+
+      resetBtn.addEventListener("click", () => {
+        bank.innerHTML = "";
+        slots.innerHTML = "";
+        originalWords.forEach(addBankButton);
+        hidden.value = "";
+        hidden.classList.remove("ok", "no");
+      });
+
+      bank.innerHTML = "";
+      originalWords.forEach(addBankButton);
+    });
+
+    document.getElementById("checkBtn").addEventListener("click", () => {
+      let total = 0;
+      let correct = 0;
+
+      document.querySelectorAll(".auto-check").forEach((el) => {
+        total++;
+        const result = validateField(el);
+        if (result === true) correct++;
+      });
+
+      document.querySelectorAll(".mc-q[data-mc-answer]").forEach((block) => {
+        total++;
+        const checked = block.querySelector('input[type="radio"]:checked');
+        const ok = checked && normalize(checked.value) === normalize(block.dataset.mcAnswer);
+        block.style.borderColor = ok ? "var(--green)" : "var(--red)";
+        if (ok) correct++;
+      });
+
+      document.getElementById("scoreText").textContent = `${correct} / ${total}`;
+      document.getElementById("scoreBox").style.display = "block";
+    });
+  </script>
+</body>
+</html>
