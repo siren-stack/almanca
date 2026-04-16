@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modalverben · A1 Grammatik</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F4EFE6;
+  --paper: #FFFDF8;
+  --ink: #1C1814;
+  --gold: #9A7D0A;
+  --green: #1E8449;
+  --red: #C0392B;
+  --muted: #7D6E5A;
+  --border: #D9CCBA;
+  --shadow: 0 4px 24px rgba(28,24,20,0.10);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.w {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(154,125,10,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .pill {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero h1 .hl {
+  color: var(--gold);
+}
+.hero p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,253,248,0.7);
+  max-width: 560px;
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--paper);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 40px 36px;
+  margin: 32px 0;
+}
+
+/* ─── SECTION TITLES ─── */
+.sec { margin-top: 56px; }
+.stitle {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.snum {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--gold);
+}
+.stitle h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.sec > p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* ─── RULE BOX ─── */
+.rule {
+  border-left: 4px solid var(--gold);
+  background: rgba(154,125,10,0.06);
+  padding: 16px 20px;
+  border-radius: 0 10px 10px 0;
+  margin: 20px 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.rule strong { color: var(--gold); }
+
+/* ─── INFO ─── */
+.info {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+/* ─── GRAMMAR TABLE ─── */
+.ctable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 16px 0;
+}
+.ctable th {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.ctable th:first-child { border-radius: 8px 0 0 0; }
+.ctable th:last-child { border-radius: 0 8px 0 0; }
+.ctable td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.ctable tr:nth-child(even) td { background: rgba(154,125,10,0.03); }
+.ctable td.hl-cell { color: var(--gold); font-weight: 700; }
+
+/* ─── FILL-IN ─── */
+.frow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.fnum {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 24px;
+  font-size: 0.95rem;
+}
+.fi {
+  border: none;
+  border-bottom: 2px solid var(--border);
+  background: transparent;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  padding: 4px 2px;
+  width: 160px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.fi:focus { border-bottom-color: var(--gold); }
+.fi.ok { border-bottom-color: var(--green); color: var(--green); }
+.fi.no { border-bottom-color: var(--red); color: var(--red); }
+
+/* ─── MULTIPLE CHOICE ─── */
+.mc-block { margin-bottom: 24px; }
+.mc-q {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+}
+.mc-q .fnum { margin-right: 4px; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt {
+  border: 2px solid var(--border);
+  background: var(--paper);
+  border-radius: 10px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 0.93rem;
+  font-family: 'Source Sans 3', sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+.opt:hover { border-color: var(--gold); }
+.opt.selected { border-color: var(--gold); background: rgba(154,125,10,0.08); font-weight: 600; }
+.opt.ok { border-color: var(--green); background: rgba(30,132,73,0.08); color: var(--green); }
+.opt.no { border-color: var(--red); background: rgba(192,57,43,0.06); color: var(--red); }
+
+/* ─── CONJUGATION TABLE ─── */
+.conj-wrap { margin-bottom: 24px; }
+.conj-wrap h4 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 1rem;
+}
+.ci {
+  border: none;
+  border-bottom: 2px solid var(--border);
+  background: transparent;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.92rem;
+  padding: 4px 2px;
+  width: 110px;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.ci:focus { border-bottom-color: var(--gold); }
+.ci.ok { border-bottom-color: var(--green); color: var(--green); }
+.ci.no { border-bottom-color: var(--red); color: var(--red); }
+
+/* ─── MATCHING ─── */
+.match-area { margin-bottom: 10px; }
+.match-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.match-left {
+  font-weight: 600;
+  min-width: 200px;
+  font-size: 0.95rem;
+}
+.match-select {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.93rem;
+  background: var(--paper);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.match-select:focus { border-color: var(--gold); }
+.match-select.ok { border-color: var(--green); color: var(--green); }
+.match-select.no { border-color: var(--red); color: var(--red); }
+
+/* ─── CLOZE / DIALOG ─── */
+.cloze-block {
+  background: rgba(154,125,10,0.04);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  line-height: 2;
+}
+.cloze-block .speaker {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ─── SENTENCE ORDER ─── */
+.order-block { margin-bottom: 22px; }
+.order-q {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 44px;
+  margin-bottom: 8px;
+}
+.word-chip {
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.93rem;
+  user-select: none;
+  transition: border-color 0.2s, transform 0.15s, opacity 0.2s;
+}
+.word-chip:hover { border-color: var(--gold); transform: translateY(-1px); }
+.word-chip.used { opacity: 0.3; pointer-events: none; }
+.answer-zone {
+  min-height: 48px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: border-color 0.3s;
+}
+.answer-zone.ok { border-color: var(--green); }
+.answer-zone.no { border-color: var(--red); }
+.placed-word {
+  background: rgba(154,125,10,0.1);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.93rem;
+}
+
+/* ─── SHOW ANSWER LINK ─── */
+.show-ans {
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 8px;
+  display: inline-block;
+}
+.show-ans:hover { color: var(--gold); }
+.ans-text {
+  font-size: 0.82rem;
+  color: var(--green);
+  font-weight: 600;
+  margin-left: 8px;
+  display: none;
+}
+
+/* ─── FLOATING CHECK BUTTON ─── */
+.check-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--gold);
+  color: var(--paper);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(154,125,10,0.35);
+  z-index: 100;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.3px;
+}
+.check-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(154,125,10,0.45); }
+.check-btn:active { transform: scale(0.97); }
+
+/* ─── SCORE BAR ─── */
+.score-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 200;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+.score-bar.show { transform: translateY(0); }
+.score-bar .s-correct { color: var(--green); }
+.score-bar .s-wrong { color: var(--red); }
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 48px 0 32px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 36px; }
+  .hero h1 { font-size: 2rem; }
+  .card { padding: 24px 18px; margin: 20px 8px; }
+  .w { padding: 0 12px; }
+  .frow { gap: 8px; }
+  .fi, .ci { width: 120px; }
+  .opts { flex-direction: column; }
+  .match-left { min-width: auto; }
+  .match-row { gap: 8px; }
+  .ctable { font-size: 0.8rem; }
+  .ctable th, .ctable td { padding: 7px 8px; }
+  .check-btn { bottom: 16px; right: 16px; padding: 12px 24px; font-size: 0.9rem; }
+  .conj-wrap .ctable { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- SCORE BAR -->
+<div class="score-bar" id="scoreBar">
+  Sonuç: <span class="s-correct" id="sCorrect">0</span> doğru · <span class="s-wrong" id="sWrong">0</span> yanlış
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="w">
+    <span class="pill">A1 · Grammatik</span>
+    <h1><span class="hl">Modal</span>verben</h1>
+    <p>können, müssen, dürfen, wollen, sollen, möchten – Modal fiillerle ilk adımlarını at!</p>
+  </div>
+</section>
+
+<!-- GRAMMAR SUMMARY -->
+<div class="w">
+  <section class="sec">
+    <div class="stitle"><span class="snum">00</span><h2>Gramer Özeti</h2></div>
+    <p>Modal fiillerin şahıslara göre çekimi ve cümle yapısı</p>
+    <div class="card">
+      <table class="ctable">
+        <thead>
+          <tr>
+            <th>Pronomen</th><th>können</th><th>müssen</th><th>dürfen</th><th>wollen</th><th>sollen</th><th>möchten</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="hl-cell">ich</td><td>kann</td><td>muss</td><td>darf</td><td>will</td><td>soll</td><td>möchte</td></tr>
+          <tr><td class="hl-cell">du</td><td>kannst</td><td>musst</td><td>darfst</td><td>willst</td><td>sollst</td><td>möchtest</td></tr>
+          <tr><td class="hl-cell">er/sie/es</td><td>kann</td><td>muss</td><td>darf</td><td>will</td><td>soll</td><td>möchte</td></tr>
+          <tr><td class="hl-cell">wir</td><td>können</td><td>müssen</td><td>dürfen</td><td>wollen</td><td>sollen</td><td>möchten</td></tr>
+          <tr><td class="hl-cell">ihr</td><td>könnt</td><td>müsst</td><td>dürft</td><td>wollt</td><td>sollt</td><td>möchtet</td></tr>
+          <tr><td class="hl-cell">sie/Sie</td><td>können</td><td>müssen</td><td>dürfen</td><td>wollen</td><td>sollen</td><td>möchten</td></tr>
+        </tbody>
+      </table>
+
+      <div class="rule">
+        <strong>Cümle yapısı:</strong> Modal fiil ikinci pozisyonda çekimlenir, asıl fiil (Infinitiv) cümlenin <strong>sonuna</strong> gider.<br>
+        Örnek: Ich <strong>kann</strong> gut Deutsch <strong>sprechen</strong>.<br><br>
+        <strong>Anlamlar:</strong><br>
+        können → yapabilmek &nbsp;|&nbsp; müssen → zorunda olmak &nbsp;|&nbsp; dürfen → izni olmak<br>
+        wollen → istemek &nbsp;|&nbsp; sollen → -meli/-malı &nbsp;|&nbsp; möchten → istemek (kibar)
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 01 FILL-IN ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">01</span><h2>Boşluk Doldurma</h2></div>
+    <p>Cümledeki boşluğa uygun modal fiili yaz.</p>
+    <div class="card" id="fillin">
+
+      <div class="frow"><span class="fnum">1.</span> Ich <input class="fi" data-ans="kann"> gut schwimmen. <span class="show-ans" onclick="reveal(this,'kann')">Cevabı Göster</span><span class="ans-text">kann</span></div>
+      <div class="frow"><span class="fnum">2.</span> Du <input class="fi" data-ans="musst"> jeden Tag zur Schule gehen. <span class="show-ans" onclick="reveal(this,'musst')">Cevabı Göster</span><span class="ans-text">musst</span></div>
+      <div class="frow"><span class="fnum">3.</span> <input class="fi" data-ans="darf"> ich hier rauchen? <span class="show-ans" onclick="reveal(this,'darf')">Cevabı Göster</span><span class="ans-text">darf</span></div>
+      <div class="frow"><span class="fnum">4.</span> Wir <input class="fi" data-ans="wollen"> am Wochenende ins Kino gehen. <span class="show-ans" onclick="reveal(this,'wollen')">Cevabı Göster</span><span class="ans-text">wollen</span></div>
+      <div class="frow"><span class="fnum">5.</span> Ihr <input class="fi" data-ans="sollt"> mehr Wasser trinken. <span class="show-ans" onclick="reveal(this,'sollt')">Cevabı Göster</span><span class="ans-text">sollt</span></div>
+      <div class="frow"><span class="fnum">6.</span> Er <input class="fi" data-ans="möchte"> einen Kaffee bestellen. <span class="show-ans" onclick="reveal(this,'möchte')">Cevabı Göster</span><span class="ans-text">möchte</span></div>
+      <div class="frow"><span class="fnum">7.</span> Die Kinder <input class="fi" data-ans="dürfen"> nicht so spät aufbleiben. <span class="show-ans" onclick="reveal(this,'dürfen')">Cevabı Göster</span><span class="ans-text">dürfen</span></div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 02 MULTIPLE CHOICE ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">02</span><h2>Çoktan Seçmeli</h2></div>
+    <p>Doğru modal fiili seç.</p>
+    <div class="card" id="mc">
+
+      <div class="mc-block" data-correct="kann">
+        <div class="mc-q"><span class="fnum">1.</span> Anna ___ sehr gut Klavier spielen.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">muss</span>
+          <span class="opt" onclick="pickOpt(this)">kann</span>
+          <span class="opt" onclick="pickOpt(this)">soll</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'kann')">Cevabı Göster</span><span class="ans-text">kann</span>
+      </div>
+
+      <div class="mc-block" data-correct="müssen">
+        <div class="mc-q"><span class="fnum">2.</span> Wir ___ um 8 Uhr aufstehen.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">möchten</span>
+          <span class="opt" onclick="pickOpt(this)">dürfen</span>
+          <span class="opt" onclick="pickOpt(this)">müssen</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'müssen')">Cevabı Göster</span><span class="ans-text">müssen</span>
+      </div>
+
+      <div class="mc-block" data-correct="darf">
+        <div class="mc-q"><span class="fnum">3.</span> Man ___ hier nicht parken.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">will</span>
+          <span class="opt" onclick="pickOpt(this)">darf</span>
+          <span class="opt" onclick="pickOpt(this)">kann</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'darf')">Cevabı Göster</span><span class="ans-text">darf</span>
+      </div>
+
+      <div class="mc-block" data-correct="will">
+        <div class="mc-q"><span class="fnum">4.</span> Tom ___ Arzt werden.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">will</span>
+          <span class="opt" onclick="pickOpt(this)">darf</span>
+          <span class="opt" onclick="pickOpt(this)">muss</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'will')">Cevabı Göster</span><span class="ans-text">will</span>
+      </div>
+
+      <div class="mc-block" data-correct="sollst">
+        <div class="mc-q"><span class="fnum">5.</span> Du ___ den Arzt anrufen.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">darfst</span>
+          <span class="opt" onclick="pickOpt(this)">sollst</span>
+          <span class="opt" onclick="pickOpt(this)">willst</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'sollst')">Cevabı Göster</span><span class="ans-text">sollst</span>
+      </div>
+
+      <div class="mc-block" data-correct="möchte">
+        <div class="mc-q"><span class="fnum">6.</span> Ich ___ bitte ein Glas Wasser.</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">möchte</span>
+          <span class="opt" onclick="pickOpt(this)">muss</span>
+          <span class="opt" onclick="pickOpt(this)">soll</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'möchte')">Cevabı Göster</span><span class="ans-text">möchte</span>
+      </div>
+
+      <div class="mc-block" data-correct="können">
+        <div class="mc-q"><span class="fnum">7.</span> ___ Sie mir helfen?</div>
+        <div class="opts">
+          <span class="opt" onclick="pickOpt(this)">Wollen</span>
+          <span class="opt" onclick="pickOpt(this)">Können</span>
+          <span class="opt" onclick="pickOpt(this)">Müssen</span>
+        </div>
+        <span class="show-ans" onclick="reveal(this,'Können')">Cevabı Göster</span><span class="ans-text">Können</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 03 CONJUGATION ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">03</span><h2>Konjugasyon Tablosu</h2></div>
+    <p>Her modal fiilin doğru çekimini yaz.</p>
+    <div class="card" id="conj">
+
+      <div class="conj-wrap">
+        <h4>1. können</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="kann"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="kannst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="kann"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="können"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="könnt"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="können"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'kann,kannst,kann,können,könnt,können')">Cevabı Göster</span><span class="ans-text">kann, kannst, kann, können, könnt, können</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>2. müssen</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="muss"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="musst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="muss"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="müssen"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="müsst"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="müssen"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'muss,musst,muss,müssen,müsst,müssen')">Cevabı Göster</span><span class="ans-text">muss, musst, muss, müssen, müsst, müssen</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>3. dürfen</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="darf"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="darfst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="darf"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="dürfen"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="dürft"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="dürfen"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'darf,darfst,darf,dürfen,dürft,dürfen')">Cevabı Göster</span><span class="ans-text">darf, darfst, darf, dürfen, dürft, dürfen</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>4. wollen</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="will"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="willst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="will"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="wollen"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="wollt"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="wollen"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'will,willst,will,wollen,wollt,wollen')">Cevabı Göster</span><span class="ans-text">will, willst, will, wollen, wollt, wollen</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>5. sollen</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="soll"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="sollst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="soll"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="sollen"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="sollt"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="sollen"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'soll,sollst,soll,sollen,sollt,sollen')">Cevabı Göster</span><span class="ans-text">soll, sollst, soll, sollen, sollt, sollen</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>6. möchten</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="möchte"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="möchtest"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="möchte"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="möchten"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="möchtet"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="möchten"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'möchte,möchtest,möchte,möchten,möchtet,möchten')">Cevabı Göster</span><span class="ans-text">möchte, möchtest, möchte, möchten, möchtet, möchten</span>
+      </div>
+
+      <div class="conj-wrap">
+        <h4>7. können (Soru cümlesinde)</h4>
+        <table class="ctable">
+          <thead><tr><th>Pronomen</th><th>Çekim</th></tr></thead>
+          <tbody>
+            <tr><td>ich</td><td><input class="ci" data-ans="kann"></td></tr>
+            <tr><td>du</td><td><input class="ci" data-ans="kannst"></td></tr>
+            <tr><td>er/sie/es</td><td><input class="ci" data-ans="kann"></td></tr>
+            <tr><td>wir</td><td><input class="ci" data-ans="können"></td></tr>
+            <tr><td>ihr</td><td><input class="ci" data-ans="könnt"></td></tr>
+            <tr><td>sie/Sie</td><td><input class="ci" data-ans="können"></td></tr>
+          </tbody>
+        </table>
+        <span class="show-ans" onclick="revealConj(this,'kann,kannst,kann,können,könnt,können')">Cevabı Göster</span><span class="ans-text">kann, kannst, kann, können, könnt, können</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 04 MATCHING ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">04</span><h2>Eşleştirme</h2></div>
+    <p>Cümleyle eşleşen doğru anlamı seç.</p>
+    <div class="card" id="matching">
+      <div class="match-area">
+
+        <div class="match-row">
+          <span class="fnum">1.</span>
+          <span class="match-left">Ich <strong>kann</strong> Deutsch sprechen.</span>
+          <select class="match-select" data-ans="yapabilmek">
+            <option value="">Seçiniz...</option>
+            <option value="zorunda olmak">zorunda olmak</option>
+            <option value="yapabilmek">yapabilmek</option>
+            <option value="istemek">istemek</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'yapabilmek')">Cevabı Göster</span><span class="ans-text">yapabilmek</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">2.</span>
+          <span class="match-left">Du <strong>musst</strong> Hausaufgaben machen.</span>
+          <select class="match-select" data-ans="zorunda olmak">
+            <option value="">Seçiniz...</option>
+            <option value="izni olmak">izni olmak</option>
+            <option value="zorunda olmak">zorunda olmak</option>
+            <option value="istemek (kibar)">istemek (kibar)</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'zorunda olmak')">Cevabı Göster</span><span class="ans-text">zorunda olmak</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">3.</span>
+          <span class="match-left">Sie <strong>darf</strong> heute früher gehen.</span>
+          <select class="match-select" data-ans="izni olmak">
+            <option value="">Seçiniz...</option>
+            <option value="izni olmak">izni olmak</option>
+            <option value="yapabilmek">yapabilmek</option>
+            <option value="-meli / -malı">-meli / -malı</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'izni olmak')">Cevabı Göster</span><span class="ans-text">izni olmak</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">4.</span>
+          <span class="match-left">Wir <strong>wollen</strong> nach Berlin fahren.</span>
+          <select class="match-select" data-ans="istemek">
+            <option value="">Seçiniz...</option>
+            <option value="zorunda olmak">zorunda olmak</option>
+            <option value="istemek">istemek</option>
+            <option value="yapabilmek">yapabilmek</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'istemek')">Cevabı Göster</span><span class="ans-text">istemek</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">5.</span>
+          <span class="match-left">Du <strong>sollst</strong> mehr schlafen.</span>
+          <select class="match-select" data-ans="-meli / -malı">
+            <option value="">Seçiniz...</option>
+            <option value="istemek (kibar)">istemek (kibar)</option>
+            <option value="-meli / -malı">-meli / -malı</option>
+            <option value="izni olmak">izni olmak</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'-meli / -malı')">Cevabı Göster</span><span class="ans-text">-meli / -malı</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">6.</span>
+          <span class="match-left">Ich <strong>möchte</strong> ein Eis, bitte.</span>
+          <select class="match-select" data-ans="istemek (kibar)">
+            <option value="">Seçiniz...</option>
+            <option value="zorunda olmak">zorunda olmak</option>
+            <option value="istemek (kibar)">istemek (kibar)</option>
+            <option value="istemek">istemek</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'istemek (kibar)')">Cevabı Göster</span><span class="ans-text">istemek (kibar)</span>
+        </div>
+
+        <div class="match-row">
+          <span class="fnum">7.</span>
+          <span class="match-left">Er <strong>muss</strong> zum Arzt gehen.</span>
+          <select class="match-select" data-ans="zorunda olmak">
+            <option value="">Seçiniz...</option>
+            <option value="yapabilmek">yapabilmek</option>
+            <option value="-meli / -malı">-meli / -malı</option>
+            <option value="zorunda olmak">zorunda olmak</option>
+          </select>
+          <span class="show-ans" onclick="reveal(this,'zorunda olmak')">Cevabı Göster</span><span class="ans-text">zorunda olmak</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 05 CLOZE / DIALOG ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">05</span><h2>Diyalog Tamamlama</h2></div>
+    <p>Diyalogdaki boşluklara uygun modal fiili yaz.</p>
+    <div class="card" id="cloze">
+
+      <div class="cloze-block">
+        <span class="fnum">1.</span><br>
+        <span class="speaker">A:</span> Was <input class="fi" data-ans="möchtest" style="width:120px"> du trinken?<br>
+        <span class="speaker">B:</span> Ich <input class="fi" data-ans="möchte" style="width:120px"> einen Tee, bitte.
+        <br><span class="show-ans" onclick="reveal(this,'möchtest, möchte')">Cevabı Göster</span><span class="ans-text">möchtest, möchte</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">2.</span><br>
+        <span class="speaker">Lehrer:</span> Ihr <input class="fi" data-ans="müsst" style="width:120px"> die Hausaufgaben bis morgen machen.<br>
+        <span class="speaker">Schüler:</span> <input class="fi" data-ans="müssen" style="width:120px"> wir auch das Buch lesen?
+        <br><span class="show-ans" onclick="reveal(this,'müsst, müssen')">Cevabı Göster</span><span class="ans-text">müsst, müssen</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">3.</span><br>
+        <span class="speaker">Mutter:</span> Du <input class="fi" data-ans="darfst" style="width:120px"> heute nicht fernsehen.<br>
+        <span class="speaker">Kind:</span> Aber ich <input class="fi" data-ans="will" style="width:120px"> Cartoons sehen!
+        <br><span class="show-ans" onclick="reveal(this,'darfst, will')">Cevabı Göster</span><span class="ans-text">darfst, will</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">4.</span><br>
+        <span class="speaker">A:</span> <input class="fi" data-ans="kannst" style="width:120px"> du mir helfen?<br>
+        <span class="speaker">B:</span> Ja, ich <input class="fi" data-ans="kann" style="width:120px"> dir helfen.
+        <br><span class="show-ans" onclick="reveal(this,'Kannst / kannst, kann')">Cevabı Göster</span><span class="ans-text">kannst, kann</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">5.</span><br>
+        <span class="speaker">Arzt:</span> Sie <input class="fi" data-ans="sollen" style="width:120px"> weniger Zucker essen.<br>
+        <span class="speaker">Patient:</span> <input class="fi" data-ans="muss" style="width:120px"> ich auch Sport machen?
+        <br><span class="show-ans" onclick="reveal(this,'sollen, Muss / muss')">Cevabı Göster</span><span class="ans-text">sollen, muss</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">6.</span><br>
+        <span class="speaker">A:</span> Wir <input class="fi" data-ans="wollen" style="width:120px"> am Samstag eine Party machen.<br>
+        <span class="speaker">B:</span> Super! Ich <input class="fi" data-ans="kann" style="width:120px"> einen Kuchen mitbringen.
+        <br><span class="show-ans" onclick="reveal(this,'wollen, kann')">Cevabı Göster</span><span class="ans-text">wollen, kann</span>
+      </div>
+
+      <div class="cloze-block">
+        <span class="fnum">7.</span><br>
+        <span class="speaker">Chef:</span> Sie <input class="fi" data-ans="müssen" style="width:120px"> den Bericht heute fertig schreiben.<br>
+        <span class="speaker">Mitarbeiter:</span> <input class="fi" data-ans="darf" style="width:120px"> ich morgen von zu Hause arbeiten?
+        <br><span class="show-ans" onclick="reveal(this,'müssen, Darf / darf')">Cevabı Göster</span><span class="ans-text">müssen, darf</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 06 SENTENCE ORDER ═══════════════════ -->
+  <section class="sec">
+    <div class="stitle"><span class="snum">06</span><h2>Cümle Sıralama</h2></div>
+    <p>Kelimeleri tıklayarak doğru sırayla cümle kur.</p>
+    <div class="card" id="ordering">
+
+      <div class="order-block" data-answer="Ich kann gut Fußball spielen.">
+        <div class="order-q"><span class="fnum">1.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Ich kann gut Fußball spielen.</span>
+      </div>
+
+      <div class="order-block" data-answer="Du musst jetzt nach Hause gehen.">
+        <div class="order-q"><span class="fnum">2.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Du musst jetzt nach Hause gehen.</span>
+      </div>
+
+      <div class="order-block" data-answer="Wir wollen morgen ins Kino gehen.">
+        <div class="order-q"><span class="fnum">3.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Wir wollen morgen ins Kino gehen.</span>
+      </div>
+
+      <div class="order-block" data-answer="Er darf hier nicht rauchen.">
+        <div class="order-q"><span class="fnum">4.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Er darf hier nicht rauchen.</span>
+      </div>
+
+      <div class="order-block" data-answer="Kannst du mir bitte helfen?">
+        <div class="order-q"><span class="fnum">5.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Kannst du mir bitte helfen?</span>
+      </div>
+
+      <div class="order-block" data-answer="Sie möchte einen Kaffee trinken.">
+        <div class="order-q"><span class="fnum">6.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Sie möchte einen Kaffee trinken.</span>
+      </div>
+
+      <div class="order-block" data-answer="Ihr sollt mehr Obst essen.">
+        <div class="order-q"><span class="fnum">7.</span> Cümleyi sırala:</div>
+        <div class="word-bank"></div>
+        <div class="answer-zone" onclick="removeLastWord(this)"></div>
+        <span class="show-ans" onclick="revealOrder(this)">Cevabı Göster</span><span class="ans-text">Ihr sollt mehr Obst essen.</span>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>Modalverben · A1 Grammatik &mdash; Viel Erfolg beim Lernen!</footer>
+
+<!-- CHECK BUTTON -->
+<button class="check-btn" onclick="checkAll()">Kontrol Et ✓</button>
+
+<script>
+/* ═══ MC SELECT ═══ */
+function pickOpt(el) {
+  el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+/* ═══ REVEAL ANSWERS ═══ */
+function reveal(link, ans) {
+  const at = link.nextElementSibling;
+  if (at) at.style.display = at.style.display === 'inline' ? 'none' : 'inline';
+}
+function revealConj(link, answers) {
+  const at = link.nextElementSibling;
+  if (at) at.style.display = at.style.display === 'inline' ? 'none' : 'inline';
+}
+function revealOrder(link) {
+  const at = link.nextElementSibling;
+  if (at) at.style.display = at.style.display === 'inline' ? 'none' : 'inline';
+}
+
+/* ═══ SENTENCE ORDERING — INIT ═══ */
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+document.querySelectorAll('.order-block').forEach(block => {
+  const answer = block.dataset.answer;
+  const cleanAnswer = answer.replace(/[.?!]/g, '').trim();
+  const words = cleanAnswer.split(/\s+/);
+  const shuffled = shuffleArray([...words]);
+  const bank = block.querySelector('.word-bank');
+  const zone = block.querySelector('.answer-zone');
+
+  shuffled.forEach((word, idx) => {
+    const chip = document.createElement('span');
+    chip.className = 'word-chip';
+    chip.textContent = word;
+    chip.dataset.idx = idx;
+    chip.onclick = function() {
+      if (this.classList.contains('used')) return;
+      this.classList.add('used');
+      const placed = document.createElement('span');
+      placed.className = 'placed-word';
+      placed.textContent = word;
+      placed.dataset.bankIdx = idx;
+      placed.onclick = function(e) {
+        e.stopPropagation();
+        chip.classList.remove('used');
+        this.remove();
+      };
+      zone.appendChild(placed);
+    };
+    bank.appendChild(chip);
+  });
+});
+
+function removeLastWord(zone) {
+  const last = zone.querySelector('.placed-word:last-child');
+  if (last) {
+    const bankIdx = last.dataset.bankIdx;
+    const block = zone.closest('.order-block');
+    const chip = block.querySelector('.word-chip[data-idx="' + bankIdx + '"]');
+    if (chip) chip.classList.remove('used');
+    last.remove();
+  }
+}
+
+/* ═══ NORMALIZE FOR COMPARISON ═══ */
+function norm(s) {
+  return s.trim().toLowerCase().replace(/[.?!,;:]/g, '').replace(/\s+/g, ' ');
+}
+
+/* ═══ CHECK ALL ═══ */
+function checkAll() {
+  let correct = 0;
+  let total = 0;
+
+  /* Fill-in */
+  document.querySelectorAll('#fillin .fi').forEach(input => {
+    total++;
+    const ans = input.dataset.ans.split('|').map(a => norm(a));
+    const val = norm(input.value);
+    input.classList.remove('ok', 'no');
+    if (ans.includes(val) && val !== '') {
+      input.classList.add('ok');
+      correct++;
+    } else {
+      input.classList.add('no');
+    }
+  });
+
+  /* MC */
+  document.querySelectorAll('#mc .mc-block').forEach(block => {
+    total++;
+    const correctAns = norm(block.dataset.correct);
+    const sel = block.querySelector('.opt.selected');
+    block.querySelectorAll('.opt').forEach(o => o.classList.remove('ok', 'no'));
+    if (sel) {
+      if (norm(sel.textContent) === correctAns) {
+        sel.classList.add('ok');
+        correct++;
+      } else {
+        sel.classList.add('no');
+      }
+    }
+  });
+
+  /* Conjugation */
+  document.querySelectorAll('#conj .ci').forEach(input => {
+    total++;
+    const ans = input.dataset.ans.split('|').map(a => norm(a));
+    const val = norm(input.value);
+    input.classList.remove('ok', 'no');
+    if (ans.includes(val) && val !== '') {
+      input.classList.add('ok');
+      correct++;
+    } else {
+      input.classList.add('no');
+    }
+  });
+
+  /* Matching */
+  document.querySelectorAll('#matching .match-select').forEach(sel => {
+    total++;
+    const ans = norm(sel.dataset.ans);
+    const val = norm(sel.value);
+    sel.classList.remove('ok', 'no');
+    if (val === ans && val !== '') {
+      sel.classList.add('ok');
+      correct++;
+    } else {
+      sel.classList.add('no');
+    }
+  });
+
+  /* Cloze */
+  document.querySelectorAll('#cloze .fi').forEach(input => {
+    total++;
+    const rawAns = input.dataset.ans;
+    const ans = rawAns.split('|').map(a => norm(a));
+    const val = norm(input.value);
+    input.classList.remove('ok', 'no');
+    if (ans.includes(val) && val !== '') {
+      input.classList.add('ok');
+      correct++;
+    } else {
+      input.classList.add('no');
+    }
+  });
+
+  /* Ordering */
+  document.querySelectorAll('#ordering .order-block').forEach(block => {
+    total++;
+    const answer = block.dataset.answer;
+    const zone = block.querySelector('.answer-zone');
+    const placed = zone.querySelectorAll('.placed-word');
+    const userStr = Array.from(placed).map(p => p.textContent).join(' ');
+    const cleanAnswer = answer.replace(/[.?!]/g, '').trim();
+    zone.classList.remove('ok', 'no');
+    if (norm(userStr) === norm(cleanAnswer)) {
+      zone.classList.add('ok');
+      correct++;
+    } else {
+      zone.classList.add('no');
+    }
+  });
+
+  /* Score */
+  const wrong = total - correct;
+  document.getElementById('sCorrect').textContent = correct;
+  document.getElementById('sWrong').textContent = wrong;
+  document.getElementById('scoreBar').classList.add('show');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* Cloze: accept Kannst/kannst, Muss/muss, Darf/darf variants */
+document.querySelectorAll('#cloze .fi').forEach(input => {
+  const raw = input.dataset.ans;
+  if (!raw.includes('|')) {
+    const cap = raw.charAt(0).toUpperCase() + raw.slice(1);
+    if (cap !== raw) {
+      input.dataset.ans = raw + '|' + cap;
+    }
+  }
+});
+</script>
+</body>
+</html>

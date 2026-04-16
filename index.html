@@ -109,12 +109,17 @@
 <main id="main"></main>
 
 <script>
-  const LESSONS = [
+  // GitHub API'den html/ klasöründeki .html dosyalarını otomatik çeker.
+  // Yedek olarak sabit liste: API başarısız olursa (rate-limit, offline) bunlar kullanılır.
+  const FALLBACK_LESSONS = [
     { file: 'remixed-f5625d65.html', title: 'Prima Plus A1.1 – Wiederholung' },
     { file: 'remixed-24aae99a.html', title: 'Präteritum & Perfekt' },
     { file: 'remixed-eafaa9dc.html', title: 'Dativ & Akkusativ' },
-    { file: 'remixed-8f86e81f.html', title: 'Possessivpronomen' }
+    { file: 'remixed-8f86e81f.html', title: 'Possessivpronomen' },
+    { file: 'modalverben-a1.html', title: 'Modalverben · A1 Grammatik' }
   ];
+
+  const REPO_API = 'https://api.github.com/repos/siren-stack/almanca/contents/html';
 
   const tabsEl = document.getElementById('tabs');
   const mainEl = document.getElementById('main');
@@ -125,25 +130,94 @@
   const topbarTitle = document.getElementById('topbarTitle');
   const idOf = (file) => file.replace(/\.html$/, '');
 
-  LESSONS.forEach((lesson) => {
-    const btn = document.createElement('button');
-    btn.className = 'tab-btn';
-    btn.textContent = lesson.title;
-    btn.dataset.id = idOf(lesson.file);
-    btn.addEventListener('click', () => {
-      location.hash = idOf(lesson.file);
-      closePanel();
-    });
-    tabsEl.appendChild(btn);
+  let LESSONS = [];
 
-    const frame = document.createElement('iframe');
-    frame.dataset.id = idOf(lesson.file);
-    frame.dataset.src = 'html/' + lesson.file;
-    frame.title = lesson.title;
-    frame.loading = 'lazy';
-    frame.addEventListener('load', () => injectMobileFix(frame));
-    mainEl.appendChild(frame);
-  });
+  // Dosya adından okunabilir başlık üret
+  function fileToTitle(name) {
+    return name
+      .replace(/\.html$/, '')
+      .replace(/-[a-f0-9]{6,10}$/, '')
+      .replace(/[-_]/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  // Bir iframe yüklendikten sonra <title> etiketinden gerçek başlığı çek
+  function extractTitle(frame, fallbackTitle) {
+    try {
+      const doc = frame.contentDocument;
+      if (doc && doc.title) {
+        const btn = tabsEl.querySelector('[data-id="' + frame.dataset.id + '"]');
+        if (btn) btn.textContent = doc.title;
+        const lesson = LESSONS.find(l => idOf(l.file) === frame.dataset.id);
+        if (lesson) lesson.title = doc.title;
+        if (frame.classList.contains('active')) {
+          topbarTitle.textContent = doc.title;
+          document.title = doc.title + ' · Almanca Dersleri';
+        }
+      }
+    } catch (e) {}
+  }
+
+  function renderLessons(lessons) {
+    LESSONS = lessons;
+    tabsEl.innerHTML = '';
+    mainEl.innerHTML = '';
+
+    lessons.forEach((lesson) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-btn';
+      btn.textContent = lesson.title;
+      btn.dataset.id = idOf(lesson.file);
+      btn.addEventListener('click', () => {
+        location.hash = idOf(lesson.file);
+        closePanel();
+      });
+      tabsEl.appendChild(btn);
+
+      const frame = document.createElement('iframe');
+      frame.dataset.id = idOf(lesson.file);
+      frame.dataset.src = 'html/' + lesson.file;
+      frame.title = lesson.title;
+      frame.loading = 'lazy';
+      frame.addEventListener('load', () => {
+        injectMobileFix(frame);
+        extractTitle(frame, lesson.title);
+      });
+      mainEl.appendChild(frame);
+    });
+
+    activate(location.hash.slice(1));
+  }
+
+  // HTML dosyasını hafifçe fetch edip <title> etiketini çek
+  function fetchTitle(file) {
+    return fetch('html/' + file)
+      .then(r => r.text())
+      .then(text => {
+        const m = text.match(/<title>([^<]+)<\/title>/i);
+        return m ? m[1] : fileToTitle(file);
+      })
+      .catch(() => fileToTitle(file));
+  }
+
+  // GitHub API'den dosya listesini çek, başarısız olursa fallback kullan
+  fetch(REPO_API)
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(files => {
+      const htmlFiles = files.filter(f =>
+        f.name.endsWith('.html') && /^[a-zA-Z0-9._\-]+$/.test(f.name)
+      );
+      if (!htmlFiles.length) return renderLessons(FALLBACK_LESSONS);
+      // Tüm dosyaların gerçek <title>'ını paralel çek
+      return Promise.all(
+        htmlFiles.map(f =>
+          fetchTitle(f.name).then(title => ({ file: f.name, title: title }))
+        )
+      ).then(lessons => renderLessons(lessons));
+    })
+    .catch(() => {
+      renderLessons(FALLBACK_LESSONS);
+    });
 
   // Runtime-inject mobile-friendly CSS into each iframe without touching source files.
   const MOBILE_FIX_CSS = `
