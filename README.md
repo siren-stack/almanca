@@ -6,7 +6,7 @@
 
 *Tek sayfa içinde, yan panelden geçiş yapılabilen, mobil uyumlu Almanca ders koleksiyonu.*
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-ready-2ea44f?style=flat-square)](https://pages.github.com/)
+[![Siteyi Aç](https://img.shields.io/badge/🌐_Siteyi_Aç-siren--stack.github.io-2ea44f?style=flat-square)](https://siren-stack.github.io/almanca/)
 [![No Build](https://img.shields.io/badge/build-none-blue?style=flat-square)](#)
 [![Vanilla JS](https://img.shields.io/badge/stack-HTML%20%2F%20CSS%20%2F%20JS-f7df1e?style=flat-square)](#)
 [![Mobile Ready](https://img.shields.io/badge/mobile-optimized-ff69b4?style=flat-square)](#)
@@ -44,7 +44,7 @@ html/
 ## 🚀 Kullanım
 
 ### Online
-GitHub Pages URL'sini aç — hepsi bu kadar.
+**[https://siren-stack.github.io/almanca/](https://siren-stack.github.io/almanca/)** — tıkla, kullan.
 
 ### Lokal
 ```bash
