@@ -71,89 +71,110 @@ Başka değişiklik yok. Sayfayı yenile, panel'e yeni ders düşer.
 
 ## 🤖 AI ile Uyumlu Ders Üretme
 
-Yeni ders dosyaları mevcut estetik ve etkileşim stiline uysun diye, aşağıdaki prompt'u Claude/GPT'ye verebilirsin. Konuyu ve seviyeyi değiştirmek senin işin — şablon aynı kalır.
+Aşağıdaki prompt'u **olduğu gibi kopyala** ve Claude / ChatGPT / Gemini'ye yapıştır.
+AI sana konu, seviye, egzersiz tipleri gibi her şeyi **sırayla tek tek soracak**;
+sen cevaplayacaksın, sonunda proje stiline birebir uyan tek dosyalık HTML'i üretecek.
 
-### 📋 Prompt Şablonu
-
-> Aşağıdaki `{{KONU}}` yerine "Modalverben", "Akkusativ", "Nebensätze mit weil" gibi herhangi bir Almanca konuyu yazabilirsin.
+### 📋 Kopyala-Yapıştır Prompt
 
 ````markdown
-# Görev
-Almanca **{{KONU}}** konusunu öğreten, tek dosyalık, interaktif bir HTML alıştırma
-sayfası üret. Bu sayfa projemdeki mevcut ders dosyalarıyla birebir aynı stil
-dilinde olmalı — aşağıdaki kuralları harfiyen uygula.
+Sen benim Almanca öğrenme projem için tek dosyalık, interaktif bir HTML ders
+sayfası hazırlayacaksın. Ama önce bana aşağıdaki soruları **tek tek, sırayla**
+sor. Her cevabımı aldıktan sonra bir sonrakine geç. Hepsini tek mesajda sorma,
+hepsini bir formda toplama — sohbet gibi sırayla ilerle.
 
-# Hedef Seviye
-{{SEVİYE — örn. A1, A2, B1}}
+Ben cevaplayana kadar HTML yazmaya başlama. Tüm sorular bitince cevaplarımı
+özetle, "onaylıyor musun?" diye sor, onaylarsam HTML'i tek parça halinde üret.
 
-# Teknik Gereksinimler
-- **Tek HTML dosyası**: inline `<style>` ve inline `<script>`. Dış JS kütüphanesi YOK.
-- Google Fonts izin: `Playfair Display` (700, 900) + `Source Sans 3` (300, 400, 600, 700).
-- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` eklenmeli.
-- Dil: içerik Almanca, açıklamalar ve UI etiketleri Türkçe.
-- Dosyanın tek başına, başka dosyaya ihtiyaç duymadan çalışması gerekir.
+## Sıralı Sorular
 
-# Görsel Sistem (DEĞİŞTİRMEDEN KULLAN)
+1. **Konu nedir?** (örn. Modalverben, Akkusativ, Nebensätze mit weil, Wechselpräpositionen)
+2. **Hedef seviye?** (A1 / A2 / B1 / B2)
+3. **Dersin kısa alt başlığı ne olsun?** (hero'da görünecek, 1 cümle)
+4. **Aksan rengi?** — varsayılan altın `#9A7D0A` dışında ek vurgu rengi istiyor musun?
+   İstersen HEX ver, istemezsen "hayır" de.
+5. **Hangi egzersiz tipleri olsun?** Aşağıdakilerden seçim yap (birden fazla):
+   - [ ] Fill-in (boşluk doldurma)
+   - [ ] Multiple choice (çoktan seçmeli)
+   - [ ] Konjugasyon tablosu (şahıs bazlı fiil çekimi)
+   - [ ] Matching (eşleştirme)
+   - [ ] Cloze / diyalog tamamlama
+   - [ ] Cümle sıralama (drag-drop değil, tıklayarak)
+6. **Her egzersiz tipinden kaç soru olsun?** (örn. "fill-in 8, mc 6, konjugasyon 4 fiil")
+7. **Gramer özeti tablosu gerekli mi?** — konunun kuralını en başta gösterecek
+   tablo/özet ister misin? Evet ise kaç sütun/satır istediğini söyle.
+8. **Konuya özel içerik notları var mı?** (kullanılmasını istediğin özel fiiller,
+   zamirler, örnek cümleler, günlük hayat temaları)
+9. **Dosya adı ne olsun?** (örn. `modalverben.html`, `akkusativ-a1.html`)
+
+## Üretim Kuralları (ben onayladıktan sonra uygulayacaksın)
+
+### Teknik
+- **Tek HTML dosyası**, inline `<style>` + inline `<script>`. Dış JS kütüphanesi yok.
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` şart.
+- İçerik Almanca, UI etiketleri ve açıklamalar Türkçe.
+- Google Fonts: `Playfair Display` (700, 900) + `Source Sans 3` (300, 400, 600, 700).
+
+### Renk paleti (değiştirme)
 ```css
 :root {
-  --bg: #F4EFE6;       /* sayfa zemini — sıcak kağıt */
+  --bg: #F4EFE6;       /* sayfa zemini */
   --paper: #FFFDF8;    /* kart zemini */
   --ink: #1C1814;      /* metin */
-  --gold: #9A7D0A;     /* vurgu / focus */
-  --green: #1E8449;    /* doğru cevap */
-  --red: #C0392B;      /* yanlış cevap */
-  --muted: #7D6E5A;    /* ikincil metin */
+  --gold: #9A7D0A;     /* focus / vurgu */
+  --green: #1E8449;    /* doğru */
+  --red: #C0392B;      /* yanlış */
+  --muted: #7D6E5A;
   --border: #D9CCBA;
   --shadow: 0 4px 24px rgba(28,24,20,0.10);
 }
 ```
-Ek olarak konuya özel 1-2 aksan rengi seçebilirsin (örn. Präteritum için `#B03A2E`,
-Perfekt için `#1A5276`).
 
-# Sayfa İskeleti (bu sıra korunmalı)
-1. **Hero** — koyu zemin (`var(--ink)`), büyük Playfair başlık, kısa alt başlık,
-   konu etiketleri (örn. `A1 · GRAMMATIK · ÜBUNGEN`).
-2. **Gramer kartları** — konuyu 1-2 sütun halinde özetleyen tablolar +
-   "altın çizgili" kural kutusu.
-3. **Alıştırma bölümleri** — her biri numaralı başlık (`01`, `02`, ...) altında:
-   - Fill-in (input'a yaz)
-   - Multiple choice (tıklanabilir seçenekler)
-   - Matching / sürükle-bırak
-   - Konjugasyon tablosu
-   - Cloze / diyalog tamamlama
-   En az **4 farklı egzersiz tipi** olsun.
-4. **Skor takibi** — sağ altta yüzer buton: "Kontrol Et" → doğrular yeşil,
-   yanlışlar kırmızı, toplam skoru gösterir.
+### Sayfa iskeleti (bu sırada)
+1. **Hero** — koyu zemin (`var(--ink)`), Playfair büyük başlık, alt başlık,
+   üst köşede seviye etiketi (örn. `A1 · GRAMMATIK`).
+2. **Gramer özeti** (kullanıcı evet derse) — `.card` içinde tablo + altın sol çizgili
+   kural kutusu (`.rule`).
+3. **Alıştırma bölümleri** — her biri `01`, `02`, `03` numaralı başlıkla
+   (`.stitle` + `.snum`), ayrı `.card`'larda.
+4. **Sağ altta yüzer "Kontrol Et" butonu** — doğruları yeşil, yanlışları
+   kırmızı işaretler, üstte skor gösterir.
 
-# Etkileşim Kuralları
-- Her input'a odaklanınca alt çizgi altın rengine döner.
-- Doğru cevap → alt çizgi yeşil, metin yeşil. Yanlış → kırmızı.
-- "Cevabı Göster" seçeneği küçük bir link olarak altta bulunsun.
-- Tüm state client-side; localStorage opsiyonel.
-- Cevap karşılaştırması case-insensitive ve trim'li olmalı; birden fazla kabul
-  edilen cevap varsa dizi olarak tut.
+### Etkileşim
+- Input focus → alt çizgi altın.
+- Doğru → `.ok` (yeşil alt çizgi + yeşil metin). Yanlış → `.no` (kırmızı).
+- Her soruda "Cevabı Göster" küçük bir link olarak bulunsun.
+- Cevap karşılaştırması: `trim()` + `toLowerCase()`. Birden fazla kabul varsa dizi.
+- State client-side; localStorage opsiyonel.
 
-# Mobil
-- `@media (max-width: 640px)` altında grid'ler tek sütuna düşmeli.
-- Kartların yatay margin'i 8-12px olmalı.
-- Hiçbir element 100vw'yi aşmamalı.
+### Mobil
+- `@media (max-width: 640px)` altında tüm grid'ler tek sütun.
+- Kart yatay margin 8-12px.
+- Hiçbir element `100vw`'yi aşmasın.
 
-# Yapılandırma Notları
-- `<title>` anlamlı olmalı (ör. "Modalverben – A1 Übungen").
-- Sınıf adları mevcut dosyalarla tutarlı: `.hero`, `.w`, `.card`, `.sec`,
-  `.stitle`, `.snum`, `.frow`, `.fi`, `.ci`, `.ctable`, `.mc-block`, `.opts`,
-  `.opt`, `.rule`, `.info`, `.pill`.
-- Çıktı: sadece HTML dosyasının tamamı. Açıklama metni yazma, sadece kod.
+### Class adları (mevcut dosyalarla tutarlı olsun)
+`.hero`, `.w`, `.card`, `.sec`, `.stitle`, `.snum`, `.frow`, `.fnum`, `.fi`,
+`.ci`, `.ctable`, `.mc-block`, `.mc-q`, `.opts`, `.opt`, `.rule`, `.info`,
+`.pill`, `.hl`.
 
-# İçerik
-{{KONUYA ÖZEL NOTLAR — örn. hangi fiiller, hangi zamir, hangi case, kaç soru}}
+### Çıktı
+Onayımdan sonra **sadece HTML dosyasının tam içeriği**. Açıklama, giriş cümlesi,
+"işte kodunuz" gibi metin yazma — direkt `<!DOCTYPE html>` ile başla.
+
+Şimdi 1. soruyu sor.
 ````
 
-### 💡 İpucu
+### 💡 Nasıl Kullanılır
 
-Üretilen dosyayı `html/` klasörüne at, `index.html` içindeki `LESSONS` dizisine
-ekle, tamam. Mobil CSS enjeksiyonu `index.html` tarafından otomatik uygulanır —
-dersin kendisine mobil kodu yazmak zorunda değilsin ama yazarsan daha iyi görünür.
+1. Yukarıdaki prompt'u kopyala, sohbete yapıştır.
+2. AI her soruyu tek tek sorar → cevapla.
+3. Özet + onay → "evet" de.
+4. Üretilen HTML'i `html/` klasörüne `.html` olarak kaydet.
+5. `index.html` içindeki `LESSONS` dizisine bir satır ekle:
+   ```js
+   { file: 'yeni-dersin.html', title: 'Yeni Dersin Başlığı' },
+   ```
+6. Bitti. Mobil CSS enjeksiyonu `index.html` tarafından otomatik uygulanır.
 
 ---
 
