@@ -160,6 +160,8 @@ Ben cevaplayana kadar HTML yazmaya başlama. Tüm sorular bitince cevaplarımı
 ### Çıktı
 Onayımdan sonra **sadece HTML dosyasının tam içeriği**. Açıklama, giriş cümlesi,
 "işte kodunuz" gibi metin yazma — direkt `<!DOCTYPE html>` ile başla.
+Çıktıyı **indirilebilir `.html` dosyası** olarak ver. Kullanıcı doğrudan
+indirebilsin; kod bloğu içine koyma.
 
 Şimdi 1. soruyu sor.
 ````
