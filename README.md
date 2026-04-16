@@ -17,9 +17,11 @@
 
 ## ✨ Öne Çıkanlar
 
-- 📚 **Tek giriş noktası** — `index.html` tüm dersleri yan panelden sunar
+- 📚 **Tek giriş noktası** — `index.html` tüm dersleri yandan açılır panelden sunar
+- 🔄 **Otomatik ders keşfi** — `html/` klasörüne `.html` at, push'la, bitti. GitHub API dosyaları otomatik çeker, `<title>` etiketinden başlığı alır
 - 📱 **Mobil düzeltme enjeksiyonu** — ders dosyalarına dokunmadan, çalışma zamanında CSS enjekte edilir
 - 🔗 **Hash tabanlı yönlendirme** — her dersin kendi URL'si var, paylaşılabilir & yer imi alınabilir
+- 🛡️ **Güvenli** — dosya adı sanitizasyonu, tüm dinamik metin `textContent` ile, API fallback mekanizması
 - 🧩 **Sıfır bağımlılık** — build adımı yok, vanilla HTML/CSS/JS
 - 🎨 **Tutarlı estetik** — Playfair Display + Source Sans 3, sıcak paper tonları, dijital gazete hissi
 
@@ -28,15 +30,15 @@
 ## 🗂️ Proje Yapısı
 
 ```
-html/
-├── index.html          ← tab shell (yandan açılır panel + iframe yöneticisi)
-├── extra-tabs.js       ← (eski, kullanılmıyor — silinebilir)
+├── index.html          ← ana kabuk (yan panel + iframe yöneticisi + otomatik keşif)
 ├── README.md
 └── html/               ← ders dosyaları (her biri bağımsız, tek dosya)
     ├── remixed-f5625d65.html   → Prima Plus A1.1 Wiederholung
     ├── remixed-24aae99a.html   → Präteritum & Perfekt
     ├── remixed-eafaa9dc.html   → Dativ & Akkusativ
-    └── remixed-8f86e81f.html   → Possessivpronomen
+    ├── remixed-8f86e81f.html   → Possessivpronomen
+    ├── modalverben-a1.html     → Modalverben · A1 Grammatik
+    └── ...                     → yeni ders at, otomatik gelir
 ```
 
 ---
@@ -55,17 +57,37 @@ npx serve .
 ### Yeni ders ekleme
 
 1. `.html` dosyanı `html/` klasörüne at
-2. `index.html` içindeki `LESSONS` dizisine bir satır ekle:
+2. GitHub'a push'la
+3. **Bitti.** 1-2 dakika sonra site otomatik güncellenir
 
-```js
-const LESSONS = [
-  { file: 'remixed-f5625d65.html', title: 'Prima Plus A1.1 – Wiederholung' },
-  // ...
-  { file: 'yeni-dersin.html', title: 'Yeni Dersin Başlığı' }, // ← buraya
-];
+> `index.html`'e dokunmana gerek yok. GitHub API `html/` klasörünü tarar,
+> yeni dosyayı bulur, `<title>` etiketinden başlığını çeker ve panele ekler.
+> API başarısız olursa (rate-limit, offline) sabit yedek liste devreye girer.
+
+---
+
+## 🧠 Nasıl Çalışıyor
+
+```
+Sayfa açılır
+    │
+    ├─→ GitHub API'den html/ klasörü listelenir
+    │   (başarısız olursa → sabit fallback listesi)
+    │
+    ├─→ Her .html dosyasının <title> etiketi fetch ile çekilir
+    │
+    ├─→ Yan panelde tab butonları oluşturulur
+    │
+    └─→ Tab tıklanınca:
+        ├─→ iframe lazy-load ile yüklenir
+        ├─→ Mobil CSS otomatik enjekte edilir
+        └─→ URL hash güncellenir (#dosya-adi)
 ```
 
-Başka değişiklik yok. Sayfayı yenile, panel'e yeni ders düşer.
+**Güvenlik:**
+- Dosya adları regex ile sanitize edilir (`/^[a-zA-Z0-9._\-]+$/`)
+- Tüm dinamik metin `textContent` ile eklenir (`innerHTML` yok)
+- iframe'ler same-origin, cross-origin erişim yok
 
 ---
 
@@ -168,28 +190,12 @@ indirebilsin; kod bloğu içine koyma.
 
 ### 💡 Nasıl Kullanılır
 
-1. Yukarıdaki prompt'u kopyala, sohbete yapıştır.
-2. AI her soruyu tek tek sorar → cevapla.
-3. Özet + onay → "evet" de.
-4. Üretilen HTML'i `html/` klasörüne `.html` olarak kaydet.
-5. `index.html` içindeki `LESSONS` dizisine bir satır ekle:
-   ```js
-   { file: 'yeni-dersin.html', title: 'Yeni Dersin Başlığı' },
-   ```
-6. Bitti. Mobil CSS enjeksiyonu `index.html` tarafından otomatik uygulanır.
-
----
-
-## 🧠 Nasıl Çalışıyor
-
-`index.html`:
-- `LESSONS` dizisini okur, her ders için bir tab butonu + bir gizli `<iframe>` oluşturur
-- İlgili tab açılana kadar iframe `src`'si boş kalır (lazy load)
-- Iframe yüklendiğinde `injectMobileFix()` çağrısı içine mobil uyumlu CSS enjekte eder
-- `location.hash` değişimi tab geçişini yönetir (paylaşılabilir linkler için)
-- Yandan kayan panel, topbar'daki hamburger butonu ile açılıp backdrop/ESC/× ile kapanır
-
-Ders dosyaları aynen kalır — tüm katkı dış kabuktan gelir.
+1. Yukarıdaki prompt'u kopyala, sohbete yapıştır
+2. AI her soruyu tek tek sorar → cevapla
+3. Özet + onay → "evet" de
+4. Üretilen `.html` dosyasını indir
+5. `html/` klasörüne at, GitHub'a push'la
+6. **Bitti.** `index.html` otomatik keşfeder, panele ekler
 
 ---
 
